@@ -16,6 +16,10 @@
 		B763ABCA1C66949700BCBEB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B763ABC81C66949700BCBEB7 /* LaunchScreen.storyboard */; };
 		B763ABD51C66949700BCBEB7 /* DaoShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABD41C66949700BCBEB7 /* DaoShipTests.swift */; };
 		B763ABE01C66949700BCBEB7 /* DaoShipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABDF1C66949700BCBEB7 /* DaoShipUITests.swift */; };
+		B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */; };
+		B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */; };
+		B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A021C7A06EB00898C58 /* Spaceship.swift */; };
+		B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A041C7A071F00898C58 /* Greenlaser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		B763ABDB1C66949700BCBEB7 /* DaoShipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaoShipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B763ABDF1C66949700BCBEB7 /* DaoShipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoShipUITests.swift; sourceTree = "<group>"; };
 		B763ABE11C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
+		B7756A021C7A06EB00898C58 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
+		B7756A041C7A071F00898C58 /* Greenlaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenlaser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +112,15 @@
 				B763ABBB1C66949700BCBEB7 /* AppDelegate.swift */,
 				B763ABBD1C66949700BCBEB7 /* GameScene.sks */,
 				B763ABBF1C66949700BCBEB7 /* GameScene.swift */,
+				B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */,
+				B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */,
 				B763ABC11C66949700BCBEB7 /* GameViewController.swift */,
 				B763ABC31C66949700BCBEB7 /* Main.storyboard */,
 				B763ABC61C66949700BCBEB7 /* Assets.xcassets */,
 				B763ABC81C66949700BCBEB7 /* LaunchScreen.storyboard */,
 				B763ABCB1C66949700BCBEB7 /* Info.plist */,
+				B7756A021C7A06EB00898C58 /* Spaceship.swift */,
+				B7756A041C7A071F00898C58 /* Greenlaser.swift */,
 			);
 			path = DaoShip;
 			sourceTree = "<group>";
@@ -199,6 +211,7 @@
 				TargetAttributes = {
 					B763ABB71C66949700BCBEB7 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = X7MN9BYKRG;
 					};
 					B763ABCF1C66949700BCBEB7 = {
 						CreatedOnToolsVersion = 7.2;
@@ -237,6 +250,7 @@
 			files = (
 				B763ABBE1C66949700BCBEB7 /* GameScene.sks in Resources */,
 				B763ABCA1C66949700BCBEB7 /* LaunchScreen.storyboard in Resources */,
+				B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */,
 				B763ABC71C66949700BCBEB7 /* Assets.xcassets in Resources */,
 				B763ABC51C66949700BCBEB7 /* Main.storyboard in Resources */,
 			);
@@ -264,8 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B763ABC01C66949700BCBEB7 /* GameScene.swift in Sources */,
+				B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */,
+				B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */,
 				B763ABC21C66949700BCBEB7 /* GameViewController.swift in Sources */,
 				B763ABBC1C66949700BCBEB7 /* AppDelegate.swift in Sources */,
+				B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,10 +424,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -418,10 +438,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -494,6 +517,7 @@
 				B763ABE61C66949700BCBEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +526,7 @@
 				B763ABE91C66949700BCBEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipUITests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +535,7 @@
 				B763ABEC1C66949700BCBEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
