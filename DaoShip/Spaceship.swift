@@ -11,12 +11,12 @@ import SpriteKit
 class Spaceship: SKSpriteNode {
     
     override init(texture: SKTexture?, color: UIColor?, size: CGSize ){
-        let image = SKTexture(imageNamed: "Spaceship")
+        let image = SKTexture(imageNamed: "gala")
         
         super.init(texture: image, color: UIColor.whiteColor(), size: image.size())
         
-        xScale = 0.55
-        yScale = 0.40
+        xScale = 0.3
+        yScale = 0.3
         
         physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/4)
         physicsBody?.affectedByGravity = false
