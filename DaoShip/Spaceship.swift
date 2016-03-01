@@ -18,7 +18,7 @@ class Spaceship: SKSpriteNode {
         xScale = 0.3
         yScale = 0.3
         
-        physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/4)
+        physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         physicsBody?.affectedByGravity = false
         physicsBody?.collisionBitMask = 1
         physicsBody?.categoryBitMask = 0
