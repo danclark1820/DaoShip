@@ -56,6 +56,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         //Animate ship getting screwed up here in some way
         self.removeChildrenInArray([ship])
+        let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
+        let nextScene = ReplayScene(size: scene!.size)
+        nextScene.scaleMode = .AspectFill
+        
+        scene?.view?.presentScene(nextScene, transition: transition)
     }
     
     
