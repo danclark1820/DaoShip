@@ -7,19 +7,27 @@
 //
 
 import SpriteKit
+import Darwin
 
 class ReplayScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
+        let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         
         playButton.text = "Play Again"
         playButton.name = "playButton"
         playButton.fontSize = 45
         playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
+        exitButton.text = "Exit"
+        exitButton.name = "exitButton"
+        exitButton.fontSize = 25
+        exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/4)
+        
         self.addChild(playButton)
+        self.addChild(exitButton)
         
         let background = SKSpriteNode(imageNamed: "SpaceBG2")
         background.xScale = 1.0;
@@ -40,6 +48,10 @@ class ReplayScene: SKScene {
                 nextScene.scaleMode = .AspectFill
                 
                 scene?.view?.presentScene(nextScene, transition: transition)
+            }
+            
+            if touchedNode.name == "exitButton" {
+                exit(0)
             }
         }
         
