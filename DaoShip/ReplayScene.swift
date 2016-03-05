@@ -18,13 +18,8 @@ class ReplayScene: SKScene {
         self.backgroundColor = UIColor.blackColor()
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        let flightNote = UIKit.UILabel()
-        
-        
-        flightNote.text = "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe"
-        flightNote.font = UIFont(name: "Palatino-Roman", size: 18.0)
-        flightNote.drawTextInRect(CGRect(origin: CGPoint(x: 0.0, y: self.frame.height), size: CGSize(width: self.frame.width, height: self.frame.height/3)))
-        
+        let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
+    
         playButton.text = "Play Again"
         playButton.name = "playButton"
         playButton.fontSize = 35
@@ -35,6 +30,7 @@ class ReplayScene: SKScene {
         exitButton.fontSize = 30
         exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/9)
         
+        self.addChild(flightNote)
         self.addChild(playButton)
         self.addChild(exitButton)
     }
