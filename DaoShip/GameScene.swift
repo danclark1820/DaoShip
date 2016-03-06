@@ -28,17 +28,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.friction = 0
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        ship.physicsBody?.dynamic = true
         self.addChild(ship)
         
         if motionManager.accelerometerAvailable == true {
             motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
                 data, error in
                 
-                let currentX = self.ship.position.x
-                if data?.acceleration.x < 0 {
-                    self.destX = currentX + CGFloat(data!.acceleration.x * 100)
-                } else if data?.acceleration.x > 0 {
-                    self.destX = currentX + CGFloat(data!.acceleration.x * 100)
+                if data?.acceleration.x < 0 || data?.acceleration.x > 0 {
+                    let v_current = self.ship.physicsBody?.velocity
+                    let accel = CGFloat(data!.acceleration.x * 100)
+                    let v_additive = CGFloat(pow(Double(accel), Double(2))/2)
+                    let v_final = v_current!.dx + v_additive
+                    self.ship.physicsBody?.velocity = CGVector(dx: v_final, dy: 0.0)
                 }
                 
             })
@@ -72,16 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdateTime = currentTime
         }
         updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
-        
-        let minX = CGFloat(0.0)
-        let maxX = CGFloat(self.frame.size.width)
-        if self.destX > minX && self.destX < maxX{
-            self.ship.position.x = self.destX
-        } else if self.destX < minX {
-            self.ship.position.x = minX
-        } else if self.destX > maxX {
-            self.ship.position.x = maxX
-        }
         
     }
     
