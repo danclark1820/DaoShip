@@ -8,32 +8,31 @@
 
 import SpriteKit
 import Darwin
+import UIKit
 
 class ReplayScene: SKScene {
     
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.backgroundColor = UIColor.blackColor()
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        
+        let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
+    
         playButton.text = "Play Again"
         playButton.name = "playButton"
-        playButton.fontSize = 45
-        playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        playButton.fontSize = 35
+        playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/6)
         
         exitButton.text = "Exit"
         exitButton.name = "exitButton"
-        exitButton.fontSize = 25
-        exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/4)
+        exitButton.fontSize = 30
+        exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/9)
         
+        self.addChild(flightNote)
         self.addChild(playButton)
         self.addChild(exitButton)
-        
-        let background = SKSpriteNode(imageNamed: "SpaceBG2")
-        background.xScale = 1.0;
-        background.yScale = 1.0;
-        background.zPosition = -1
-        self.addChild(background)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
