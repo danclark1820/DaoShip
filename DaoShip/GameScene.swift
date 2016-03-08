@@ -31,14 +31,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.physicsBody?.dynamic = true
         self.addChild(ship)
         
-        if motionManager.accelerometerAvailable == true {
-            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
+        motionManager.deviceMotionUpdateInterval = 0.01
+        if motionManager.deviceMotionAvailable == true {
+            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
                 data, error in
                 
-                if data?.acceleration.x < 0  {
-                    self.ship.physicsBody?.velocity = CGVector(dx: Double(data!.acceleration.x*500) , dy: 0)
-                } else if data?.acceleration.x > 0 {
-                    self.ship.physicsBody?.velocity = CGVector(dx: Double(data!.acceleration.x*500) , dy: 0)
+                var currentX = self.ship.position.x
+                
+                // 3
+                if data!.rotationRate.y < 0 {
+                    self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
+                }
+                    
+                else if data!.rotationRate.y > 0 {
+                    self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
                 }
                 
             })
@@ -71,13 +77,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             timeSinceLastUpdate = 1.0 / 60.0
             lastUpdateTime = currentTime
         }
+        
         updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
         
     }
     
     func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
+        let action = SKAction.moveToX(destX, duration: 1)
+        self.ship.runAction(action)
+        
         // If it's been more than a second since we spawned the last alien,
         // spawn a new one
+        
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > 1.0) {
             timeSinceLastLaserSpawned = 0
