@@ -13,8 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var ship = Spaceship()
     private var motionManager = CMMotionManager()
-    private var destX:CGFloat  = 0.0
     private var contactMade = false
+    private var destX: CGFloat?
     private var lastUpdateTime: CFTimeInterval = 0
     private var timeSinceLastLaserSpawned: CFTimeInterval  = 0
     
@@ -30,6 +30,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         ship.physicsBody?.dynamic = true
         self.addChild(ship)
+        
+    }
+    
+    func spawnLaser() {
+        let laser = Greenlaser()
+        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: self.size.height)
+        self.addChild(laser)
+        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        //Animate ship getting screwed up here in some way
+        self.removeChildrenInArray([ship])
+        let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
+        let nextScene = ReplayScene(size: scene!.size)
+        nextScene.scaleMode = .AspectFill
+
+        scene?.view?.presentScene(nextScene, transition: transition)
+    }
+    
+    
+    override func update(currentTime: CFTimeInterval) {
+        var timeSinceLastUpdate = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        if timeSinceLastUpdate > 1 {
+            timeSinceLastUpdate = 1.0 / 60.0
+            lastUpdateTime = currentTime
+        }
+        
+        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
+        
+    }
+    
+    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
         
         motionManager.deviceMotionUpdateInterval = 0.01
         if motionManager.deviceMotionAvailable == true {
@@ -50,41 +84,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             })
         }
         
-    }
-    
-    func spawnLaser() {
-        let laser = Greenlaser()
-        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: self.size.height)
-        self.addChild(laser)
-        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
-    }
-    
-    func didBeginContact(contact: SKPhysicsContact) {
-        //Animate ship getting screwed up here in some way
-        self.removeChildrenInArray([ship])
-        let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
-        let nextScene = ReplayScene(size: scene!.size)
-        nextScene.scaleMode = .AspectFill
-        
-        scene?.view?.presentScene(nextScene, transition: transition)
-    }
-    
-    
-    override func update(currentTime: CFTimeInterval) {
-        var timeSinceLastUpdate = currentTime - lastUpdateTime
-        lastUpdateTime = currentTime
-        if timeSinceLastUpdate > 1 {
-            timeSinceLastUpdate = 1.0 / 60.0
-            lastUpdateTime = currentTime
+        if destX != nil {
+            let action = SKAction.moveToX(destX!, duration: 1)
+            self.ship.runAction(action)
         }
-        
-        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
-        
-    }
-    
-    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
-        let action = SKAction.moveToX(destX, duration: 1)
-        self.ship.runAction(action)
         
         // If it's been more than a second since we spawned the last alien,
         // spawn a new one
