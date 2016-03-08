@@ -35,12 +35,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
                 data, error in
                 
-                if data?.acceleration.x < 0 || data?.acceleration.x > 0 {
-                    let v_current = self.ship.physicsBody?.velocity
-                    let accel = CGFloat(data!.acceleration.x * 100)
-                    let v_additive = CGFloat(pow(Double(accel), Double(2))/2)
-                    let v_final = v_current!.dx + v_additive
-                    self.ship.physicsBody?.velocity = CGVector(dx: v_final, dy: 0.0)
+                if data?.acceleration.x < 0  {
+                    self.ship.physicsBody?.velocity = CGVector(dx: Double(data!.acceleration.x*500) , dy: 0)
+                } else if data?.acceleration.x > 0 {
+                    self.ship.physicsBody?.velocity = CGVector(dx: Double(data!.acceleration.x*500) , dy: 0)
                 }
                 
             })
