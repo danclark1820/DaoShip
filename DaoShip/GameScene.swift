@@ -12,7 +12,7 @@ import CoreMotion
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var ship = Spaceship()
-    private var motionManager = CMMotionManager()
+    private var motionManager =  CMMotionManager()
     private var contactMade = false
     private var destX: CGFloat?
     private var lastUpdateTime: CFTimeInterval = 0
@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
         let nextScene = ReplayScene(size: scene!.size)
         nextScene.scaleMode = .AspectFill
-
+        motionManager.stopDeviceMotionUpdates()
         scene?.view?.presentScene(nextScene, transition: transition)
     }
     
@@ -59,20 +59,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdateTime = currentTime
         }
         
-        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
-        
-    }
-    
-    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
-        
-        motionManager.deviceMotionUpdateInterval = 0.01
+        motionManager.deviceMotionUpdateInterval = timeSinceLastUpdate
         if motionManager.deviceMotionAvailable == true {
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
                 data, error in
                 
-                var currentX = self.ship.position.x
-                
-                // 3
+                let currentX = self.ship.position.x
                 if data!.rotationRate.y < 0 {
                     self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
                 }
@@ -88,6 +80,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let action = SKAction.moveToX(destX!, duration: 1)
             self.ship.runAction(action)
         }
+        
+        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
+        
+    }
+    
+    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
         
         // If it's been more than a second since we spawned the last alien,
         // spawn a new one
