@@ -19,11 +19,9 @@ class Greenlaser: SKSpriteNode {
         xScale = 0.15
         yScale = 0.15
         
-        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.size.width, height: self.size.height))
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.size.width/2, height: self.size.height))
         physicsBody?.affectedByGravity = false
-        physicsBody?.collisionBitMask = 0
-        physicsBody?.categoryBitMask = 1
-        physicsBody?.contactTestBitMask = 1
+//        physicsBody?.contactTestBitMask = 0
         
     }
     

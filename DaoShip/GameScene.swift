@@ -18,23 +18,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime: CFTimeInterval = 0
     private var timeSinceLastLaserSpawned: CFTimeInterval  = 0
     
+    let SCENE_EDGE_CATEGORY: UInt32 = 0x1
+    let LASER_CATEGORY: UInt32 = 0x2
+    let SHIP_CATEGORY: UInt32 = 0x3
+    
     override func didMoveToView(view: SKView) {
         
         self.backgroundColor = UIColor.blackColor();
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
-
-        self.physicsBody? = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        self.physicsBody?.friction = 0
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody?.categoryBitMask = SCENE_EDGE_CATEGORY
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         ship.physicsBody?.dynamic = true
+        ship.physicsBody!.contactTestBitMask = SCENE_EDGE_CATEGORY
+        ship.physicsBody!.contactTestBitMask = LASER_CATEGORY
+        
         self.addChild(ship)
         
     }
     
     func spawnLaser() {
         let laser = Greenlaser()
+        laser.physicsBody?.categoryBitMask = LASER_CATEGORY
         laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: self.size.height)
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
