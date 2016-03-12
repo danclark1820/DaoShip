@@ -42,22 +42,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnLaser() {
         let laser = Greenlaser()
-        laser.physicsBody?.categoryBitMask = LASER_CATEGORY
-        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: self.size.height)
+        laser.physicsBody!.categoryBitMask = LASER_CATEGORY
+        laser.physicsBody!.contactTestBitMask = SCENE_EDGE_CATEGORY
+        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: (self.size.height - laser.size.height) )
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
         //Animate ship getting screwed up here in some way
-        self.removeChildrenInArray([ship])
-        let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
-        let nextScene = ReplayScene(size: scene!.size)
-        nextScene.scaleMode = .AspectFill
-        motionManager.stopDeviceMotionUpdates()
-        scene?.view?.presentScene(nextScene, transition: transition)
+        if contact.bodyA.categoryBitMask == LASER_CATEGORY {
+            self.removeChildrenInArray([ship])
+            let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
+            let nextScene = ReplayScene(size: scene!.size)
+            nextScene.scaleMode = .AspectFill
+            motionManager.stopDeviceMotionUpdates()
+            scene?.view?.presentScene(nextScene, transition: transition)
+       }
     }
-    
     
     override func update(currentTime: CFTimeInterval) {
         var timeSinceLastUpdate = currentTime - lastUpdateTime
