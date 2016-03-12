@@ -29,12 +29,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
         
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody?.contactTestBitMask = SHIP_CATEGORY
+        self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = SCENE_EDGE_CATEGORY
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         ship.physicsBody?.dynamic = true
-        ship.physicsBody!.contactTestBitMask = SCENE_EDGE_CATEGORY
-        ship.physicsBody!.contactTestBitMask = LASER_CATEGORY
+        ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
         self.addChild(ship)
         
@@ -42,16 +43,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnLaser() {
         let laser = Greenlaser()
-        laser.physicsBody!.categoryBitMask = LASER_CATEGORY
-        laser.physicsBody!.contactTestBitMask = SCENE_EDGE_CATEGORY
-        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y: (self.size.height - laser.size.height) )
+        laser.physicsBody?.contactTestBitMask = SHIP_CATEGORY
+        laser.physicsBody?.collisionBitMask = 0
+        laser.physicsBody?.categoryBitMask = LASER_CATEGORY
+        laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y:  self.size.height )
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
         //Animate ship getting screwed up here in some way
-        if contact.bodyA.categoryBitMask == LASER_CATEGORY {
+        if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.removeChildrenInArray([ship])
             let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
             let nextScene = ReplayScene(size: scene!.size)
