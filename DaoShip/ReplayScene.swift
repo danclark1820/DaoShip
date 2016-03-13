@@ -12,14 +12,30 @@ import UIKit
 
 class ReplayScene: SKScene {
     
+    let gameScore: Int?
+    
+    init(size: CGSize, score: Int) {
+        gameScore = score
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
+        let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
-    
+        
+        scoreLabel.text = String(gameScore!)
+        scoreLabel.name = "scoreLabels"
+        scoreLabel.fontSize = 45
+        scoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        
         playButton.text = "Play Again"
         playButton.name = "playButton"
         playButton.fontSize = 35
@@ -31,6 +47,7 @@ class ReplayScene: SKScene {
         exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/9)
         
         self.addChild(flightNote)
+        self.addChild(scoreLabel)
         self.addChild(playButton)
         self.addChild(exitButton)
     }
