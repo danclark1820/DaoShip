@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABB1C978BFC0075CC31 /* HighScore.swift */; };
+		B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABD1C978C780075CC31 /* HighScoreManager.swift */; };
 		B756F1B11C88658100039AB9 /* ReplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1B01C88658100039AB9 /* ReplayScene.swift */; };
 		B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B756F1B21C8865C500039AB9 /* ReplayScene.sks */; };
 		B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B750CABB1C978BFC0075CC31 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
+		B750CABD1C978C780075CC31 /* HighScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
 		B756F1B01C88658100039AB9 /* ReplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
 		B756F1B21C8865C500039AB9 /* ReplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReplayScene.sks; sourceTree = "<group>"; };
 		B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMultilineLabel.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				B7756A021C7A06EB00898C58 /* Spaceship.swift */,
 				B7756A041C7A071F00898C58 /* Greenlaser.swift */,
 				B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */,
+				B750CABB1C978BFC0075CC31 /* HighScore.swift */,
+				B750CABD1C978C780075CC31 /* HighScoreManager.swift */,
 			);
 			path = DaoShip;
 			sourceTree = "<group>";
@@ -291,7 +297,9 @@
 				B756F1B11C88658100039AB9 /* ReplayScene.swift in Sources */,
 				B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */,
 				B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */,
+				B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */,
 				B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */,
+				B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */,
 				B763ABC21C66949700BCBEB7 /* GameViewController.swift in Sources */,
 				B763ABBC1C66949700BCBEB7 /* AppDelegate.swift in Sources */,
 				B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */,
