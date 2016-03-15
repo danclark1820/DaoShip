@@ -8,20 +8,18 @@
 
 import SpriteKit
 import Darwin
-import UIKit
 
 class ReplayScene: SKScene {
     
-    let gameScore: Int?
+//    override init(size: CGSize) {
+//        super.init(size: size)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
-    init(size: CGSize, score: Int) {
-        gameScore = score
-        super.init(size: size)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    let hsManager = HighScoreManager()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -31,7 +29,7 @@ class ReplayScene: SKScene {
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
         
-        scoreLabel.text = String(gameScore!)
+        scoreLabel.text = String(self.hsManager.scores.first!.score)
         scoreLabel.name = "scoreLabels"
         scoreLabel.fontSize = 45
         scoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)

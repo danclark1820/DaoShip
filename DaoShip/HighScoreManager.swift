@@ -14,15 +14,19 @@ class HighScoreManager {
     init() {
         // load existing high scores or set up an empty array
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = paths[0] as! NSURL
-        let path = documentsDirectory.URLByAppendingPathComponent("HighScores.plist")
+        let documentsDirectory = paths[0] as! NSString
+        let path = documentsDirectory.stringByAppendingPathComponent("HighScores.plist")
         let fileManager = NSFileManager.defaultManager()
         
         // check if file exists
-        if !fileManager.URLForDirectory(inDomain: path) {
+        if !fileManager.fileExistsAtPath(path) {
             // create an empty file if it doesn't exist
             if let bundle = NSBundle.mainBundle().pathForResource("DefaultFile", ofType: "plist") {
-                fileManager.copyItemAtPath(bundle, toPath: path, error: nil)
+                do {
+                    try fileManager.copyItemAtPath(bundle, toPath: path)
+                } catch is ErrorType {
+                    print(String(ErrorType))
+                }
             }
         }
         

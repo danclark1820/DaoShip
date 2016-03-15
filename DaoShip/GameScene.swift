@@ -19,6 +19,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var timeSinceLastLaserSpawned: CFTimeInterval  = 0
     
     var score = 0
+    let hsManager = HighScoreManager()
+    
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
     let SHIP_CATEGORY: UInt32 = 0x3
@@ -57,7 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.removeChildrenInArray([ship])
             let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
-            let nextScene = ReplayScene(size: scene!.size, score: score)
+            hsManager.addNewScore(score)
+            let nextScene = ReplayScene(size: scene!.size)
             nextScene.scaleMode = .AspectFill
             motionManager.stopDeviceMotionUpdates()
             scene?.view?.presentScene(nextScene, transition: transition)
