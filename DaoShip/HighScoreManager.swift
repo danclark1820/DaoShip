@@ -51,8 +51,11 @@ class HighScoreManager {
     // a simple function to add a new high score, to be called from your game logic
     // note that this doesn't sort or filter the scores in any way
     func addNewScore(newScore:Int) {
-        let newHighScore = HighScore(score: newScore, dateOfScore: NSDate());
-        self.scores.append(newHighScore);
-        self.save();
+        if scores.first == nil || newScore > Int(scores.first!.score) {
+            let newHighScore = HighScore(score: newScore, dateOfScore: NSDate());
+            self.scores = [newHighScore]
+            self.save();
+            
+        }
     }
 }
