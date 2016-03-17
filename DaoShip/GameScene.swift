@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.removeChildrenInArray([ship])
             let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
             hsManager.addNewScore(score)
-            let nextScene = ReplayScene(size: scene!.size)
+            let nextScene = ReplayScene(size: scene!.size, score: score)
             nextScene.scaleMode = .AspectFill
             motionManager.stopDeviceMotionUpdates()
             scene?.view?.presentScene(nextScene, transition: transition)

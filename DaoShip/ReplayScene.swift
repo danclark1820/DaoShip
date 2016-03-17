@@ -11,28 +11,38 @@ import Darwin
 
 class ReplayScene: SKScene {
     
-//    override init(size: CGSize) {
-//        super.init(size: size)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    let lastScore: Int?
+    
+    init(size: CGSize, score: Int) {
+        lastScore = score
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     let hsManager = HighScoreManager()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
-        let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+        let lastScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+        let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
         
-        scoreLabel.text = String(self.hsManager.scores.first!.score)
-        scoreLabel.name = "scoreLabels"
-        scoreLabel.fontSize = 45
-        scoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        lastScoreLabel.text = String(lastScore!)
+        lastScoreLabel.name = "scoreLabels"
+        lastScoreLabel.fontSize = 35
+        lastScoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        
+        highScoreLabel.text = String(self.hsManager.scores.first!.score)
+        highScoreLabel.name = "scoreLabels"
+        highScoreLabel.fontSize = 45
+        highScoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/3)
         
         playButton.text = "Play Again"
         playButton.name = "playButton"
@@ -45,7 +55,8 @@ class ReplayScene: SKScene {
         exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/9)
         
         self.addChild(flightNote)
-        self.addChild(scoreLabel)
+        self.addChild(highScoreLabel)
+        self.addChild(lastScoreLabel)
         self.addChild(playButton)
         self.addChild(exitButton)
     }
