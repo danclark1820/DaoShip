@@ -34,6 +34,19 @@ class ReplayScene: SKScene {
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
         
+    
+        let cropNode = SKCropNode()
+        cropNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        cropNode.zPosition = 1
+        cropNode.maskNode = nil
+        
+        let barNode = Purplelaser()
+        barNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        barNode.name = "bar"
+        cropNode.addChild(barNode)
+
+    
+        
         lastScoreLabel.text = String(lastScore!)
         lastScoreLabel.name = "scoreLabels"
         lastScoreLabel.fontSize = 35
@@ -59,6 +72,7 @@ class ReplayScene: SKScene {
         self.addChild(lastScoreLabel)
         self.addChild(playButton)
         self.addChild(exitButton)
+        self.addChild(cropNode)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
