@@ -34,45 +34,51 @@ class ReplayScene: SKScene {
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
         
-    
-        let cropNode = SKCropNode()
-        cropNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
-        cropNode.zPosition = 1
-        cropNode.maskNode = nil
         
+        let cropNode = SKCropNode()
+        cropNode.zPosition = 1
+        
+        let alphaBarNode = Purplelaser()
+        alphaBarNode.alpha = 0.2
+        alphaBarNode.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height - self.frame.height/5))
         let barNode = Purplelaser()
-        barNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        barNode.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height - self.frame.height/5))
         barNode.name = "bar"
+        
+        let mask = SKSpriteNode(color: SKColor.redColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
+        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/2), y: (barNode.position.y))
         cropNode.addChild(barNode)
-
-    
+        cropNode.maskNode = mask
         
         lastScoreLabel.text = String(lastScore!)
         lastScoreLabel.name = "scoreLabels"
         lastScoreLabel.fontSize = 35
-        lastScoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/2)
+        lastScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/2)
         
         highScoreLabel.text = String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 45
-        highScoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/3)
+        highScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/3)
         
         playButton.text = "Play Again"
         playButton.name = "playButton"
         playButton.fontSize = 35
-        playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/6)
+        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/6)
         
         exitButton.text = "Exit"
         exitButton.name = "exitButton"
         exitButton.fontSize = 30
-        exitButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.frame.height/9)
+        exitButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/9)
         
         self.addChild(flightNote)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
         self.addChild(playButton)
         self.addChild(exitButton)
+        self.addChild(alphaBarNode)
+        self.addChild(mask)
         self.addChild(cropNode)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -90,6 +96,10 @@ class ReplayScene: SKScene {
             }
             
             if touchedNode.name == "exitButton" {
+                exit(0)
+            }
+            
+            if touchedNode.name == "mask" {
                 exit(0)
             }
         }

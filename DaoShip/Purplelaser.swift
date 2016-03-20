@@ -11,7 +11,6 @@ import SpriteKit
 class Purplelaser: SKSpriteNode {
     
     override init(texture: SKTexture!, color: UIColor?, size: CGSize ){
-        //        let constraint = SKConstraint.zRotation(zRange(constantValue: 2.0)
         let image = SKTexture(imageNamed: "Purplelaser")
         
         super.init(texture: image, color: UIColor.whiteColor(), size: image.size())
