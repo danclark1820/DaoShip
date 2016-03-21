@@ -16,7 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var contactMade = false
     private var destX: CGFloat?
     private var lastUpdateTime: CFTimeInterval = 0
-    private var timeSinceLastLaserSpawned: CFTimeInterval  = 0
+    private var timeSinceLastLaserSpawned: CFTimeInterval = 0
+    private var lSpeed = CGFloat(-100.00)
     
     var score = 0
     let hsManager = HighScoreManager()
@@ -44,14 +45,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func spawnLaser() {
+    func spawnLaser(laserSpeed: CGFloat) {
         let laser = Greenlaser()
         laser.physicsBody?.contactTestBitMask = SHIP_CATEGORY
         laser.physicsBody?.collisionBitMask = 0
         laser.physicsBody?.categoryBitMask = LASER_CATEGORY
         laser.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.size.width)) + 1), y:  self.size.height )
         self.addChild(laser)
-        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: -300.0)
+        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -81,12 +82,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 data, error in
                 
                 let currentX = self.ship.position.x
+                let currentSpeed = self.lSpeed
                 if data!.rotationRate.y < 0 {
                     self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
                 }
                     
                 else if data!.rotationRate.y > 0 {
                     self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
+                }
+                
+                else if data!.rotationRate.x < 0 {
+                    self.lSpeed = currentSpeed - CGFloat(data!.rotationRate.x * 5000)
+                }
+                    
+                else if data!.rotationRate.x > 0 {
+                    self.lSpeed = currentSpeed - CGFloat(data!.rotationRate.x * 5000)
                 }
                 
             })
@@ -109,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > 1.0) {
             timeSinceLastLaserSpawned = 0
-            spawnLaser()
+            spawnLaser(lSpeed)
             score += 1
         }
     }
