@@ -32,17 +32,17 @@ class ReplayScene: SKScene {
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         let exitButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        let flightNote = SKMultilineLabel(text: "The words used to describe the ship are not the actual ship. But these flight notes are essential for happy and safe travels through the universe", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8 ) ))
+        let flightNote = SKMultilineLabel(text: "The words used to describe the Ship are not the Ship", labelWidth: Int(self.frame.width), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8)), fontName: "Palatino-Roman", leading: 22)
         
         
         let cropNode = SKCropNode()
         cropNode.zPosition = 1
-        
+        let barPosition = CGPoint(x: 0.0, y: CGFloat(self.frame.height))
         let alphaBarNode = Purplelaser()
         alphaBarNode.alpha = 0.2
-        alphaBarNode.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height - self.frame.height/5))
+        alphaBarNode.position = barPosition
         let barNode = Purplelaser()
-        barNode.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height - self.frame.height/5))
+        barNode.position = barPosition
         barNode.name = "bar"
         
         let mask = SKSpriteNode(color: SKColor.redColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
