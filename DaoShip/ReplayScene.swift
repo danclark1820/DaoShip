@@ -31,7 +31,7 @@ class ReplayScene: SKScene {
         let lastScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        let flightNote = SKMultilineLabel(text: "The words used to describe the Ship are not the Ship", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+        let flightNote = SKMultilineLabel(text: notes[0], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
         
         
         let cropNode = SKCropNode()
@@ -91,6 +91,12 @@ class ReplayScene: SKScene {
         }
         
     }
+    
+    let notes = [
+        "This is the first note",
+        "This is the second note",
+        "This is the third note",
+    ]
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
