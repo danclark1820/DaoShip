@@ -9,22 +9,22 @@
 import Foundation
 
 class FlightNote: NSObject, NSCoding {
-    let note:String;
+    let number:Int;
     let dateOfNote:NSDate;
     
-    init(note:String, dateOfNote:NSDate) {
-        self.note = note;
+    init(number:Int, dateOfNote:NSDate) {
+        self.number = number;
         self.dateOfNote = dateOfNote;
     }
     
     required init(coder: NSCoder) {
-        self.note = coder.decodeObjectForKey("note")! as! String;
+        self.number = coder.decodeObjectForKey("number")! as! Int;
         self.dateOfNote = coder.decodeObjectForKey("dateOfNote")! as! NSDate;
         super.init()
     }
     
     func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.note, forKey: "note")
+        coder.encodeObject(self.number, forKey: "number")
         coder.encodeObject(self.dateOfNote, forKey: "dateOfNote")
     }
 }
