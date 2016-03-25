@@ -50,9 +50,16 @@ class FlightNoteManager {
     
     // a simple function to add a new high score, to be called from your game logic
     // note that this doesn't sort or filter the scores in any way
-    func nextNote(newNoteNumber:Int) {
-        let newFlightNote = FlightNote(number: newNoteNumber, dateOfNote: NSDate());
-        self.notes.append(newFlightNote)
+    func nextNote() {
+        let newFlightNote : FlightNote?
+        let currentNumber = self.notes.last?.number
+        if currentNumber == nil {
+            newFlightNote = FlightNote(number: 0, dateOfNote: NSDate());
+        } else {
+            newFlightNote = FlightNote(number: currentNumber! + 1, dateOfNote: NSDate());
+        }
+        
+        self.notes.append(newFlightNote!)
         self.save();
     }
 }
