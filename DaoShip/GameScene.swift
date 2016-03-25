@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var score = 0
     let hsManager = HighScoreManager()
+    let fnManager = FlightNoteManager
     
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
@@ -61,6 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.removeChildrenInArray([ship])
             let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
             hsManager.addNewScore(score)
+            fnManager.nextNote()
             let nextScene = ReplayScene(size: scene!.size, score: score)
             nextScene.scaleMode = .AspectFill
             motionManager.stopDeviceMotionUpdates()

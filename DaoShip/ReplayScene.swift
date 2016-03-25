@@ -25,14 +25,21 @@ class ReplayScene: SKScene {
     
     let hsManager = HighScoreManager()
     let fnManager = FlightNoteManager()
+    let noteNumber : Int?
     
+    if fnManager.last? == nil {
+        noteNumber = 0
+    } else {
+        noteNumber = fnManager.last!.number
+    }
+
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
         let lastScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        let flightNoteLabel = SKMultilineLabel(text: notes[0], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+        let flightNoteLabel = SKMultilineLabel(text: notes[fnManager.notes.last!.number], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
         
         
         let cropNode = SKCropNode()
