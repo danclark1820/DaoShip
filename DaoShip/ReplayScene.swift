@@ -42,7 +42,12 @@ class ReplayScene: SKScene {
             noteNumber = fnManager.notes.last!.number
         }
         
-        let flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+        let flightNoteLabel: SKMultilineLabel?
+        if noteNumber > notes.count {
+            flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+        } else {
+            flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+        }
         
         
         let cropNode = SKCropNode()
@@ -75,7 +80,7 @@ class ReplayScene: SKScene {
         playButton.fontSize = 30
         playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/6)
         
-        self.addChild(flightNoteLabel)
+        self.addChild(flightNoteLabel!)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
         self.addChild(playButton)

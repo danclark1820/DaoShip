@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var score = 0
     let hsManager = HighScoreManager()
-    let fnManager = FlightNoteManager
+    let fnManager = FlightNoteManager()
     
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
