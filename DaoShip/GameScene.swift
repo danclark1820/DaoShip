@@ -28,7 +28,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        self.backgroundColor = UIColor.blackColor();
+        let background = SKSpriteNode(imageNamed: "SpaceBG3")
+        background.xScale = 1.0;
+        background.yScale = 1.0;
+        background.zPosition = -1
+        self.addChild(background)
+        
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
         
@@ -36,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.contactTestBitMask = SHIP_CATEGORY
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = SCENE_EDGE_CATEGORY
+        
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         ship.physicsBody?.dynamic = true
