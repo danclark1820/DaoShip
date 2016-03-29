@@ -28,11 +28,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        let background = SKSpriteNode(imageNamed: "SpaceBG3")
-        background.xScale = 1.0;
-        background.yScale = 1.0;
-        background.zPosition = -1
-        self.addChild(background)
+//        let background = SKSpriteNode(imageNamed: "SpaceBG1")
+//        background.xScale = 1.0;
+//        background.yScale = 1.0;
+//        background.zPosition = -1
+//        self.addChild(background)
+        
+        self.backgroundColor = UIColor.blackColor()
+        
+        let stars = SKEmitterNode(fileNamed: "Firefly")
+        stars?.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        stars?.zPosition = -2
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
@@ -47,6 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.physicsBody?.dynamic = true
         ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
+        self.addChild(stars!)
         self.addChild(ship)
         
     }

@@ -26,8 +26,11 @@
 		B763ABE01C66949700BCBEB7 /* DaoShipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABDF1C66949700BCBEB7 /* DaoShipUITests.swift */; };
 		B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */; };
 		B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */; };
+		B76E5F641CAAAA1A009298C7 /* Firefly.sks in Resources */ = {isa = PBXBuildFile; fileRef = B76E5F631CAAAA1A009298C7 /* Firefly.sks */; };
 		B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A021C7A06EB00898C58 /* Spaceship.swift */; };
 		B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A041C7A071F00898C58 /* Greenlaser.swift */; };
+		B795F1A71CAAA0D4007F8B5A /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = B795F1A51CAAA0D4007F8B5A /* Stars.sks */; };
+		B795F1A81CAAA0D4007F8B5A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B795F1A61CAAA0D4007F8B5A /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +76,11 @@
 		B763ABE11C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
+		B76E5F631CAAAA1A009298C7 /* Firefly.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firefly.sks; sourceTree = "<group>"; };
 		B7756A021C7A06EB00898C58 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		B7756A041C7A071F00898C58 /* Greenlaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenlaser.swift; sourceTree = "<group>"; };
+		B795F1A51CAAA0D4007F8B5A /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
+		B795F1A61CAAA0D4007F8B5A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,9 @@
 				B750CABF1C9C23EE0075CC31 /* FlightNoteManager.swift */,
 				B750CAC11C9C24200075CC31 /* FlightNote.swift */,
 				B750CAC71C9D950E0075CC31 /* Purplelaser.swift */,
+				B795F1A51CAAA0D4007F8B5A /* Stars.sks */,
+				B795F1A61CAAA0D4007F8B5A /* spark.png */,
+				B76E5F631CAAAA1A009298C7 /* Firefly.sks */,
 			);
 			path = DaoShip;
 			sourceTree = "<group>";
@@ -273,9 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B763ABBE1C66949700BCBEB7 /* GameScene.sks in Resources */,
+				B76E5F641CAAAA1A009298C7 /* Firefly.sks in Resources */,
 				B763ABCA1C66949700BCBEB7 /* LaunchScreen.storyboard in Resources */,
+				B795F1A71CAAA0D4007F8B5A /* Stars.sks in Resources */,
 				B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */,
 				B763ABC71C66949700BCBEB7 /* Assets.xcassets in Resources */,
+				B795F1A81CAAA0D4007F8B5A /* spark.png in Resources */,
 				B763ABC51C66949700BCBEB7 /* Main.storyboard in Resources */,
 				B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */,
 			);
