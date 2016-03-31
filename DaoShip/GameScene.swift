@@ -25,20 +25,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
     let SHIP_CATEGORY: UInt32 = 0x3
+    let STAR_CATEGORY: UInt32 = 0x4
     
     override func didMoveToView(view: SKView) {
         
-//        let background = SKSpriteNode(imageNamed: "SpaceBG1")
-//        background.xScale = 1.0;
-//        background.yScale = 1.0;
-//        background.zPosition = -1
-//        self.addChild(background)
-        
         self.backgroundColor = UIColor.blackColor()
         
-        let stars = SKEmitterNode(fileNamed: "Firefly")
-        stars?.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        stars?.zPosition = -2
+        for _ in 1...20 {
+            let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
+            let starYRange = CGFloat(arc4random_uniform(UInt32(self.size.height)))
+            let starI = Star()
+
+            starI.position = CGPoint(x: starXRange, y: starYRange)
+            starI.physicsBody?.velocity = CGVector(dx: 0.0, dy: -100.00)
+            starI.physicsBody?.categoryBitMask = STAR_CATEGORY
+            starI.physicsBody?.collisionBitMask = 1
+            self.addChild(starI)
+        }
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
@@ -53,7 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.physicsBody?.dynamic = true
         ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
-        self.addChild(stars!)
         self.addChild(ship)
         
     }
@@ -64,10 +66,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.physicsBody?.collisionBitMask = 0
         laser.physicsBody?.categoryBitMask = LASER_CATEGORY
         let laserXRange = CGFloat(arc4random_uniform(UInt32(self.size.width - ship.size.width)) + UInt32(ship.size.width/2))
-        laser.position = CGPoint(x: laserXRange, y:  self.size.height )
+        laser.position = CGPoint(x: laserXRange, y:  self.size.height)
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
+    
+    func spawnStars() {}
     
     func didBeginContact(contact: SKPhysicsContact) {
         //Animate ship getting screwed up here in some way
