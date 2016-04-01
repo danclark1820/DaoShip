@@ -20,8 +20,8 @@ class Star: SKSpriteNode {
         xScale = 0.15
         yScale = 0.15
         
-        physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
-        physicsBody?.affectedByGravity = false
+//        physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+//        physicsBody?.affectedByGravity = false
     }
     
     convenience init() {

@@ -30,19 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         self.backgroundColor = UIColor.blackColor()
-        
-        for _ in 1...20 {
-            let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
-            let starYRange = CGFloat(arc4random_uniform(UInt32(self.size.height)))
-            let starI = Star()
-
-            starI.position = CGPoint(x: starXRange, y: starYRange)
-            starI.physicsBody?.velocity = CGVector(dx: 0.0, dy: -100.00)
-            starI.physicsBody?.categoryBitMask = STAR_CATEGORY
-            starI.physicsBody?.collisionBitMask = 1
-            self.addChild(starI)
-        }
-        
+        self.spawnInitialStars()
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
         
@@ -60,6 +48,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func spawnInitialStars() {
+        for _ in 1...20 {
+            let starYRange = CGFloat(arc4random_uniform(UInt32(self.size.height)))
+            spawnNewStar(starYRange)
+        }
+    }
+    
+    func spawnNewStar(yPosition: CGFloat) {
+        let star = Star()
+        let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
+        star.position = CGPoint(x: starXRange, y: yPosition)
+        
+        let parallax = SKAction.moveToY(0.0, duration: Double((5 * (star.position.y))/100))
+        let remove = SKAction.runBlock({star.removeFromParent()})
+        let replaceStar = SKAction.runBlock({self.spawnNewStar(self.size.height)})
+        let sequence = SKAction.sequence([parallax, remove, replaceStar])
+        self.addChild(star)
+        star.runAction(sequence)
+    }
+    
     func spawnLaser(laserSpeed: CGFloat) {
         let laser = Greenlaser()
         laser.physicsBody?.contactTestBitMask = SHIP_CATEGORY
@@ -70,8 +78,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
-    
-    func spawnStars() {}
     
     func didBeginContact(contact: SKPhysicsContact) {
         //Animate ship getting screwed up here in some way
