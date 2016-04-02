@@ -59,8 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let star = Star()
         let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
         star.position = CGPoint(x: starXRange, y: yPosition)
-        
-        let parallax = SKAction.moveToY(0.0, duration: Double((5 * (star.position.y))/100))
+        let starSpeedMultiplier = CGFloat(arc4random_uniform(2) + 10)
+        let parallax = SKAction.moveToY(0.0, duration: Double((starSpeedMultiplier * (star.position.y))/100))
         let remove = SKAction.runBlock({star.removeFromParent()})
         let replaceStar = SKAction.runBlock({self.spawnNewStar(self.size.height)})
         let sequence = SKAction.sequence([parallax, remove, replaceStar])

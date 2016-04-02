@@ -16,9 +16,9 @@ class Star: SKSpriteNode {
         let image = SKTexture(imageNamed: "spark")
         
         super.init(texture: image, color: UIColor.yellowColor(), size: image.size())
-        colorBlendFactor = 0.4
+        colorBlendFactor = 0.3
         alpha = randomBetweenNumbers(0.4, secondNum: 1)
-        let starScale = randomBetweenNumbers(0.0, secondNum: 0.3)
+        let starScale = randomBetweenNumbers(0.05, secondNum: 0.25)
         xScale = starScale
         yScale = starScale
         
