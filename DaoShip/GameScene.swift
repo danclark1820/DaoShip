@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > 0.5) {
             timeSinceLastLaserSpawned = 0
-            spawnLaser(-300, laserXPosition: destX!)
+            spawnLaser(-300, laserXPosition: ship.position.x)
             score += 1
         }
     }

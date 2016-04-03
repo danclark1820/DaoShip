@@ -108,13 +108,21 @@ class ReplayScene: SKScene {
         
     }
     
-    let notes = [
-        "This is the first note",
-        "This is the second note",
-        "This is the third note",
-    ]
-    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
+    
+    let notes = [
+        "Welcome to the Ship, I am master Tzu, as you embark on your journey I will offer notes of guidance to help you understand the way of your ship, the universe and your journey. Collect all the notes and you will be a master pilot like me.",
+        "Just as the name of your ship is not the actual ship, so too are these words not the actual way. They are more like an intergalactic road sign, focus too hard on the sign, and you’ll surely miss the turn.",
+        "Because there are fast ships, it means there a slow ships. Because there small ships, it means there are big ships. Neither one is wrong, it is just the nature of the universe.",
+        "The master pilot flies without thinking or trying, flying solely on intuition. He leads his crew by example and not by words or force.",
+        "Understanding of the ship may seem attainable, but the more the master pilot understands, the more the pilot realizes his lack of understanding. That is why the ship is infinite. The way of the ship existed long before the ship itself.",
+        "The ship does not take sides with good or evil, it is just a ship. Therefore the master pilot sees other ships and pilots not as good or evil, but merely the way of the ship in persons, places and things.",
+        "The way of the ship is present in all ships. It is not a physical thing, but it is always there, for the pilot, or the ship builder, or the mechanic to use on their journey to understand the ship. The way of the ship is in you and available whenever needed.",
+        "The ship was never born, thus can never die, and certainly does not care about itself. Therefore the master pilot just goes about being a pilot, without trying to survive, or achieve. By doing this, the pilot survives and achieves.",
+        "The ship travels to undesirable locations as easily as desirable ones. The master pilot flies with grace but still cleans the space toilet.",
+        "In living, be close to your ship. In dealing with others, see them as future pilots learning the way. In speaking about the ship, stick to what you know to be true. In leading your crew, never try to control. In flying, enjoy every subtle turn or dip.",
+        "Because the master pilot and great ship do not seek respect or honors, they are always given."
+        ]
 }
