@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = UIColor.blackColor()
         self.spawnInitialStars()
         physicsWorld.contactDelegate = self
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         self.physicsBody?.contactTestBitMask = SHIP_CATEGORY
@@ -68,13 +68,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star.runAction(sequence)
     }
     
-    func spawnLaser(laserSpeed: CGFloat) {
+    func spawnLaser(laserSpeed: CGFloat, laserXPosition: CGFloat) {
         let laser = Greenlaser()
         laser.physicsBody?.contactTestBitMask = SHIP_CATEGORY
         laser.physicsBody?.collisionBitMask = 0
         laser.physicsBody?.categoryBitMask = LASER_CATEGORY
-        let laserXRange = CGFloat(arc4random_uniform(UInt32(self.size.width - ship.size.width)) + UInt32(ship.size.width/2))
-        laser.position = CGPoint(x: laserXRange, y:  self.size.height)
+//        let laserXRange = CGFloat(arc4random_uniform(UInt32(self.size.width - ship.size.width)) + UInt32(ship.size.width/2))
+        laser.position = CGPoint(x: laserXPosition, y:  self.size.height)
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > 0.5) {
             timeSinceLastLaserSpawned = 0
-            spawnLaser(-400.00)
+            spawnLaser(-300, laserXPosition: destX!)
             score += 1
         }
     }
