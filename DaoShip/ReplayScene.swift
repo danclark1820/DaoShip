@@ -123,6 +123,13 @@ class ReplayScene: SKScene {
         "The ship was never born, thus can never die, and certainly does not care about itself. Therefore the master pilot just goes about being a pilot, without trying to survive, or achieve. By doing this, the pilot survives and achieves.",
         "The ship travels to undesirable locations as easily as desirable ones. The master pilot flies with grace but still cleans the space toilet.",
         "In living, be close to your ship. In dealing with others, see them as future pilots learning the way. In speaking about the ship, stick to what you know to be true. In leading your crew, never try to control. In flying, enjoy every subtle turn or dip.",
-        "Because the master pilot and great ship do not seek respect or honors, they are always given."
+        "Because the master pilot and great ship do not seek respect or honors, they are always given. Being content to be the pilot you were born to be, not comparing yourself to other pilots, you will always succeed.",
+        "Fill the cargo bay to the brim and there will be no room in the cockpit. Continually upgrading the propolsion system and leads to engine failure. Treasures aboard the ship attract space pirates. Many honors lead to cockiness, setting one self up for failure.",
+        "When the mission is completed, the master pilot goes home to his family and friends, which is the greatest reward.",
+        "Can your inner pilot embrace the oneness of your ship with the universe. Forgetting about the desire, glory, the physical state of your ship, can you be the infinitely capable pilot. Can you fly with grace and joy of child flying for the first time.",
+        "Can your inner pilot lead the crew with out forcing your intention. Can one pilot lead many with out corruption. Can one land the ship with the gentle touch of a female. Can one forget about flight school and understand the way of the ship and how to fly it.",
+        "Showing young pilots the way, achieving without receiving, leading without force, flying without trying, this is the way of the ship.",
+        "We make large cargo bays in our steel ships, but its the empty space that leaves room for cargo. Comfy seats are put in cockpit, but the space for the pilot is what makes the ship flyable. The propulsion system surely would not work if there was not space for the fuel to burn.",
+        "We use precious metals for our ship, but it is the empty space that makes it useful. Seek the empty space that make ship useful, and not the precious metal that composes it."
         ]
 }
