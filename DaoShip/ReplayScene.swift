@@ -130,6 +130,7 @@ class ReplayScene: SKScene {
         "Can your inner pilot lead the crew with out forcing your intention. Can one pilot lead many with out corruption. Can one land the ship with the gentle touch of a female. Can one forget about flight school and understand the way of the ship and how to fly it.",
         "Showing young pilots the way, achieving without receiving, leading without force, flying without trying, this is the way of the ship.",
         "We make large cargo bays in our steel ships, but its the empty space that leaves room for cargo. Comfy seats are put in cockpit, but the space for the pilot is what makes the ship flyable. The propulsion system surely would not work if there was not space for the fuel to burn.",
-        "We use precious metals for our ship, but it is the empty space that makes it useful. Seek the empty space that make ship useful, and not the precious metal that composes it."
+        "We use precious metals for our ship, but it is the empty space that makes it useful. Seek the empty space that make ship useful, and not the precious metal that composes it.",
+        "Great progress is toxic as great failure. It is important, no matter what the circumstances, to remain grounded and humble. Obsession with progress and failure are a result focusing on the self. Have trust in the way the universe is, love universe as self and then you can see all things."
         ]
 }
