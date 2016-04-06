@@ -131,6 +131,13 @@ class ReplayScene: SKScene {
         "Showing young pilots the way, achieving without receiving, leading without force, flying without trying, this is the way of the ship.",
         "We make large cargo bays in our steel ships, but its the empty space that leaves room for cargo. Comfy seats are put in cockpit, but the space for the pilot is what makes the ship flyable. The propulsion system surely would not work if there was not space for the fuel to burn.",
         "We use precious metals for our ship, but it is the empty space that makes it useful. Seek the empty space that make ship useful, and not the precious metal that composes it.",
-        "Great progress is toxic as great failure. It is important, no matter what the circumstances, to remain grounded and humble. Obsession with progress and failure are a result focusing on the self. Have trust in the way the universe is, love universe as self and then you can see all things."
+        "Great triumph is as toxic as great failure. It is important, no matter what the circumstances, to remain grounded and humble. Obsession with progress and fear of failure are identical and are a result focusing on the self and not the whole mission.",
+        "Love the universe as you do yourself, have trust in the way it is and then you can see all things for what they really are.",
+        "Search, it cannot be found. Ear to the ground it, it cannot be heard. Grasp for it, it cannot be held. Sitting before the sun it makes no shadow. It is unnamable, intangible, shapeless, colorless, the way of the ship is nothing.",
+        "We come face to face with the way of the ship and it has no front, we follow it but it has no back. It is nothing, yet when we let the way of the ship take its course, no mission can fail, this is flying and the way of a true pilot.",
+        "The pilots of ancient times flew through the universe in unfathomable ways. We can describe it, but it does not do it justice.",
+        "Always hesitant, as if approaching a new planet of an unknown surface. Always cautious, as if entering an asteroid belt. Always humble as guest in a foreign galaxy. Always adaptable to whatever the universe presented, like a crew member looking to help.",
+        "Do you have the patience of the ancient pilot. Do you know how to let gravity do the work when navigating the universe. Can you sit still and wait for proper moment to arise before taking action.",
+        "The pilots of ancient did not seek change and achievement, they let it come to them. When the oppurtunity for a mission arose, they took it, helping the universe take its course. But they were not mission seekers."
         ]
 }
