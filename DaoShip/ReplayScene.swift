@@ -138,6 +138,9 @@ class ReplayScene: SKScene {
         "The pilots of ancient times flew through the universe in unfathomable ways. We can describe it, but it does not do it justice.",
         "Always hesitant, as if approaching a new planet of an unknown surface. Always cautious, as if entering an asteroid belt. Always humble as guest in a foreign galaxy. Always adaptable to whatever the universe presented, like a crew member looking to help.",
         "Do you have the patience of the ancient pilot. Do you know how to let gravity do the work when navigating the universe. Can you sit still and wait for proper moment to arise before taking action.",
-        "The pilots of ancient did not seek change and achievement, they let it come to them. When the oppurtunity for a mission arose, they took it, helping the universe take its course. But they were not mission seekers."
+        "The pilots of ancient did not seek change and achievement, they let it come to them. When the oppurtunity for a mission arose, they took it, helping the universe take its course. But they were not mission seekers.",
+        "The mind can be emptied of all distractions. Bring the heart to its resting rate. The frustration you see in others is self imposed and temporary. Accomplished or unaccomplished we return to the resting state. Returning to the resting state is peace.",
+        "Knowing the resting state we can always return to it. The resting state is the source of all energy. Not knowing the resting state leads to frustration and untimely action. Knowing the resting state, you can see the universe as whole, and be in awe of the way of the ship.",
+        "Knowing the resting state, the universe as whole, and the way of the ship, one can proceed without fear and even welcome death.",
         ]
 }
