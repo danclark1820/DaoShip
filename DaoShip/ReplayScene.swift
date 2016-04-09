@@ -142,5 +142,21 @@ class ReplayScene: SKScene {
         "The mind can be emptied of all distractions. Bring the heart to its resting rate. The frustration you see in others is self imposed and temporary. Accomplished or unaccomplished we return to the resting state. Returning to the resting state is peace.",
         "Knowing the resting state we can always return to it. The resting state is the source of all energy. Not knowing the resting state leads to frustration and untimely action. Knowing the resting state, you can see the universe as whole, and be in awe of the way of the ship.",
         "Knowing the resting state, the universe as whole, and the way of the ship, one can proceed without fear and even welcome death.",
+        "The best captain, the crew do not know they have a captain. The next best is loved by his crew. The next best is feared by his crew. When the captain does not trust his crew, and the crew becomes dishonest.",
+        "The master pilot captains with action and not words. When the job is done, the crew says, “We did it!”",
+        "When the way of the ship is forgotten, morals and righteousness are born. When crew is tired, they attempt to be clever. When there is no peace in the family, parents are honored in a resentful manner. When people are confused, they are loyal, but don’t know why. This is a great misfortune.",
+        "Giving up trying to be knowledgeable, the crew is hundreds times happier. Giving up morals and rightousness, the crew naturally acts in line with the way. Throwing away desires for gains and profits, and there are no thieves in this space age.",
+        "If leading the crew in this fashion still does not keep the peace, hold on to simplicity, act for the crew, and decrease selfish desires, and let ship take its course.",
+        "Give up thinking and end your confusion and distress. What is the difference between the prosperity and the poverty? What is the difference true and false. There is no need to live in the shadow of others desires. There is no reason to fear what others fear.",
+        "Other people get excited like they are at a great party. I am relaxed and as excited as quite evening. Others have goals and no exactly where they are going, while I drift like a wave on the ocean.",
+        "Never intoxicated by the moment or cultural expectations, I am able to fly through life effortlessly, like the wings of the ship gliding on the atmosphere heading down for a smooth landing. I follow the way of the ship.",
+        "The master pilot follows the way of the ship wherever it leads. The way of the ship as a physical thing seems confusing.",
+        "How can the master pilots follow it if it is not physical thing? Because they do not look for it or try to hold it, they listen to there intuition and move on.",
+        "How can the master pilots use there intuition to follow something so confusing when explained with words whose depths are unknown? Because they let there intuition do the work and do not overthink things or future outcomes.",
+        "Since before the big bang, before traversable space, and before physical ships, there was the way of the ship. It is more then being and not being. How do we know this to be true? Through our intuition as pilots to get in our ships and fly.",
+        "The fill something up it must be empty first. To straighten something out it must be bent first. To make something soft it must stiff first. Many desires will be hard can to fulfill. Fewer the desires, the easier they are to fulfill.",
+        "Therefore a master is always humble. A master spreads humbleness. Because they do not brag, they are viewed as accomplished. Have nothing to brag about, people believe everything they say. Because they are not exactly sure who they are, others can relate to them on the deepest level.",
+        "With no end point in mind, the master is always exactly at their destination. Without a target, the pilot always hits the mark. Without a plan, everything the pilot pursues is executed exactly as planned. Because success is not a future ambition, it is a present state.",
+        
         ]
 }
