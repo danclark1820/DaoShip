@@ -174,7 +174,10 @@ class ReplayScene: SKScene {
         "It is the way of the universe that what is ahead will be behind, what is hot, will cool down,  what is strong, eventually weakens. The master pilot sees ship and the universe for how it is and does not try to control it. The master lets them go there way and does not over exert themselves.",
         "The master pilot who relies on the way of the ship for leading his crew does not fight with his men, or capture enemies by way of force. Every action creates an equal and opposite reaction. Force, even for good, will always come back to the master or his crew.",
         "The master pilot does his work then rests. The master knows the universe is beyond a pilots control, and forcing events will lead to failure.",
-        "The pilot believes in their ability, and does not need to persuade the crew. The pilot knows themselves, and does not need the publics acceptance. The pilot loves themselves as they love others, so the universe loves them."
+        "The pilot believes in their ability, and does not need to persuade the crew. The pilot knows themselves, and does not need the publics acceptance. The pilot loves themselves as they love others, so the universe loves them.",
+        "The ships weapons can only be involved in battle, and the pilot prefers to never use them.",
+        "The master pilot avoids the use of weapons at all costs. When it does become an absolute, the weapons are used with heavy hearts, and utter respect for there destructiveness. The master does not celebrate victory because pilots on both sides have fallen.",
+        "The master pilots enemies are just other pilots, not evil men. While they may have lost there way, they are seen as pilots, and the pilot does not wish to hurt them.",
         
         ]
 }
