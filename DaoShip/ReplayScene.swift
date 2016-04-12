@@ -178,6 +178,20 @@ class ReplayScene: SKScene {
         "The ships weapons can only be involved in battle, and the pilot prefers to never use them.",
         "The master pilot avoids the use of weapons at all costs. When it does become an absolute, the weapons are used with heavy hearts, and utter respect for there destructiveness. The master does not celebrate victory because pilots on both sides have fallen.",
         "The master pilots enemies are just other pilots, not evil men. While they may have lost there way, they are seen as pilots, and the pilot does not wish to hurt them.",
-        
+        "The way of the ship is name for something that cannot be named. If leaders of our galaxies are at one with the way of the ship, there would be intergalactic peace. There would be no need for laws becuase people would act based on good natured intuition.",
+        "What part of the ship is ship? Is the engine the ship, is the cockpit the ship? When we have names for things, understand that names are just that. Understand what is underneath and its purpose, understand where the name ends.",
+        "The pilot who knows other people is compassionate. The pilot who knows themself is wise.  Being able to help others is couragous.  Being able to help oneself is a daily battle that can end in daily victory.",
+        "Knowing that you have enough, you become wealthy. Acting with lots of energy is the way to strengthening your will. Completing the days tasks are what lead to longevity. Embracing the bodies inevitable end, you can never die.",
+        "The way of the ship flows in all ships and pilots. All ships were created from it, yet it does not claim the ships as a possesion. It is visible the smallest nut or bolt of the ship, in there interlocking perfection, but it is also in the whole ship, when it takes graceful flight.",
+        "Hence the master pilot pays just as much attention too the small things as the great things. Great acheivment comes from the pilots ability to focus on small not great acheivements that are built upon daily.",
+        "At one with the ship the pilot can travel through even the most dangerous of galaxies. Everyone is at ease in the company of a master pilot.",
+        "Planetary festivals and their many tasty foods are exciting, while the words that describe the way of the ship are boring and bland. It cannot be seen or heard, but when used, it is endless source of inspiration.",
+        "Before letting a crew member know they have done something incorrectly, let them know they have done something correct. Before winning a battle, the master lets the enemy believe they are winning. This is how the master achieves without dominating or boasting.",
+        "Soft and weak over time overcomes what appears to be strong and tough. Let the methodology remain a mystery and just show citizens your achievement.",
+        "The way of the ship is never doing anything, yet though it the ship endures.  If leaders could center themselves in the way of the ship the whole universe would be transformed. Through simplicity, non-desire, stillness, the universe corrects itself.",
+        "Master pilots do not try to control, hence they are always in control. The average person always trying to control feels helplessly out of control. The master pilot does plan, yet everything is done on time. The average person always planning, never gets things done in time.",
+        "The man looking to fix the world makes a plan. The man looking to make the world moral speaks loudly to deaf audiences. The man looking to bring justice to all, often ends up using violence. Thus the way of the ship is lost when we strive for control. Only act when the moment presents itself.",
+        "When the way of the ship is gone, the men make plans, when the plans are lost, morality kicks in, when morality is lost, justice must be served, when justice is served, there is violence. Hence, the master focuses solely on the reality of a present scenario, and not the dogma of words and rules.",
+        "The way of the ship is what lets the stars shine, the night be dark, the day be bright and the motion be perfect amongst the stars and planets.  Stars have no desire to shine, the day no desire to come, the planets no desire to move. They just are. The master is humble as a stone."
         ]
 }
