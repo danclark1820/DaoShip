@@ -192,6 +192,7 @@ class ReplayScene: SKScene {
         "Master pilots do not try to control, hence they are always in control. The average person always trying to control feels helplessly out of control. The master pilot does plan, yet everything is done on time. The average person always planning, never gets things done in time.",
         "The man looking to fix the world makes a plan. The man looking to make the world moral speaks loudly to deaf audiences. The man looking to bring justice to all, often ends up using violence. Thus the way of the ship is lost when we strive for control. Only act when the moment presents itself.",
         "When the way of the ship is gone, the men make plans, when the plans are lost, morality kicks in, when morality is lost, justice must be served, when justice is served, there is violence. Hence, the master focuses solely on the reality of a present scenario, and not the dogma of words and rules.",
-        "The way of the ship is what lets the stars shine, the night be dark, the day be bright and the motion be perfect amongst the stars and planets.  Stars have no desire to shine, the day no desire to come, the planets no desire to move. They just are. The master is humble as a stone."
+        "The way of the ship is what lets the stars shine, the night be dark, the day be bright and the motion be perfect amongst the stars and planets.  Stars have no desire to shine, the day no desire to come, the planets no desire to move. They just are. The master is humble as a stone.",
+        "Returning is the movement of the way. Things done over time through soft action are the markings the way of the ship at work. All objects are created into being. Being is created from non-being."
         ]
 }
