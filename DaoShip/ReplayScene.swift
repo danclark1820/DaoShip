@@ -193,6 +193,13 @@ class ReplayScene: SKScene {
         "The man looking to fix the world makes a plan. The man looking to make the world moral speaks loudly to deaf audiences. The man looking to bring justice to all, often ends up using violence. Thus the way of the ship is lost when we strive for control. Only act when the moment presents itself.",
         "When the way of the ship is gone, the men make plans, when the plans are lost, morality kicks in, when morality is lost, justice must be served, when justice is served, there is violence. Hence, the master focuses solely on the reality of a present scenario, and not the dogma of words and rules.",
         "The way of the ship is what lets the stars shine, the night be dark, the day be bright and the motion be perfect amongst the stars and planets.  Stars have no desire to shine, the day no desire to come, the planets no desire to move. They just are. The master is humble as a stone.",
-        "Returning is the movement of the way. Things done over time through soft action are the markings the way of the ship at work. All objects are created into being. Being is created from non-being."
+        "Returning is the movement of the way. Things done over time through soft action are the markings the way of the ship at work. All objects are created into being. Being is created from non-being.",
+        "When the best pilots heard of way of the ship for the first time, they immediatley put it to use in there life. The average pilots used it hear and there but not with dilligence.  Lower pilots when they hear of the way of the ship they laugh, if they did not laugh it would not be the way.",
+        "So the clear way of the ship seems unclear. Understanding of the ship can look like confusion. The ships high integrity comes from low places. The path to the light is dark. What makes the ship beautiful seems ugly. Its simplicity, comes from complexity.",
+        "The way of the ship cannot be found, but it is what makes the ship the ship.",
+        "The way of the ship created the one. One created Two. Two created Three. Three created all things. All things come from the many to and move towards embracing the way of the ship. When the many things combine to be one with the way of the ship, there is peace.",
+        "Average people are lonely. The master pilot sees alone time as an oppurtunity. Appear to lose and win, Appear to win, but lose. The violent and strong pilots do not die a natural death.",
+        "The softest thing in world, weakens the hardest thing in world. Streams of water break down mountains, gamma rays penetrate the ships hard exterior. That which has no physical matter, enters where there is no physical space.",
+        "This is the beauty of teaching without words. The beauty of accomplishment without action. Unattached to the end, the master pilot succeeds."
         ]
 }
