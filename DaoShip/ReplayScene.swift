@@ -200,6 +200,18 @@ class ReplayScene: SKScene {
         "The way of the ship created the one. One created Two. Two created Three. Three created all things. All things come from the many to and move towards embracing the way of the ship. When the many things combine to be one with the way of the ship, there is peace.",
         "Average people are lonely. The master pilot sees alone time as an oppurtunity. Appear to lose and win, Appear to win, but lose. The violent and strong pilots do not die a natural death.",
         "The softest thing in world, weakens the hardest thing in world. Streams of water break down mountains, gamma rays penetrate the ships hard exterior. That which has no physical matter, enters where there is no physical space.",
-        "This is the beauty of teaching without words. The beauty of accomplishment without action. Unattached to the end, the master pilot succeeds."
+        "This is the beauty of teaching without words. The beauty of accomplishment without action. Unattached to the end, the master pilot succeeds.",
+        "Fame and wealth, or doing what truly gives you joy? Success or failure, which is more destructive to ones enjoyment of daily progress. Seeking wealth and accolades your craft can never truly be perfected.",
+        "Enjoy the process and progress, and not the end goals. Knowing this, heavy gains or heavy losses will not deter you from your daily joy.",
+        "Perfection is imperfect, fullness seems to leave a void. What is truly straight, seems bent. Great talent is always raw. Great beauty cannot be described. Movement wards off the cold, stillness makes the heat bearable. Quietness allows the way of the ship to be heard loud and clear.",
+        "When the universe is at the peace with the way of ship, cargo ships are built. When the way of the ship is lost, fighter ships are churned out. Fear, greed, and enemies, are all an illusion.",
+        "The content pilot has nothing to fear or lose, and can see the enemy as a fellow pilot whose lost their way.",
+        "Without ever leaving the parking bay, the master understands ship. Without looking out the window, the master understands the motion of the galaxy.  The more one knows, the less they can observe and understand. The master learns without reading, and accomplishes feats without goals.",
+        "In pursuit of an end goal, we add things to the cargo bay until it cannot fit anything more. In the pursuit of the way of the ship, everyday something is removed from the cargo bay until it is empty.  As we empty the bay we learn the only way to learn is to unlearn.",
+        "The less things are are forced, the easier they fit into place. The less we force knowledge into our brain, the easier it is the remember, because we learn it is in the way of things, right in front of our eyes, and does not need to be remembered or learned.",
+        "The master pilot has no mind of their own. The master pilot takes the mind of the people. The master pilot is good to those who are good, and good to those who are not good. The master pilot is honest with those who are honest, and those who are not honest.",
+        "The master pilots mind is a reflection of the universe. The people seek the master pilot with attentive ears and eyes, and the master pilot cares for them like they were their children.",
+        "The master pilot has no attachment to youth, life, or death. Their mind is clear of those concepts. Why are they only concepts to the pilot. Because the way of the ship persists, and by embodying it, experiencing it, and teaching it, the master pilot can never die.",
+        "Being one with the way of the ship knowing that death and old age are part of a reality we all must face, the master pilot does not worry about death, or getting things done. They go on acting daily, with actions that come naturally from their intuition, never thinking, never doing."
         ]
 }
