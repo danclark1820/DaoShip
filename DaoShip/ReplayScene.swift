@@ -212,6 +212,10 @@ class ReplayScene: SKScene {
         "The master pilot has no mind of their own. The master pilot takes the mind of the people. The master pilot is good to those who are good, and good to those who are not good. The master pilot is honest with those who are honest, and those who are not honest.",
         "The master pilots mind is a reflection of the universe. The people seek the master pilot with attentive ears and eyes, and the master pilot cares for them like they were their children.",
         "The master pilot has no attachment to youth, life, or death. Their mind is clear of those concepts. Why are they only concepts to the pilot. Because the way of the ship persists, and by embodying it, experiencing it, and teaching it, the master pilot can never die.",
-        "Being one with the way of the ship knowing that death and old age are part of a reality we all must face, the master pilot does not worry about death, or getting things done. They go on acting daily, with actions that come naturally from their intuition, never thinking, never doing."
+        "Being one with the way of the ship knowing that death and old age are part of a reality we all must face, the master pilot does not worry about death, or getting things done. They go on acting daily, with actions that come naturally from their intuition, never thinking, never doing.",
+        "Everything in the universe follows the way of the ship. It was there at the big bang, and it governs the motion of the planets today without conscious effort. It governs physical things but does not call itself a ruler, creates but does not claim ownership.",
+        "At the origin of species, there was the way of ship. The first organisms used the way of the ship to spawn and move throughout their universe in their early water dwelling days.",
+        "For the first organisms, their observable universe was a warm puddle. They flew around their universe without a cause with the grace and comfort of the best cruiser, at speeds our best racers cannot rival.",
+        "If you recognize our origins, you can begin to understand the beauty and perfectness of everything. You will learn to not judge, and can be free of artificial desires. When this is the case, you can let your intuition take over, and follow the way of the ship without trying."
         ]
 }
