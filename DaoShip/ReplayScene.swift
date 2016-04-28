@@ -248,6 +248,17 @@ class ReplayScene: SKScene {
         "The greatest mother ship was built from nothing but a single plan. The plan for the great mother ship started with a single line. The mission of thousand light years starts with a single take off.",
         "Trying to accomplish great things in a single act you will fail. Try to force completion of something that was almost done, you will fail. View the remaining tasks as you did the first task, as a single step, and do not worry about being on the last step.",
         "Therefore, the master pilot desires non-desire. Not desiring the end, they can give themselves fully to the task at hand. They do not have anything, so they have nothing to lose. What they learn is to not learn. Reminding people the way is present in them this very moment.",
-        "The way of the ship is their highest value."
+        "The way of the ship is their highest value.",
+        "The master pilots did not try to teach the way of the ship. They simply taught that you can not know all there is to know about the way of the ship. When people think they know how to fix the ship, they are hard to show to the way of the ship and how to fix it",
+        "When people know that they don’t all there is to know about the ship and how to fix it, they are free to discover what is truly broken, and what the best solution to fixing it is.",
+        "If you want to be a good captain to your crew, stop trying to be brighter then your crew. Being the dumbest crew member, your crew will learn how to operate without you, and all crew members will know how to rise to the challenge of a dangerous mission or a profoundly damaged ship.",
+        "Black holes smaller then a pin prick are the center piece for many stars and planets. They are small but have great mass. the master is small like a blackhole, do not be fooled by his small appearance, the master’s wisdom is massive and dense.",
+        "The master, being small, treats the crew as smarter then himself. Treating the crew this way, he learns from their mistakes. Being the leader of the crew, the master lets the crew decide what is best.",
+        "The master, constantly putting the crew first, the crew naturally desires to elevate the captain, rather than the master forcing their elevated position upon the crew. The master does not seek to be better then anyone, therefore, no ones tries to prove themselves better than the master.",
+        "The words that describe the way of the ship can certainly sound silly and prophetic to someone who has never flown. But the those who have experienced that first flight, gracefully soaring on natures nature know these words describe something far beyond words capacity.",
+        "The master pilot holds three golden treasures, compassion, non-desire for material goods, and non-desire for power. Through compassion the master for herself and the people, the master understands desire for material goods and power.",
+        "Through non-desire for material goods and power, the master achieves an understanding of nature unfathomable. Through this values the master can fly with grace that can only be experienced, not imagined.",
+        "The best fighter pilot, having compassion for the enemy, wants the enemy at their best, for the spirit of competition, not at their weakest for the pettiness of victory. The best pilots do not use anger towards the enemy as a source of strength. The great pilot waits for enemy to advance.",
+        "Great competition is what makes the master pilot better, but he is not competitive. Competition is just a catalyst for deeper understanding to his craft. Compassionate for the enemy he can enjoy, and grow from the enemies progress."
         ]
 }
