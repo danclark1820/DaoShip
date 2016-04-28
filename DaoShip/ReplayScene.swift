@@ -235,6 +235,8 @@ class ReplayScene: SKScene {
         "The master pilot is incorruptible without being disagreeable. The master pilot gets to the point without seeming urgent. The master pilot is like guiding light, but is not blinding.",
         "Everything in moderation is what the master pilots grandmother always said. And this is true for governing. The moderate governor knows when to stop. Knowing when to stop all branches, the governor and the pilot do not over extend themselves.",
         "Not over extending themselves, they can make use of whatever situation arises. Being able to make use of whatever situation, there is nothing they cannot overcome. With nothing one cannot overcome, ones limits and potential become unknown.",
-        "With ones potential unknown, power is naturally entrusted in the master pilot. Because it is naturally entrusted, and not gained through desire, the master is free to care for and teach the people the way a mother teaches and cares for her child."
+        "With ones potential unknown, power is naturally entrusted in the master pilot. Because it is naturally entrusted, and not gained through desire, the master is free to care for and teach the people the way a mother teaches and cares for her child.",
+        "Ruling a universe is like flying a small ship. The ride is bumpy when the pilot over compensates for space debris.",
+        "Center the universe in the way of the ship and wicked ways will have no place. They will be present, but they will get no reaction from the people. With no one to upset, the profoundly wicked have no drive to perform wrong deeds, and will fade into the background."
         ]
 }
