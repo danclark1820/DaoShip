@@ -259,6 +259,9 @@ class ReplayScene: SKScene {
         "The master pilot holds three golden treasures, compassion, non-desire for material goods, and non-desire for power. Through compassion the master for herself and the people, the master understands desire for material goods and power.",
         "Through non-desire for material goods and power, the master achieves an understanding of nature unfathomable. Through this values the master can fly with grace that can only be experienced, not imagined.",
         "The best fighter pilot, having compassion for the enemy, wants the enemy at their best, for the spirit of competition, not at their weakest for the pettiness of victory. The best pilots do not use anger towards the enemy as a source of strength. The great pilot waits for enemy to advance.",
-        "Great competition is what makes the master pilot better, but he is not competitive. Competition is just a catalyst for deeper understanding to his craft. Compassionate for the enemy he can enjoy, and grow from the enemies progress."
+        "Great competition is what makes the master pilot better, but he is not competitive. Competition is just a catalyst for deeper understanding to his craft. Compassionate for the enemy he can enjoy, and grow from the enemies progress.",
+        "The master pilots say it is better to let the enemy make the first move. Better to retreat a meter then advance 100. This is how to gain space without flying far, pushing the enemy back without firing a single laser.",
+        "There is no bigger mistake then underestimating the enemy.  Underestimating the enemy is forget they are fellow pilots with families at home as well. Underestimating the enemy, through lack of compassion, you forget you three treasures, and become the evil enemy yourself.",
+        "When two evenly matched pilots face each other, the more compassionate one always wins, by being able to enter the mind of the enemy."
         ]
 }
