@@ -262,6 +262,11 @@ class ReplayScene: SKScene {
         "Great competition is what makes the master pilot better, but he is not competitive. Competition is just a catalyst for deeper understanding to his craft. Compassionate for the enemy he can enjoy, and grow from the enemies progress.",
         "The master pilots say it is better to let the enemy make the first move. Better to retreat a meter then advance 100. This is how to gain space without flying far, pushing the enemy back without firing a single laser.",
         "There is no bigger mistake then underestimating the enemy.  Underestimating the enemy is forget they are fellow pilots with families at home as well. Underestimating the enemy, through lack of compassion, you forget you three treasures, and become the evil enemy yourself.",
-        "When two evenly matched pilots face each other, the more compassionate one always wins, by being able to enter the mind of the enemy."
+        "When two evenly matched pilots face each other, the more compassionate one always wins, by being able to enter the mind of the enemy.",
+        "My words are easy to understand and easy to practice, but by trying to practice them or understand them, that is when you will fail. These words come from the principles that governed the big bang and the origin of species.",
+        "These words go deeper then a mans existence and can never be fully understood. But, because what they represent was there at human kinds beginning, we can begin to understand them. We do this by not trying to understand them, being honest with ourselves, taking in our surroundings, and being ourself.",
+        "To know and think you do not know is true health. To not know and think you know is a sickness. The thought of having this sickness is enough to avoid being infected by it. The master knows how excruciatingly painful this sickness would be and therefore does not have it.",
+        "When people lose their respect for natures forces, dogmatic forces take root. The master teaches by not teaching, and lets the people find there way, this is their true nature.",
+        "The way of the ship does not compete but is always winning. It does not speak but always gives the perfect response. It is not called for yet it is always there. Is not rushed but can plan ahead. Its mesh of its net is wide but nothing passed through."
         ]
 }
