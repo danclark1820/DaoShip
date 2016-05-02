@@ -33,7 +33,8 @@ class ReplayScene: SKScene {
         self.backgroundColor = UIColor.blackColor()
         let lastScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
-        let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
+        let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
+        let flightNoteCount = SKLabelNode(fontNamed: "Palatino-Roman")
         
         
         if fnManager.notes.last == nil {
@@ -61,9 +62,15 @@ class ReplayScene: SKScene {
         barNode.name = "bar"
         
         let mask = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
-        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/2), y: (barNode.position.y))
+        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/8), y: (barNode.position.y))
         cropNode.addChild(barNode)
         cropNode.maskNode = mask
+        
+        let notesCount = notes.count
+        flightNoteCount.text = String(fnManager.notes.last!.number) + "/" + String(notesCount)
+        flightNoteCount.name = "flightNoteCount"
+        flightNoteCount.fontSize = 20
+        flightNoteCount.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height/3))
         
         lastScoreLabel.text = "Previous: " + String(lastScore!)
         lastScoreLabel.name = "scoreLabels"
@@ -87,7 +94,7 @@ class ReplayScene: SKScene {
         self.addChild(alphaBarNode)
         self.addChild(mask)
         self.addChild(cropNode)
-        
+        self.addChild(flightNoteCount)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -112,7 +119,7 @@ class ReplayScene: SKScene {
         /* Called before each frame is rendered */
     }
     
-    let notes = [
+    let notes: [String] = [
         "Welcome to the Ship, I am master Tzu, as you embark on your journey I will offer notes of guidance to help you understand the way of your ship, the universe and your journey. Collect all the notes and you will be a master pilot like me.",
         "Just as the name of your ship is not the actual ship, so too are these words not the actual way. They are more like an intergalactic road sign, focus too hard on the sign, and you’ll surely miss the turn.",
         "Because there are fast ships, it means there a slow ships. Because there small ships, it means there are big ships. Neither one is wrong, it is just the nature of the universe.",
