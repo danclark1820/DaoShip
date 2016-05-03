@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
         star.position = CGPoint(x: starXRange, y: yPosition)
         let starSpeedMultiplier = CGFloat(arc4random_uniform(2) + 10)
-        let parallax = SKAction.moveToY(0.0, duration: Double((starSpeedMultiplier * (star.position.y))/100))
+        let parallax = SKAction.moveToY(0.0, duration: Double((0.2 * (star.position.y))/100))
         let remove = SKAction.runBlock({star.removeFromParent()})
         let replaceStar = SKAction.runBlock({self.spawnNewStar(self.size.height)})
         let sequence = SKAction.sequence([parallax, remove, replaceStar])
@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > 0.5) {
             timeSinceLastLaserSpawned = 0
-            spawnLaser(-300, laserXPosition: ship.position.x)
+            spawnLaser(-800, laserXPosition: ship.position.x)
             score += 1
         }
     }
