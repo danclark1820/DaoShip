@@ -45,26 +45,30 @@ class ReplayScene: SKScene {
         
         let flightNoteLabel: SKMultilineLabel?
         if noteNumber > notes.count {
-            flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+            flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
+            self.addChild(flightNoteLabel!)
+        } else if lastScore < 20 {
+            self.addChild(playButton)
         } else {
-            flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), fontName: "Palatino-Roman", leading: 22)
+            flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
+            self.addChild(flightNoteLabel!)
         }
         
         
-        let cropNode = SKCropNode()
-        cropNode.zPosition = 1
-        let barPosition = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height/3))
-        let alphaBarNode = Purplelaser()
-        alphaBarNode.alpha = 0.2
-        alphaBarNode.position = barPosition
-        let barNode = Purplelaser()
-        barNode.position = barPosition
-        barNode.name = "bar"
-        
-        let mask = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
-        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/8), y: (barNode.position.y))
-        cropNode.addChild(barNode)
-        cropNode.maskNode = mask
+//        let cropNode = SKCropNode()
+//        cropNode.zPosition = 1
+//        let barPosition = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height/3))
+//        let alphaBarNode = Purplelaser()
+//        alphaBarNode.alpha = 0.2
+//        alphaBarNode.position = barPosition
+//        let barNode = Purplelaser()
+//        barNode.position = barPosition
+//        barNode.name = "bar"
+//        
+//        let mask = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
+//        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/8), y: (barNode.position.y))
+//        cropNode.addChild(barNode)
+//        cropNode.maskNode = mask
         
         let notesCount = notes.count
         flightNoteCount.text = String(fnManager.notes.last!.number) + "/" + String(notesCount)
@@ -85,15 +89,14 @@ class ReplayScene: SKScene {
         playButton.text = "Continue"
         playButton.name = "playButton"
         playButton.fontSize = 30
-        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/6)
+        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/2)
         
-        self.addChild(flightNoteLabel!)
+        
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
-        self.addChild(playButton)
-        self.addChild(alphaBarNode)
-        self.addChild(mask)
-        self.addChild(cropNode)
+//        self.addChild(alphaBarNode)
+//        self.addChild(mask)
+//        self.addChild(cropNode)
         self.addChild(flightNoteCount)
     }
     
@@ -103,7 +106,7 @@ class ReplayScene: SKScene {
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
             
-            if touchedNode.name == "playButton" {
+            if touchedNode.name == "playButton" || touchedNode.name == "flightNoteLabel" {
                 let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill

@@ -26,7 +26,7 @@ class SKMultilineLabel: SKNode {
     var rect:SKShapeNode?
     var labels:[SKLabelNode] = []
     
-    init(text:String, labelWidth:Int, pos:CGPoint, fontName:String="ChalkboardSE-Regular",fontSize:CGFloat=22,fontColor:UIColor=UIColor.blackColor(),leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .Center, shouldShowBorder:Bool = true, _ coder: NSCoder? = nil ) {
+    init(text:String, labelWidth:Int, pos:CGPoint, name:String, fontName:String="ChalkboardSE-Regular",fontSize:CGFloat=22,fontColor:UIColor=UIColor.blackColor(),leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .Center, shouldShowBorder:Bool = true, _ coder: NSCoder? = nil ) {
         
         self.text = text
         self.labelWidth = labelWidth
@@ -60,13 +60,11 @@ class SKMultilineLabel: SKNode {
         let separators = NSCharacterSet.whitespaceAndNewlineCharacterSet()
         let words = text.componentsSeparatedByCharactersInSet(separators)
         
-        let len = text.characters.count
-        
         var finalLine = false
         var wordCount = -1
         var lineCount = 0
         while (!finalLine) {
-            lineCount++
+            lineCount += 1
             var lineLength = CGFloat(0)
             var lineString = ""
             var lineStringBeforeAddingWord = ""
@@ -81,7 +79,7 @@ class SKMultilineLabel: SKNode {
             
             while lineLength < CGFloat(labelWidth)
             {
-                wordCount++
+                wordCount += 1
                 if wordCount > words.count-1
                 {
                     //label.text = "\(lineString) \(words[wordCount])"
@@ -97,7 +95,7 @@ class SKMultilineLabel: SKNode {
                 }
             }
             if lineLength > 0 {
-                wordCount--
+                wordCount -= 1
                 if (!finalLine) {
                     lineString = lineStringBeforeAddingWord
                 }
