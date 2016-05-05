@@ -47,11 +47,13 @@ class ReplayScene: SKScene {
         if noteNumber > notes.count {
             flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
             self.addChild(flightNoteLabel!)
+            flightNoteLabel!.name = "flightNoteLabel"
         } else if lastScore < 20 {
             self.addChild(playButton)
         } else {
             flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
             self.addChild(flightNoteLabel!)
+            flightNoteLabel!.name = "flightNoteLabel"
         }
         
         
