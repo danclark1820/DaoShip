@@ -36,6 +36,12 @@ class ReplayScene: SKScene {
         let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let flightNoteCount = SKLabelNode(fontNamed: "Palatino-Roman")
         
+        let notesCount = notes.count
+        flightNoteCount.text = String(fnManager.notes.last!.number) + "/" + String(notesCount)
+        flightNoteCount.name = "flightNoteCount"
+        flightNoteCount.fontSize = 20
+        
+        
         
         if fnManager.notes.last == nil {
             noteNumber = 0
@@ -45,15 +51,19 @@ class ReplayScene: SKScene {
         
         let flightNoteLabel: SKMultilineLabel?
         if noteNumber > notes.count {
-            flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
+            flightNoteLabel = SKMultilineLabel(text: "Your training is complete", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
             self.addChild(flightNoteLabel!)
             flightNoteLabel!.name = "flightNoteLabel"
+            flightNoteCount.position = CGPoint(x: CGRectGetMidX(self.frame), y: flightNoteLabel!.pos.y + CGFloat(flightNoteLabel!.labelHeight/2))
+            self.addChild(flightNoteCount)
         } else if lastScore < 20 {
             self.addChild(playButton)
         } else {
-            flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/5)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
+            flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)
             self.addChild(flightNoteLabel!)
             flightNoteLabel!.name = "flightNoteLabel"
+            flightNoteCount.position = CGPoint(x: CGRectGetMidX(self.frame), y: flightNoteLabel!.pos.y + 10.00)
+            self.addChild(flightNoteCount)
         }
         
         
@@ -72,11 +82,7 @@ class ReplayScene: SKScene {
 //        cropNode.addChild(barNode)
 //        cropNode.maskNode = mask
         
-        let notesCount = notes.count
-        flightNoteCount.text = String(fnManager.notes.last!.number) + "/" + String(notesCount)
-        flightNoteCount.name = "flightNoteCount"
-        flightNoteCount.fontSize = 20
-        flightNoteCount.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height/3))
+
         
         lastScoreLabel.text = "Previous: " + String(lastScore!)
         lastScoreLabel.name = "scoreLabels"
@@ -99,7 +105,7 @@ class ReplayScene: SKScene {
 //        self.addChild(alphaBarNode)
 //        self.addChild(mask)
 //        self.addChild(cropNode)
-        self.addChild(flightNoteCount)
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -107,8 +113,8 @@ class ReplayScene: SKScene {
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
-            
-            if touchedNode.name == "playButton" || touchedNode.name == "flightNoteLabel" {
+            let touchedNodeParent = touchedNode.parent!
+            if touchedNode.name == "playButton" || touchedNodeParent.name! == "flightNoteLabel" {
                 let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill
