@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var destX: CGFloat?
     private var lastUpdateTime: CFTimeInterval = 0
     private var timeSinceLastLaserSpawned: CFTimeInterval = 0
-    private var laserSpawnTime = 0.50
+    private var laserSpawnTime = 0.45
     private var shipSpeedMultiplier = 500.0
     
     var score = 0
@@ -149,19 +149,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateLaserSpawnTimeAndShipSpeed() {
         if score == 10 {
-            laserSpawnTime = 0.45
+            laserSpawnTime = 0.43
             shipSpeedMultiplier = 540
         } else if score == 20 {
-            laserSpawnTime = 0.43
+            laserSpawnTime = 0.41
             shipSpeedMultiplier = 580
         } else if score == 35 {
-            laserSpawnTime = 0.40
+            laserSpawnTime = 0.38
             shipSpeedMultiplier = 620
         } else if score == 50 {
-            laserSpawnTime = 0.37
+            laserSpawnTime = 0.35
             shipSpeedMultiplier = 680
         } else if score == 80 {
-            laserSpawnTime = 0.34
+            laserSpawnTime = 0.32
             shipSpeedMultiplier = 720
         }
     }
