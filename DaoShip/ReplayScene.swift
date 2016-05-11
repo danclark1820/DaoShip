@@ -113,8 +113,9 @@ class ReplayScene: SKScene {
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
-            let touchedNodeParent = touchedNode.parent!
-            if touchedNode.name == "playButton" || touchedNodeParent.name! == "flightNoteLabel" {
+            let touchedNodeParentName = touchedNode.parent?.name
+            
+            if touchedNode.name == "playButton" || touchedNodeParentName == "flightNoteLabel" {
                 let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill

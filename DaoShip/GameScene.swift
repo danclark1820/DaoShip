@@ -17,6 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var destX: CGFloat?
     private var lastUpdateTime: CFTimeInterval = 0
     private var timeSinceLastLaserSpawned: CFTimeInterval = 0
+    private var laserSpawnTime = 0.50
+    private var shipSpeedMultiplier = 500.0
     
     var score = 0
     let hsManager = HighScoreManager()
@@ -59,7 +61,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let star = Star()
         let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
         star.position = CGPoint(x: starXRange, y: yPosition)
-        let starSpeedMultiplier = CGFloat(arc4random_uniform(2) + 10)
         let parallax = SKAction.moveToY(0.0, duration: Double((0.2 * (star.position.y))/100))
         let remove = SKAction.runBlock({star.removeFromParent()})
         let replaceStar = SKAction.runBlock({self.spawnNewStar(self.size.height)})
@@ -112,11 +113,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 let currentX = self.ship.position.x
                 if data!.rotationRate.y < 0 {
-                    self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
+                    self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
                 }
                     
                 else if data!.rotationRate.y > 0 {
-                    self.destX = currentX + CGFloat(data!.rotationRate.y * 500)
+                    self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
                 }
                 
                 
@@ -138,10 +139,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // spawn a new one
         
         timeSinceLastLaserSpawned += timeSinceLastUpdate
-        if (timeSinceLastLaserSpawned > 0.5) {
+        if (timeSinceLastLaserSpawned > laserSpawnTime) {
             timeSinceLastLaserSpawned = 0
             spawnLaser(-800, laserXPosition: ship.position.x)
             score += 1
+            updateLaserSpawnTimeAndShipSpeed()
+        }
+    }
+    
+    func updateLaserSpawnTimeAndShipSpeed() {
+        if score == 10 {
+            laserSpawnTime = 0.45
+            shipSpeedMultiplier = 540
+        } else if score == 20 {
+            laserSpawnTime = 0.43
+            shipSpeedMultiplier = 580
+        } else if score == 35 {
+            laserSpawnTime = 0.40
+            shipSpeedMultiplier = 620
+        } else if score == 50 {
+            laserSpawnTime = 0.37
+            shipSpeedMultiplier = 680
+        } else if score == 80 {
+            laserSpawnTime = 0.34
+            shipSpeedMultiplier = 720
         }
     }
 }
