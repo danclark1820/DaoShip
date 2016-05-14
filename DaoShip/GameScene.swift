@@ -21,6 +21,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var shipSpeedMultiplier = 500.0
     
     var score = 0
+    let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+    
     let hsManager = HighScoreManager()
     let fnManager = FlightNoteManager()
     
@@ -46,6 +48,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.physicsBody?.dynamic = true
         ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
+        scoreLabel.name = "scoreLabel"
+        scoreLabel.fontSize = 60
+        scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/15)
         self.addChild(ship)
         
     }
@@ -143,8 +148,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             timeSinceLastLaserSpawned = 0
             spawnLaser(-800, laserXPosition: ship.position.x)
             score += 1
+            scoreLabel.text = String(score)
             updateLaserSpawnTimeAndShipSpeed()
         }
+        
+        self.removeChildrenInArray([scoreLabel])
+        self.addChild(scoreLabel)
     }
     
     func updateLaserSpawnTimeAndShipSpeed() {

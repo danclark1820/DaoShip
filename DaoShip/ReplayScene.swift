@@ -82,17 +82,15 @@ class ReplayScene: SKScene {
 //        cropNode.addChild(barNode)
 //        cropNode.maskNode = mask
         
-
-        
-        lastScoreLabel.text = "Previous: " + String(lastScore!)
-        lastScoreLabel.name = "scoreLabels"
-        lastScoreLabel.fontSize = 20
-        lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - lastScoreLabel.frame.height))
-        
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 20
         highScoreLabel.position = CGPoint(x: (self.frame.width - highScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
+        
+        lastScoreLabel.text = "Previous: " + String(lastScore!)
+        lastScoreLabel.name = "scoreLabels"
+        lastScoreLabel.fontSize = 20
+        lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
         playButton.text = "Continue"
         playButton.name = "playButton"
