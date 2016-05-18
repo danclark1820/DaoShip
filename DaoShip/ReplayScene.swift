@@ -66,22 +66,6 @@ class ReplayScene: SKScene {
             self.addChild(flightNoteCount)
         }
         
-        
-//        let cropNode = SKCropNode()
-//        cropNode.zPosition = 1
-//        let barPosition = CGPoint(x: CGRectGetMidX(self.frame), y: CGFloat(self.frame.height/3))
-//        let alphaBarNode = Purplelaser()
-//        alphaBarNode.alpha = 0.2
-//        alphaBarNode.position = barPosition
-//        let barNode = Purplelaser()
-//        barNode.position = barPosition
-//        barNode.name = "bar"
-//        
-//        let mask = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(barNode.frame.size.width, barNode.frame.size.height))
-//        mask.position = CGPoint(x: (barNode.position.x - barNode.frame.size.width/8), y: (barNode.position.y))
-//        cropNode.addChild(barNode)
-//        cropNode.maskNode = mask
-        
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 20
@@ -100,10 +84,6 @@ class ReplayScene: SKScene {
         
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
-//        self.addChild(alphaBarNode)
-//        self.addChild(mask)
-//        self.addChild(cropNode)
-
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -130,7 +110,7 @@ class ReplayScene: SKScene {
     }
     
     let notes: [String] = [
-        "Welcome to the Ship, I am master Tzu, as you embark on your journey I will offer notes of guidance to help you understand the way of your ship, the universe and your journey. Collect all the notes and you will be a master pilot like me.",
+        "Welcome to the Ship, I am master Zhang, I am a follower of Master Lao Tzu. as you embark on your journey I will offer you my interprestations of his teachings and how they apply to the ship.",
         "Just as the name of your ship is not the actual ship, so too are these words not the actual way. They are more like an intergalactic road sign, focus too hard on the sign, and you’ll surely miss the turn.",
         "Because there are fast ships, it means there a slow ships. Because there small ships, it means there are big ships. Neither one is wrong, it is just the nature of the universe.",
         "The master pilot flies without thinking or trying, flying solely on intuition. He leads his crew by example and not by words or force.",

@@ -79,7 +79,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.physicsBody?.contactTestBitMask = SHIP_CATEGORY
         laser.physicsBody?.collisionBitMask = 0
         laser.physicsBody?.categoryBitMask = LASER_CATEGORY
-//        let laserXRange = CGFloat(arc4random_uniform(UInt32(self.size.width - ship.size.width)) + UInt32(ship.size.width/2))
         laser.position = CGPoint(x: laserXPosition, y:  self.size.height)
         self.addChild(laser)
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
