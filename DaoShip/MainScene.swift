@@ -23,11 +23,6 @@ class MainScene: SKScene {
         self.addChild(playButton)
         
         self.backgroundColor = UIColor.blackColor()
-//        let background = SKSpriteNode(imageNamed: "SpaceBG2")
-//        background.xScale = 1.0;
-//        background.yScale = 1.0;
-//        background.zPosition = -1
-//        self.addChild(background)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
