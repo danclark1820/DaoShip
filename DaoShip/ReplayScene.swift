@@ -36,18 +36,16 @@ class ReplayScene: SKScene {
         let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let flightNoteCount = SKLabelNode(fontNamed: "Palatino-Roman")
         
-        let notesCount = notes.count
-        flightNoteCount.text = String(fnManager.notes.last!.number) + "/" + String(notesCount)
-        flightNoteCount.name = "flightNoteCount"
-        flightNoteCount.fontSize = 20
-        
-        
-        
         if fnManager.notes.last == nil {
             noteNumber = 0
         } else {
             noteNumber = fnManager.notes.last!.number
         }
+        
+        let notesCount = notes.count + 1
+        flightNoteCount.text = String(noteNumber! + 1) + "/" + String(notesCount)
+        flightNoteCount.name = "flightNoteCount"
+        flightNoteCount.fontSize = 20
         
         let flightNoteLabel: SKMultilineLabel?
         if noteNumber > notes.count {
@@ -278,7 +276,7 @@ class ReplayScene: SKScene {
         "When the planet is governed with the way of the ship, the people are content and the planet preserved. The people enjoy their work, and do not seek to consume more then they need to survive.",
         "The people of a planet well governed have modest, comfortable homes which they love. They have ships that can take them to far away places, but do not need them because they are contented in there work and homes. There are weapons on this planet, but there is no need for them.",
         "The people of the well governed planet take immense joy in meals with family and friends. They enjoy tuning up there ship on weekends. There are destinations nearby, but there is no need to go visit them. The small beauty of their neighborhood within the grand universe is what makes them content to grow old and die there.",
-        "True words are not beautiful. Beautiful words are not true. Old masters never need to explain their point. Men who always need to explain their point, probably are not making a very good one.",
+        "True words are not beautiful. Beautiful words are not true. Old masters never need to explain their point. Men who constantly explaining their point, are probably not making a good one.",
         "The old master owns nothing. The more she helps others, the more fortunate she becomes. The more she gives to others, the more prosperous she becomes.",
         "The way of the ship gives to all things without meddling. By not doing, the master teaches, through non action, the people learn."
         ]
