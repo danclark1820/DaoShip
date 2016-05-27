@@ -54,7 +54,7 @@ class ReplayScene: SKScene {
             flightNoteLabel!.name = "flightNoteLabel"
             flightNoteCount.position = CGPoint(x: CGRectGetMidX(self.frame), y: flightNoteLabel!.pos.y + CGFloat(flightNoteLabel!.labelHeight/2))
             self.addChild(flightNoteCount)
-        } else if lastScore < 20 {
+        } else if lastScore < 5 {
             self.addChild(playButton)
         } else {
             flightNoteLabel = SKMultilineLabel(text: notes[noteNumber!], labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3)), name: "flightNoteLabel", fontName: "Palatino-Roman", leading: 22)

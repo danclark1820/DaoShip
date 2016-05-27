@@ -33,7 +33,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        self.backgroundColor = UIColor.blackColor()
+        let topColor = UIColor(red:0.19, green:0.16, blue:0.46, alpha:1.0)
+        let bottomColor = UIColor.blackColor()
+        let gradientColors: [CGColor] = [topColor.CGColor, bottomColor.CGColor]
+        let gradientLocations: [Float] = [0.0, 1.0]
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        gradientLayer.frame = self.view!.bounds
+        self.view!.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
+//        self.backgroundColor = UIColor.blackColor()
         self.spawnInitialStars()
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
@@ -91,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
             hsManager.addNewScore(score)
             
-            if score > 20 {
+            if score >= 5 {
                 fnManager.nextNote()
             }
             
