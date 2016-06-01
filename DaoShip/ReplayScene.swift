@@ -28,29 +28,42 @@ class ReplayScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
         let lastScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
+        let rateButton = SKLabelNode(fontNamed: "Palatino-Roman")
         
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 20
+        highScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         highScoreLabel.position = CGPoint(x: (self.frame.width - highScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
         lastScoreLabel.text = "Previous: " + String(lastScore!)
         lastScoreLabel.name = "scoreLabels"
         lastScoreLabel.fontSize = 20
+        lastScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
         playButton.text = "Continue"
         playButton.name = "playButton"
         playButton.fontSize = 30
+        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/2)
-        self.addChild(playButton)
         
+        rateButton.text = "Rate DaoShip"
+        rateButton
+        rateButton.name = "rateButton"
+        rateButton.fontSize = 30
+        rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/3)
+        
+        self.addChild(playButton)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
+        self.addChild(rateButton)
+        self.spawnInitialStars()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -65,10 +78,30 @@ class ReplayScene: SKScene {
                 nextScene.scaleMode = .AspectFill
                 
                 scene?.view?.presentScene(nextScene, transition: transition)
+            } else if touchedNode.name == "rateButton" {
+                rateApp()
             }
 
         }
         
+    }
+    
+    func spawnInitialStars() {
+        for _ in 1...20 {
+            let starYRange = CGFloat(arc4random_uniform(UInt32(self.size.height)))
+            spawnNewStar(starYRange)
+        }
+    }
+    
+    func spawnNewStar(yPosition: CGFloat) {
+        let star = Star()
+        let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
+        star.position = CGPoint(x: starXRange, y: yPosition)
+        self.addChild(star)
+    }
+    
+    func rateApp(){
+        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(959379869)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
     }
     
     override func update(currentTime: CFTimeInterval) {

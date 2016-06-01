@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
         self.spawnInitialStars()
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
@@ -49,6 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontSize = 60
+        scoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/15)
         self.addChild(ship)
         

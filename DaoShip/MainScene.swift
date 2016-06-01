@@ -18,24 +18,12 @@ class MainScene: SKScene {
         playButton.text = "Play"
         playButton.name = "playButton"
         playButton.fontSize = 45
+        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
         self.addChild(playButton)
-        
-//        let topColor = UIColor(red:0.19, green:0.16, blue:0.46, alpha:1.0)
-//        let bottomColor = UIColor.blackColor()
-//        let gradientColors: [CGColor] = [topColor.CGColor, bottomColor.CGColor]
-//        let gradientLocations: [Float] = [0.0, 1.0]
-//        let gradientLayer: CAGradientLayer = CAGradientLayer()
-//        gradientLayer.colors = gradientColors
-//        gradientLayer.locations = gradientLocations
-//        gradientLayer.frame = self.frame
-////        gradientLayer.zPosition = -1
-////        gradientLayer.anchorPointZ = -1.0
-////        let context = UIGraphicsGetCurrentContext()
-//
-//        view.layer.insertSublayer(gradientLayer, atIndex: 0)
-        self.backgroundColor = UIColor.blackColor()
+        self.spawnInitialStars()
+        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -53,6 +41,20 @@ class MainScene: SKScene {
             }
         }
 
+    }
+    
+    func spawnInitialStars() {
+        for _ in 1...20 {
+            let starYRange = CGFloat(arc4random_uniform(UInt32(self.size.height)))
+            spawnNewStar(starYRange)
+        }
+    }
+    
+    func spawnNewStar(yPosition: CGFloat) {
+        let star = Star()
+        let starXRange = CGFloat(arc4random_uniform(UInt32(self.size.width)))
+        star.position = CGPoint(x: starXRange, y: yPosition)
+        self.addChild(star)
     }
     
     override func update(currentTime: CFTimeInterval) {
