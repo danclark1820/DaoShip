@@ -22,19 +22,20 @@ class MainScene: SKScene {
         
         self.addChild(playButton)
         
-        let topColor = UIColor(red:0.19, green:0.16, blue:0.46, alpha:1.0)
-        let bottomColor = UIColor.blackColor()
-        let gradientColors: [CGColor] = [topColor.CGColor, bottomColor.CGColor]
-        let gradientLocations: [Float] = [0.0, 1.0]
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.locations = gradientLocations
-        gradientLayer.frame = self.frame
-//        gradientLayer.zPosition = -1
-//        gradientLayer.anchorPointZ = -1.0
-//        let context = UIGraphicsGetCurrentContext()
-        
-        view.layer.insertSublayer(gradientLayer, atIndex: 0)
+//        let topColor = UIColor(red:0.19, green:0.16, blue:0.46, alpha:1.0)
+//        let bottomColor = UIColor.blackColor()
+//        let gradientColors: [CGColor] = [topColor.CGColor, bottomColor.CGColor]
+//        let gradientLocations: [Float] = [0.0, 1.0]
+//        let gradientLayer: CAGradientLayer = CAGradientLayer()
+//        gradientLayer.colors = gradientColors
+//        gradientLayer.locations = gradientLocations
+//        gradientLayer.frame = self.frame
+////        gradientLayer.zPosition = -1
+////        gradientLayer.anchorPointZ = -1.0
+////        let context = UIGraphicsGetCurrentContext()
+//
+//        view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        self.backgroundColor = UIColor.blackColor()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
