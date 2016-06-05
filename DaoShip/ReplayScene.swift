@@ -22,7 +22,6 @@ class ReplayScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     let hsManager = HighScoreManager()
 
     override func didMoveToView(view: SKView) {
@@ -33,6 +32,7 @@ class ReplayScene: SKScene {
         let highScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let rateButton = SKLabelNode(fontNamed: "Palatino-Roman")
+        let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
         
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
@@ -59,10 +59,18 @@ class ReplayScene: SKScene {
         rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/3)
         
+        shareButton.text = "Share"
+        shareButton
+        shareButton.name = "shareButton"
+        shareButton.fontSize = 30
+        shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        shareButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
+        
         self.addChild(playButton)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
         self.addChild(rateButton)
+        self.addChild(shareButton)
         self.spawnInitialStars()
     }
     
@@ -80,6 +88,8 @@ class ReplayScene: SKScene {
                 scene?.view?.presentScene(nextScene, transition: transition)
             } else if touchedNode.name == "rateButton" {
                 rateApp()
+            } else if touchedNode.name == "shareButton" {
+                shareButtonClicked()
             }
 
         }
@@ -102,6 +112,23 @@ class ReplayScene: SKScene {
     
     func rateApp(){
         UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(959379869)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
+    }
+    
+    @IBAction func shareButtonClicked() {
+        let textToShare = "Swift is awesome!  Check out this website about it!"
+        
+        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+            let objectsToShare = [textToShare, myWebsite]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+            //
+            
+            activityVC.popoverPresentationController?.sourceView
+            let vc: UIViewController = (self.view?.window?.rootViewController!)!
+            vc.presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
     
     override func update(currentTime: CFTimeInterval) {
