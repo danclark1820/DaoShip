@@ -46,20 +46,20 @@ class ReplayScene: SKScene {
         lastScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
-        playButton.text = "Continue"
+        playButton.text = "Play Again"
         playButton.name = "playButton"
         playButton.fontSize = 30
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/2)
         
-        rateButton.text = "Rate DaoShip"
+        rateButton.text = "Rate ShipDip"
         rateButton
         rateButton.name = "rateButton"
         rateButton.fontSize = 30
         rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/3)
         
-        shareButton.text = "Share"
+        shareButton.text = "Share Score"
         shareButton
         shareButton.name = "shareButton"
         shareButton.fontSize = 30
@@ -111,18 +111,20 @@ class ReplayScene: SKScene {
     }
     
     func rateApp(){
+//        How do we get the link to the app store before its in the app store
         UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(959379869)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
     }
     
     @IBAction func shareButtonClicked() {
-        let textToShare = "Swift is awesome!  Check out this website about it!"
+        let textToShare = "ShipDip is a blast! My best score so far is a \(self.hsManager.scores.first!.score) !"
         
-        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+//      Link to app in app store
+        if let myWebsite = NSURL(string: "https://itunes.apple.com/us/genre/ios/id36?mt=8") {
             let objectsToShare = [textToShare, myWebsite]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
-            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+            activityVC.excludedActivityTypes = [UIActivityTypeMessage, UIActivityTypeAddToReadingList, UIActivityTypeAirDrop]
             //
             
             activityVC.popoverPresentationController?.sourceView

@@ -53,7 +53,7 @@
 		B756F1B01C88658100039AB9 /* ReplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
 		B756F1B21C8865C500039AB9 /* ReplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReplayScene.sks; sourceTree = "<group>"; };
 		B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMultilineLabel.swift; sourceTree = "<group>"; };
-		B763ABB81C66949700BCBEB7 /* DaoShip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaoShip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B763ABB81C66949700BCBEB7 /* ShipDip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipDip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B763ABBB1C66949700BCBEB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B763ABBD1C66949700BCBEB7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		B763ABBF1C66949700BCBEB7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -62,10 +62,10 @@
 		B763ABC61C66949700BCBEB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B763ABC91C66949700BCBEB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B763ABCB1C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B763ABD01C66949700BCBEB7 /* DaoShipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaoShipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B763ABD01C66949700BCBEB7 /* ShipDip.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShipDip.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B763ABD41C66949700BCBEB7 /* DaoShipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoShipTests.swift; sourceTree = "<group>"; };
 		B763ABD61C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B763ABDB1C66949700BCBEB7 /* DaoShipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaoShipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B763ABDB1C66949700BCBEB7 /* ShipDip.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShipDip.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B763ABDF1C66949700BCBEB7 /* DaoShipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoShipUITests.swift; sourceTree = "<group>"; };
 		B763ABE11C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 		B763ABB91C66949700BCBEB7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B763ABB81C66949700BCBEB7 /* DaoShip.app */,
-				B763ABD01C66949700BCBEB7 /* DaoShipTests.xctest */,
-				B763ABDB1C66949700BCBEB7 /* DaoShipUITests.xctest */,
+				B763ABB81C66949700BCBEB7 /* ShipDip.app */,
+				B763ABD01C66949700BCBEB7 /* ShipDip.xctest */,
+				B763ABDB1C66949700BCBEB7 /* ShipDip.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,9 +199,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B763ABB71C66949700BCBEB7 /* DaoShip */ = {
+		B763ABB71C66949700BCBEB7 /* ShipDip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B763ABE41C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShip" */;
+			buildConfigurationList = B763ABE41C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDip" */;
 			buildPhases = (
 				B763ABB41C66949700BCBEB7 /* Sources */,
 				B763ABB51C66949700BCBEB7 /* Frameworks */,
@@ -211,14 +211,14 @@
 			);
 			dependencies = (
 			);
-			name = DaoShip;
+			name = ShipDip;
 			productName = DaoShip;
-			productReference = B763ABB81C66949700BCBEB7 /* DaoShip.app */;
+			productReference = B763ABB81C66949700BCBEB7 /* ShipDip.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B763ABCF1C66949700BCBEB7 /* DaoShipTests */ = {
+		B763ABCF1C66949700BCBEB7 /* ShipDipTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipTests" */;
+			buildConfigurationList = B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipTests" */;
 			buildPhases = (
 				B763ABCC1C66949700BCBEB7 /* Sources */,
 				B763ABCD1C66949700BCBEB7 /* Frameworks */,
@@ -229,14 +229,14 @@
 			dependencies = (
 				B763ABD21C66949700BCBEB7 /* PBXTargetDependency */,
 			);
-			name = DaoShipTests;
+			name = ShipDipTests;
 			productName = DaoShipTests;
-			productReference = B763ABD01C66949700BCBEB7 /* DaoShipTests.xctest */;
+			productReference = B763ABD01C66949700BCBEB7 /* ShipDip.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B763ABDA1C66949700BCBEB7 /* DaoShipUITests */ = {
+		B763ABDA1C66949700BCBEB7 /* ShipDipUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipUITests" */;
+			buildConfigurationList = B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipUITests" */;
 			buildPhases = (
 				B763ABD71C66949700BCBEB7 /* Sources */,
 				B763ABD81C66949700BCBEB7 /* Frameworks */,
@@ -247,9 +247,9 @@
 			dependencies = (
 				B763ABDD1C66949700BCBEB7 /* PBXTargetDependency */,
 			);
-			name = DaoShipUITests;
+			name = ShipDipUITests;
 			productName = DaoShipUITests;
-			productReference = B763ABDB1C66949700BCBEB7 /* DaoShipUITests.xctest */;
+			productReference = B763ABDB1C66949700BCBEB7 /* ShipDip.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B763ABB31C66949600BCBEB7 /* Build configuration list for PBXProject "DaoShip" */;
+			buildConfigurationList = B763ABB31C66949600BCBEB7 /* Build configuration list for PBXProject "ShipDip" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -289,9 +289,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B763ABB71C66949700BCBEB7 /* DaoShip */,
-				B763ABCF1C66949700BCBEB7 /* DaoShipTests */,
-				B763ABDA1C66949700BCBEB7 /* DaoShipUITests */,
+				B763ABB71C66949700BCBEB7 /* ShipDip */,
+				B763ABCF1C66949700BCBEB7 /* ShipDipTests */,
+				B763ABDA1C66949700BCBEB7 /* ShipDipUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -367,12 +367,12 @@
 /* Begin PBXTargetDependency section */
 		B763ABD21C66949700BCBEB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B763ABB71C66949700BCBEB7 /* DaoShip */;
+			target = B763ABB71C66949700BCBEB7 /* ShipDip */;
 			targetProxy = B763ABD11C66949700BCBEB7 /* PBXContainerItemProxy */;
 		};
 		B763ABDD1C66949700BCBEB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B763ABB71C66949700BCBEB7 /* DaoShip */;
+			target = B763ABB71C66949700BCBEB7 /* ShipDip */;
 			targetProxy = B763ABDC1C66949700BCBEB7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -488,9 +488,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.ShipDip;
+				PRODUCT_NAME = ShipDip;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -502,9 +503,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.ShipDip;
+				PRODUCT_NAME = ShipDip;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -516,8 +518,8 @@
 				INFOPLIST_FILE = DaoShipTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaoShip.app/DaoShip";
+				PRODUCT_NAME = ShipDip;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShipDip.app/ShipDip";
 			};
 			name = Debug;
 		};
@@ -528,8 +530,8 @@
 				INFOPLIST_FILE = DaoShipTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaoShip.app/DaoShip";
+				PRODUCT_NAME = ShipDip;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShipDip.app/ShipDip";
 			};
 			name = Release;
 		};
@@ -540,7 +542,7 @@
 				INFOPLIST_FILE = DaoShipUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShipUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShipDip;
 				TEST_TARGET_NAME = DaoShip;
 				USES_XCTRUNNER = YES;
 			};
@@ -552,7 +554,7 @@
 				INFOPLIST_FILE = DaoShipUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.DaoShipUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShipDip;
 				TEST_TARGET_NAME = DaoShip;
 				USES_XCTRUNNER = YES;
 			};
@@ -561,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B763ABB31C66949600BCBEB7 /* Build configuration list for PBXProject "DaoShip" */ = {
+		B763ABB31C66949600BCBEB7 /* Build configuration list for PBXProject "ShipDip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B763ABE21C66949700BCBEB7 /* Debug */,
@@ -570,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B763ABE41C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShip" */ = {
+		B763ABE41C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B763ABE51C66949700BCBEB7 /* Debug */,
@@ -579,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipTests" */ = {
+		B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B763ABE81C66949700BCBEB7 /* Debug */,
@@ -588,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "DaoShipUITests" */ = {
+		B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B763ABEB1C66949700BCBEB7 /* Debug */,

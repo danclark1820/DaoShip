@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B763ABB71C66949700BCBEB7"
-               BuildableName = "DaoShip.app"
-               BlueprintName = "DaoShip"
-               ReferencedContainer = "container:DaoShip.xcodeproj">
+               BuildableName = "ShipDip.app"
+               BlueprintName = "ShipDip"
+               ReferencedContainer = "container:ShipDip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B763ABCF1C66949700BCBEB7"
-               BuildableName = "DaoShipTests.xctest"
-               BlueprintName = "DaoShipTests"
-               ReferencedContainer = "container:DaoShip.xcodeproj">
+               BuildableName = "ShipDip.xctest"
+               BlueprintName = "ShipDipTests"
+               ReferencedContainer = "container:ShipDip.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B763ABDA1C66949700BCBEB7"
-               BuildableName = "DaoShipUITests.xctest"
-               BlueprintName = "DaoShipUITests"
-               ReferencedContainer = "container:DaoShip.xcodeproj">
+               BuildableName = "ShipDip.xctest"
+               BlueprintName = "ShipDipUITests"
+               ReferencedContainer = "container:ShipDip.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B763ABB71C66949700BCBEB7"
-            BuildableName = "DaoShip.app"
-            BlueprintName = "DaoShip"
-            ReferencedContainer = "container:DaoShip.xcodeproj">
+            BuildableName = "ShipDip.app"
+            BlueprintName = "ShipDip"
+            ReferencedContainer = "container:ShipDip.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B763ABB71C66949700BCBEB7"
-            BuildableName = "DaoShip.app"
-            BlueprintName = "DaoShip"
-            ReferencedContainer = "container:DaoShip.xcodeproj">
+            BuildableName = "ShipDip.app"
+            BlueprintName = "ShipDip"
+            ReferencedContainer = "container:ShipDip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B763ABB71C66949700BCBEB7"
-            BuildableName = "DaoShip.app"
-            BlueprintName = "DaoShip"
-            ReferencedContainer = "container:DaoShip.xcodeproj">
+            BuildableName = "ShipDip.app"
+            BlueprintName = "ShipDip"
+            ReferencedContainer = "container:ShipDip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
