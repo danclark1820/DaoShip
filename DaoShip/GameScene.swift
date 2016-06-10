@@ -12,7 +12,6 @@ import CoreMotion
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var ship = Spaceship()
-    private var explosion = Explosion()
     private var motionManager =  CMMotionManager()
     private var contactMade = false
     private var destX: CGFloat?
@@ -88,8 +87,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnExplosion() {
         let explosion = Explosion()
         explosion.position = ship.position
+        explosion.color = UIColor.greenColor()
         self.addChild(explosion)
-        let explode = SKAction.scaleBy(8.0, duration: 0.5)
+        let explode = SKAction.scaleTo(0.25, duration: 0.5)
         explosion.runAction(explode)
     }
     
@@ -97,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Animate ship getting screwed up here in some way
         if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.spawnExplosion()
-//            self.removeChildrenInArray([ship])
+            self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
             let transition = SKTransition.fadeWithDuration(2.0)
             transition.pausesIncomingScene = true
             hsManager.addNewScore(score)
