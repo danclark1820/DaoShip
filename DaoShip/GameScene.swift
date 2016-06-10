@@ -43,14 +43,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.categoryBitMask = SCENE_EDGE_CATEGORY
         
         
-        ship.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
         ship.physicsBody?.dynamic = true
         ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontSize = 60
         scoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/15)
+        scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/10)
         self.addChild(ship)
         
     }
