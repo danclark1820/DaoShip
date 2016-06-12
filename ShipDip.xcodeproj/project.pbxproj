@@ -24,6 +24,7 @@
 		B763ABE01C66949700BCBEB7 /* DaoShipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABDF1C66949700BCBEB7 /* DaoShipUITests.swift */; };
 		B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */; };
 		B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */; };
+		B76960B41D0D96F600B85ADC /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76960B31D0D96F600B85ADC /* Explosion.swift */; };
 		B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A021C7A06EB00898C58 /* Spaceship.swift */; };
 		B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7756A041C7A071F00898C58 /* Greenlaser.swift */; };
 		B7FAEC4C1CAD3AD40058B1D5 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FAEC4B1CAD3AD40058B1D5 /* Star.swift */; };
@@ -70,6 +71,7 @@
 		B763ABE11C66949700BCBEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
+		B76960B31D0D96F600B85ADC /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
 		B7756A021C7A06EB00898C58 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		B7756A041C7A071F00898C58 /* Greenlaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenlaser.swift; sourceTree = "<group>"; };
 		B7FAEC4B1CAD3AD40058B1D5 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				B7756A041C7A071F00898C58 /* Greenlaser.swift */,
 				B7756A021C7A06EB00898C58 /* Spaceship.swift */,
+				B76960B31D0D96F600B85ADC /* Explosion.swift */,
 				B750CAC71C9D950E0075CC31 /* Purplelaser.swift */,
 				B7FAEC4B1CAD3AD40058B1D5 /* Star.swift */,
 			);
@@ -336,6 +339,7 @@
 				B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */,
 				B7FAEC4C1CAD3AD40058B1D5 /* Star.swift in Sources */,
 				B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */,
+				B76960B41D0D96F600B85ADC /* Explosion.swift in Sources */,
 				B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */,
 				B763ABF61C6CB4C300BCBEB7 /* MainScene.swift in Sources */,
 				B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */,
