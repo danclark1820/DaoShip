@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     
     let hsManager = HighScoreManager()
+    let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
@@ -52,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/10)
         
-        let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+        
         tiltLabel.text = "Tilt"
         tiltLabel.name = "tiltLabel"
         tiltLabel.fontSize = 48
@@ -67,29 +68,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rightArrow.position = CGPoint(x: self.frame.width*(3/4), y: self.frame.height/5)
         
         self.addChild(rightArrow)
-//        self.addChild(leftArrow)
-        self.addChild(tiltLabel)
-        self.addChild(ship)
+        ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
         
-        moveAndReplaceArrows()
-        
-    }
-    
-    func moveAndReplaceArrows() {
         let leftArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         leftArrow.text = "<"
         leftArrow.name = "leftArrow"
         leftArrow.fontSize = 60
         leftArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         leftArrow.position = CGPoint(x: self.frame.width/4, y: self.frame.height/5)
+        leftArrow.hidden = false
         
-        let parallax = SKAction.moveToX(0.0, duration: 0.25)
-        let remove = SKAction.runBlock({leftArrow.removeFromParent()})
-        let replace = SKAction.runBlock({self.moveAndReplaceArrows()})
-        let sequence = SKAction.sequence([parallax, remove, replace])
         self.addChild(leftArrow)
-        leftArrow.runAction(sequence)
+        ArrowAction(leftArrow, pos: leftArrow.position, destX: 0.0)
+        
+        self.addChild(tiltLabel)
+        self.addChild(ship)
+        
     }
+    
+    func ArrowAction(arrow: SKLabelNode, pos: CGPoint, destX: CGFloat) {
+        let moveArrow = SKAction.moveToX(destX, duration: 0.60)
+        let hide = SKAction.runBlock({arrow.hidden = true})
+        let resetPosition = SKAction.runBlock({arrow.position = pos})
+        let unhide = SKAction.runBlock({arrow.hidden = false})
+        let sequence = SKAction.sequence([moveArrow, hide, resetPosition, unhide])
+        let repeatSequence = SKAction.repeatAction(sequence, count: 3)
+        let hideTiltLabel = SKAction.runBlock({self.tiltLabel.hidden = true})
+        let finalSequence = SKAction.sequence([repeatSequence, hide, hideTiltLabel])
+        arrow.runAction(finalSequence)
+    }
+    
     
     func spawnInitialStars() {
         for _ in 1...20 {
