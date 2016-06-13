@@ -61,7 +61,7 @@ class ReplayScene: SKScene {
         rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
         
-        shareButton.text = "Challange Friends"
+        shareButton.text = "Challenge Friends"
         shareButton.name = "shareButton"
         shareButton.fontSize = 35
         shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
