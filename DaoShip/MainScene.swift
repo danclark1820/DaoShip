@@ -31,9 +31,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
 
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
-        let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
-        let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
-        ship.runAction(repeatAction)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -44,9 +41,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             
             if touchedNode.name == "playButton" {
                 let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+                transition.pausesOutgoingScene = false
+                transition.pausesIncomingScene = true
+                
+                let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
+                let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
+                ship.runAction(repeatAction)
+                
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill
-                
                 scene?.view?.presentScene(nextScene, transition: transition)
             }
         }

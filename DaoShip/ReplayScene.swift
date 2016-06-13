@@ -23,7 +23,8 @@ class ReplayScene: SKScene {
     }
     
     let hsManager = HighScoreManager()
-
+    let ship = Spaceship()
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
@@ -35,7 +36,7 @@ class ReplayScene: SKScene {
         let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let newHighScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreNumber = SKLabelNode(fontNamed: "Palatino-Roman")
-        let ship = Spaceship()
+        
         
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
@@ -89,10 +90,6 @@ class ReplayScene: SKScene {
         }
         
         self.addChild(ship)
-        let rotateShip = SKAction.rotateByAngle(2.0*CGFloat(M_PI), duration: 0.05)
-        let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
-        ship.runAction(repeatAction)
-        
         self.addChild(playButton)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
@@ -104,16 +101,25 @@ class ReplayScene: SKScene {
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
+            let rotateShip = SKAction.rotateByAngle(2.0*CGFloat(M_PI), duration: 0.05)
+            let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
             
-            if touchedNode.name == "playButton" {
-                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
-                let nextScene = GameScene(size: scene!.size)
-                nextScene.scaleMode = .AspectFill
+            if touchedNode.name == "playButton" || touchedNode.name == "ship"{
                 
-                scene?.view?.presentScene(nextScene, transition: transition)
+//                transition.pausesOutgoingScene = false
+//                transition.pausesIncomingScene = true
+                ship.runAction(repeatAction, completion: {
+                    let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+                    let nextScene = GameScene(size: self.scene!.size)
+                    nextScene.scaleMode = .AspectFill
+                
+                    self.scene?.view?.presentScene(nextScene, transition: transition)
+                })
             } else if touchedNode.name == "rateButton" {
+                ship.runAction(repeatAction)
                 rateApp()
             } else if touchedNode.name == "shareButton" {
+                ship.runAction(repeatAction)
                 shareButtonClicked()
             }
 

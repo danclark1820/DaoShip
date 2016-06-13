@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let hsManager = HighScoreManager()
     let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+    let explosionSound = SKAction.playSoundFileNamed("boom5.wav", waitForCompletion: true)
     
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
@@ -133,21 +134,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let explosion = Explosion()
         explosion.position = ship.position
         self.addChild(explosion)
+        explosion.explode()
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        //Animate ship getting screwed up here in some way
         if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.spawnExplosion()
+            self.laserSpawnTime = 5.0
             self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
-            let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
-            transition.pausesIncomingScene = true
-            hsManager.addNewScore(score)
-            
-            let nextScene = ReplayScene(size: scene!.size, score: score)
-            nextScene.scaleMode = .AspectFill
-            motionManager.stopDeviceMotionUpdates()
-            scene?.view?.presentScene(nextScene, transition: transition)
+            self.runAction(explosionSound, completion: {
+                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+                self.hsManager.addNewScore(self.score)
+
+                let nextScene = ReplayScene(size: self.scene!.size, score: self.score)
+                nextScene.scaleMode = .AspectFill
+                self.motionManager.stopDeviceMotionUpdates()
+                self.scene?.view?.presentScene(nextScene, transition: transition)
+            })
        }
     }
     
