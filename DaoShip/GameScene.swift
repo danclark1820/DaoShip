@@ -49,10 +49,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
         
         scoreLabel.name = "scoreLabel"
-        scoreLabel.fontSize = 60
+        scoreLabel.fontSize = 80
         scoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/10)
-        
         
         tiltLabel.text = "Tilt"
         tiltLabel.name = "tiltLabel"
@@ -67,9 +66,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rightArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         rightArrow.position = CGPoint(x: self.frame.width*(3/4), y: self.frame.height/5)
         
-        self.addChild(rightArrow)
-        ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
-        
         let leftArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         leftArrow.text = "<"
         leftArrow.name = "leftArrow"
@@ -78,10 +74,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         leftArrow.position = CGPoint(x: self.frame.width/4, y: self.frame.height/5)
         leftArrow.hidden = false
         
-        self.addChild(leftArrow)
-        ArrowAction(leftArrow, pos: leftArrow.position, destX: 0.0)
+        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 3 {
+            self.addChild(rightArrow)
+            ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
+            self.addChild(leftArrow)
+            ArrowAction(leftArrow, pos: leftArrow.position, destX: 0.0)
+            self.addChild(tiltLabel)
+        }
         
-        self.addChild(tiltLabel)
+        
         self.addChild(ship)
         
     }
@@ -139,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.spawnExplosion()
             self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
-            let transition = SKTransition.fadeWithDuration(2.0)
+            let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
             transition.pausesIncomingScene = true
             hsManager.addNewScore(score)
             

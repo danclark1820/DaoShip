@@ -51,7 +51,7 @@ class ReplayScene: SKScene {
         
         playButton.text = "Try Again"
         playButton.name = "playButton"
-        playButton.fontSize = 30
+        playButton.fontSize = 35
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
         
@@ -63,7 +63,7 @@ class ReplayScene: SKScene {
         
         shareButton.text = "Challange Friends"
         shareButton.name = "shareButton"
-        shareButton.fontSize = 30
+        shareButton.fontSize = 35
         shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         shareButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(11/20))
         
@@ -89,8 +89,8 @@ class ReplayScene: SKScene {
         }
         
         self.addChild(ship)
-        let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
-        let repeatAction = SKAction.repeatAction(rotateShip, count: 3)
+        let rotateShip = SKAction.rotateByAngle(2.0*CGFloat(M_PI), duration: 0.05)
+        let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
         ship.runAction(repeatAction)
         
         self.addChild(playButton)
@@ -106,7 +106,7 @@ class ReplayScene: SKScene {
             let touchedNode = nodeAtPoint(location)
             
             if touchedNode.name == "playButton" {
-                let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
+                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill
                 

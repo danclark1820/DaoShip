@@ -12,20 +12,12 @@ import CoreMotion
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
     
-//    private var ship = Spaceship()
-//    private var motionManager =  CMMotionManager()
-//    private var contactMade = false
-//    private var destX: CGFloat?
-//    private var lastUpdateTime: CFTimeInterval = 0
-//    private var timeSinceLastLaserSpawned: CFTimeInterval = 0
-//    private var shipSpeedMultiplier = 500.0
-//    
-//    let SHIP_CATEGORY: UInt32 = 0x3
-//    let SCENE_EDGE_CATEGORY: UInt32 = 0x1
+    private var ship = Spaceship()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
+        
         
         playButton.text = "Play"
         playButton.name = "playButton"
@@ -33,23 +25,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
-//        physicsWorld.contactDelegate = self
-//        physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
-//        
-//        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-//        self.physicsBody?.contactTestBitMask = SHIP_CATEGORY
-//        self.physicsBody?.collisionBitMask = 0
-//        self.physicsBody?.categoryBitMask = SCENE_EDGE_CATEGORY
-//        
-//        
-//        ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
-//        ship.physicsBody?.dynamic = true
-//        ship.physicsBody?.categoryBitMask = SHIP_CATEGORY
-        
         self.addChild(playButton)
-//        self.addChild(ship)
+        self.addChild(ship)
         self.spawnInitialStars()
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
+
+        ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
+        let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
+        let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
+        ship.runAction(repeatAction)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -59,8 +43,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             let touchedNode = nodeAtPoint(location)
             
             if touchedNode.name == "playButton" {
-//                motionManager.stopDeviceMotionUpdates()
-                let transition = SKTransition.revealWithDirection(.Down, duration: 1.0)
+                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill
                 
@@ -85,34 +68,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(currentTime: CFTimeInterval) {
-//        var timeSinceLastUpdate = currentTime - lastUpdateTime
-//        lastUpdateTime = currentTime
-//        if timeSinceLastUpdate > 1.0 {
-//            timeSinceLastUpdate = 1.0 / 60.0
-//            lastUpdateTime = currentTime
-//        }
-//        
-//        motionManager.deviceMotionUpdateInterval = timeSinceLastUpdate
-//        if motionManager.deviceMotionAvailable == true {
-//            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
-//                data, error in
-//                
-//                let currentX = self.ship.position.x
-//                if data!.rotationRate.y < 0 {
-//                    self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
-//                }
-//                    
-//                else if data!.rotationRate.y > 0 {
-//                    self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
-//                }
-//                
-//                
-//            })
-//        }
-//        
-//        if destX != nil {
-//            let action = SKAction.moveToX(destX!, duration: 1)
-//            self.ship.runAction(action)
-//        }
+
     }
 }
