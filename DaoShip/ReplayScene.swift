@@ -33,6 +33,9 @@ class ReplayScene: SKScene {
         let playButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let rateButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
+        let newHighScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+        let highScoreNumber = SKLabelNode(fontNamed: "Palatino-Roman")
+        let ship = Spaceship()
         
         highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
         highScoreLabel.name = "scoreLabels"
@@ -46,31 +49,53 @@ class ReplayScene: SKScene {
         lastScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
-        playButton.text = "Play Again"
+        playButton.text = "Try Again"
         playButton.name = "playButton"
         playButton.fontSize = 30
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/2)
+        playButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
         
         rateButton.text = "Rate ShipDip"
-        rateButton
         rateButton.name = "rateButton"
         rateButton.fontSize = 30
         rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/3)
+        rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
         
-        shareButton.text = "Share Score"
-        shareButton
+        shareButton.text = "Challange Friends"
         shareButton.name = "shareButton"
         shareButton.fontSize = 30
         shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        shareButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
+        shareButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(11/20))
+        
+        newHighScoreLabel.text = "High Score!"
+        newHighScoreLabel.name = "playButton"
+        newHighScoreLabel.fontSize = 45
+        newHighScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        newHighScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(4/5))
+        
+        highScoreNumber.text = "\(self.hsManager.scores.first!.score)"
+        highScoreNumber.name = "playButton"
+        highScoreNumber.fontSize = 80
+        highScoreNumber.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        highScoreNumber.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(2/3))
+        
+        ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
+        
+        if lastScore! == self.hsManager.scores.first!.score {
+            self.addChild(newHighScoreLabel)
+            self.addChild(highScoreNumber)
+            self.addChild(rateButton)
+            self.addChild(shareButton)
+        }
+        
+        self.addChild(ship)
+        let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
+        let repeatAction = SKAction.repeatAction(rotateShip, count: 3)
+        ship.runAction(repeatAction)
         
         self.addChild(playButton)
         self.addChild(highScoreLabel)
         self.addChild(lastScoreLabel)
-        self.addChild(rateButton)
-        self.addChild(shareButton)
         self.spawnInitialStars()
     }
     

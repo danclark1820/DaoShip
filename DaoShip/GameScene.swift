@@ -132,8 +132,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let explosion = Explosion()
         explosion.position = ship.position
         self.addChild(explosion)
-//        let explode = SKAction.scaleTo(0.25, duration: 0.5)
-//        explosion.runAction(explode)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
