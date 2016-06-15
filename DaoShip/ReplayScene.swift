@@ -70,7 +70,11 @@ class ReplayScene: SKScene {
         shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         shareButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(11/20))
         
-        newHighScoreLabel.text = "High Score!"
+        if self.hsManager.scores.first!.score == 9999 {
+            newHighScoreLabel.text = "Max Score!"
+        } else {
+            newHighScoreLabel.text = "High Score!"
+        }
         newHighScoreLabel.name = "playButton"
         newHighScoreLabel.fontSize = 45
         newHighScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)

@@ -144,15 +144,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.laserSpawnTime = 5.0
             self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
             self.runAction(explosionSound, completion: {
-                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
-                self.hsManager.addNewScore(self.score)
-
-                let nextScene = ReplayScene(size: self.scene!.size, score: self.score)
-                nextScene.scaleMode = .AspectFill
-                self.motionManager.stopDeviceMotionUpdates()
-                self.scene?.view?.presentScene(nextScene, transition: transition)
+                self.transitionToReplayScene()
             })
        }
+    }
+    
+    func transitionToReplayScene() {
+        let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+        self.hsManager.addNewScore(self.score)
+        
+        let nextScene = ReplayScene(size: self.scene!.size, score: self.score)
+        nextScene.scaleMode = .AspectFill
+        self.motionManager.stopDeviceMotionUpdates()
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -192,7 +196,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (timeSinceLastLaserSpawned > laserSpawnTime) {
             timeSinceLastLaserSpawned = 0
             spawnLaser(-800, laserXPosition: ship.position.x)
-            score += 1
+            if score == 9999 {
+                self.transitionToReplayScene()
+            } else {
+                score += 1
+            }
             scoreLabel.text = String(score)
             updateLaserSpawnTime()
         }
