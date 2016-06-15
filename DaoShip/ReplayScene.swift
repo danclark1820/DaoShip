@@ -109,7 +109,7 @@ class ReplayScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        audioPlayer?.stop()
+        
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
@@ -117,6 +117,7 @@ class ReplayScene: SKScene {
             let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
             
             if touchedNode.name == "playButton" || touchedNode.name == "ship"{
+                fadeVolumeAndPause()
                 ship.runAction(repeatAction, completion: {
                     let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                     let nextScene = GameScene(size: self.scene!.size)
@@ -125,9 +126,11 @@ class ReplayScene: SKScene {
                     self.scene?.view?.presentScene(nextScene, transition: transition)
                 })
             } else if touchedNode.name == "rateButton" {
+                fadeVolumeAndPause()
                 ship.runAction(repeatAction)
                 rateApp()
             } else if touchedNode.name == "shareButton" {
+                fadeVolumeAndPause()
                 ship.runAction(repeatAction)
                 shareButtonClicked()
             }
@@ -140,6 +143,21 @@ class ReplayScene: SKScene {
         audioPlayer?.currentTime = 0
         audioPlayer?.numberOfLoops = -1
         audioPlayer?.play()
+    }
+    
+    func fadeVolumeAndPause() {
+        if self.audioPlayer?.volume > 0.1 {
+            self.audioPlayer?.volume = self.audioPlayer!.volume - 0.1
+            
+            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.fadeVolumeAndPause()
+            })
+            
+        } else {
+            self.audioPlayer?.pause()
+            self.audioPlayer?.volume = 1.0
+        }
     }
     
     func spawnInitialStars() {

@@ -95,7 +95,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let unhide = SKAction.runBlock({arrow.hidden = false})
         let sequence = SKAction.sequence([moveArrow, hide, resetPosition, unhide])
         let repeatSequence = SKAction.repeatAction(sequence, count: 3)
-        let hideTiltLabel = SKAction.runBlock({self.tiltLabel.hidden = true})
+        let fadeTiltLabel = SKAction.fadeOutWithDuration(0.5)
+        let hideTiltLabel = SKAction.runBlock({self.tiltLabel.runAction(fadeTiltLabel)})
         let finalSequence = SKAction.sequence([repeatSequence, hide, hideTiltLabel])
         arrow.runAction(finalSequence)
     }

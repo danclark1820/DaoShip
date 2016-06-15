@@ -47,12 +47,13 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        audioPlayer?.stop()
+        
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
             
             if touchedNode.name == "playButton" {
+                fadeVolumeAndPause()
                 let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                 transition.pausesOutgoingScene = false
                 transition.pausesIncomingScene = true
@@ -73,6 +74,21 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         audioPlayer?.currentTime = 0
         audioPlayer?.numberOfLoops = -1
         audioPlayer?.play()
+    }
+    
+    func fadeVolumeAndPause() {
+        if self.audioPlayer?.volume > 0.1 {
+            self.audioPlayer?.volume = self.audioPlayer!.volume - 0.1
+            
+            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.fadeVolumeAndPause()
+            })
+            
+        } else {
+            self.audioPlayer?.pause()
+            self.audioPlayer?.volume = 1.0
+        }
     }
     
     func spawnInitialStars() {
