@@ -8,10 +8,12 @@
 
 import SpriteKit
 import Darwin
+import AVFoundation
 
 class ReplayScene: SKScene {
     
     let lastScore: Int?
+    var audioPlayer: AVAudioPlayer?
     
     init(size: CGSize, score: Int) {
         lastScore = score
@@ -89,6 +91,15 @@ class ReplayScene: SKScene {
             self.addChild(shareButton)
         }
         
+        let audioURL = NSBundle.mainBundle().URLForResource("ShipDipTheme", withExtension: "m4a")!
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: audioURL)
+            audioPlayer?.prepareToPlay()
+        } catch {
+            print("audioPlayer failure")
+        }
+        
+        self.play()
         self.addChild(ship)
         self.addChild(playButton)
         self.addChild(highScoreLabel)
@@ -98,6 +109,7 @@ class ReplayScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
+        audioPlayer?.stop()
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
@@ -105,9 +117,6 @@ class ReplayScene: SKScene {
             let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
             
             if touchedNode.name == "playButton" || touchedNode.name == "ship"{
-                
-//                transition.pausesOutgoingScene = false
-//                transition.pausesIncomingScene = true
                 ship.runAction(repeatAction, completion: {
                     let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                     let nextScene = GameScene(size: self.scene!.size)
@@ -125,6 +134,12 @@ class ReplayScene: SKScene {
 
         }
         
+    }
+    
+    func play() {
+        audioPlayer?.currentTime = 0
+        audioPlayer?.numberOfLoops = -1
+        audioPlayer?.play()
     }
     
     func spawnInitialStars() {

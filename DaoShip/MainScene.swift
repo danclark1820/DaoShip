@@ -9,10 +9,12 @@
 
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
     
     private var ship = Spaceship()
+    var audioPlayer: AVAudioPlayer?
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -29,12 +31,23 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ship)
         self.spawnInitialStars()
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
-
+        
+        let audioURL = NSBundle.mainBundle().URLForResource("ShipDipTheme", withExtension: "m4a")!
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: audioURL)
+            audioPlayer?.prepareToPlay()
+        } catch {
+            print("audioPlayer failure")
+        }
+        
+        self.play()
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
     }
+
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
+        audioPlayer?.stop()
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
@@ -54,6 +67,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             }
         }
 
+    }
+    
+    func play() {
+        audioPlayer?.currentTime = 0
+        audioPlayer?.numberOfLoops = -1
+        audioPlayer?.play()
     }
     
     func spawnInitialStars() {

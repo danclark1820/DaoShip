@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -82,7 +83,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ArrowAction(leftArrow, pos: leftArrow.position, destX: 0.0)
             self.addChild(tiltLabel)
         }
-        
         
         self.addChild(ship)
         
@@ -168,15 +168,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 data, error in
                 
                 let currentX = self.ship.position.x
+                
                 if data!.rotationRate.y < 0 {
                     self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
-                }
-                    
-                else if data!.rotationRate.y > 0 {
+                } else if data!.rotationRate.y > 0 {
                     self.destX = currentX + CGFloat(data!.rotationRate.y * self.shipSpeedMultiplier)
                 }
-                
-                
             })
         }
         
@@ -196,29 +193,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spawnLaser(-800, laserXPosition: ship.position.x)
             score += 1
             scoreLabel.text = String(score)
-            updateLaserSpawnTimeAndShipSpeed()
+            updateLaserSpawnTime()
         }
         
         self.removeChildrenInArray([scoreLabel])
         self.addChild(scoreLabel)
     }
     
-    func updateLaserSpawnTimeAndShipSpeed() {
+    func updateLaserSpawnTime() {
         if score == 10 {
             laserSpawnTime = 0.43
-            shipSpeedMultiplier = 540
         } else if score == 20 {
             laserSpawnTime = 0.41
-            shipSpeedMultiplier = 580
         } else if score == 35 {
             laserSpawnTime = 0.38
-            shipSpeedMultiplier = 620
         } else if score == 50 {
             laserSpawnTime = 0.35
-            shipSpeedMultiplier = 680
         } else if score == 80 {
             laserSpawnTime = 0.32
-            shipSpeedMultiplier = 720
         }
     }
 }
