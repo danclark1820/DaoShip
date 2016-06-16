@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B72C118C1D0ED28900CC8991 /* boom5.wav in Resources */ = {isa = PBXBuildFile; fileRef = B72C118B1D0ED28900CC8991 /* boom5.wav */; };
-		B72C11901D0F828200CC8991 /* rake_whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B72C118F1D0F828200CC8991 /* rake_whoosh.mp3 */; };
 		B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */; };
 		B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABB1C978BFC0075CC31 /* HighScore.swift */; };
 		B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABD1C978C780075CC31 /* HighScoreManager.swift */; };
@@ -52,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		B72C118B1D0ED28900CC8991 /* boom5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = boom5.wav; path = ../../../Desktop/boom_pack/boom5.wav; sourceTree = "<group>"; };
-		B72C118F1D0F828200CC8991 /* rake_whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rake_whoosh.mp3; path = ../../../Desktop/rake_whoosh.mp3; sourceTree = "<group>"; };
 		B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShipDipTheme.m4a; path = ../../../Downloads/ShipDipTheme.m4a; sourceTree = "<group>"; };
 		B750CABB1C978BFC0075CC31 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		B750CABD1C978C780075CC31 /* HighScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 				B763ABC31C66949700BCBEB7 /* Main.storyboard */,
 				B763ABBB1C66949700BCBEB7 /* AppDelegate.swift */,
 				B72C118B1D0ED28900CC8991 /* boom5.wav */,
-				B72C118F1D0F828200CC8991 /* rake_whoosh.mp3 */,
 				B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */,
 				B763ABCB1C66949700BCBEB7 /* Info.plist */,
 				B763ABC81C66949700BCBEB7 /* LaunchScreen.storyboard */,
@@ -321,7 +318,6 @@
 				B763ABC71C66949700BCBEB7 /* Assets.xcassets in Resources */,
 				B763ABC51C66949700BCBEB7 /* Main.storyboard in Resources */,
 				B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */,
-				B72C11901D0F828200CC8991 /* rake_whoosh.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,10 +500,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.ShipDip;
+				PRODUCT_BUNDLE_IDENTIFIER = CoffeeGames.ShipDip;
 				PRODUCT_NAME = ShipDip;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -519,10 +515,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DaoShip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DCGameLabs.ShipDip;
+				PRODUCT_BUNDLE_IDENTIFIER = CoffeeGames.ShipDip;
 				PRODUCT_NAME = ShipDip;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
