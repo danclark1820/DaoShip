@@ -195,7 +195,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > laserSpawnTime) {
             timeSinceLastLaserSpawned = 0
-            spawnLaser(-800, laserXPosition: ship.position.x)
+            if score < 5 {
+                spawnLaser(-600, laserXPosition: CGFloat(arc4random_uniform(UInt32(self.size.width))))
+            } else {
+                spawnLaser(-800, laserXPosition: ship.position.x)
+            }
+            
             if score == 9999 {
                 self.transitionToReplayScene()
             } else {

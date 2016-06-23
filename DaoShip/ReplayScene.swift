@@ -38,9 +38,9 @@ class ReplayScene: SKScene {
         let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let newHighScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreNumber = SKLabelNode(fontNamed: "Palatino-Roman")
+        let highScoreValue = self.hsManager.scores.first!.score
         
-        
-        highScoreLabel.text = "High: " + String(self.hsManager.scores.first!.score)
+        highScoreLabel.text = "High: " + String(highScoreValue)
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 20
         highScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
@@ -70,7 +70,7 @@ class ReplayScene: SKScene {
         shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         shareButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(11/20))
         
-        if self.hsManager.scores.first!.score == 9999 {
+        if highScoreValue == 9999 {
             newHighScoreLabel.text = "Max Score!"
         } else {
             newHighScoreLabel.text = "High Score!"
@@ -80,7 +80,7 @@ class ReplayScene: SKScene {
         newHighScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         newHighScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(4/5))
         
-        highScoreNumber.text = "\(self.hsManager.scores.first!.score)"
+        highScoreNumber.text = "\(highScoreValue)"
         highScoreNumber.name = "playButton"
         highScoreNumber.fontSize = 80
         highScoreNumber.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
@@ -179,20 +179,24 @@ class ReplayScene: SKScene {
     }
     
     func rateApp(){
-//        How do we get the link to the app store before its in the app store
-        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(959379869)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
+        UIApplication.sharedApplication().openURL(NSURL(string : "https://itunes.apple.com/us/app/shipdip/id1121208467?ls=1&mt=8")!);
     }
     
     @IBAction func shareButtonClicked() {
-        let textToShare = "ShipDip is a blast! My best score so far is a \(self.hsManager.scores.first!.score) !"
+        UIGraphicsBeginImageContext(self.view!.bounds.size)
+        self.view!.drawViewHierarchyInRect(self.view!.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        //Save it to the camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
-//      Link to app in app store
-        if let myWebsite = NSURL(string: "https://itunes.apple.com/us/genre/ios/id36?mt=8") {
-            let objectsToShare = [textToShare, myWebsite]
+        let textToShare = "ShipDip is my new jam! Just scored a \(self.hsManager.scores.first!.score)! Try to beat that!"
+        if let myWebsite = NSURL(string: "https://itunes.apple.com/us/app/shipdip/id1121208467?ls=1&mt=8") {
+            let objectsToShare = [textToShare, myWebsite, image]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
-            activityVC.excludedActivityTypes = [UIActivityTypeMessage, UIActivityTypeAddToReadingList, UIActivityTypeAirDrop]
+            activityVC.excludedActivityTypes = [UIActivityTypeAddToReadingList]
             //
             
             activityVC.popoverPresentationController?.sourceView

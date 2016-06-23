@@ -14,7 +14,7 @@ class HighScoreManager {
     init() {
         // load existing high scores or set up an empty array
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = paths[0] as! NSString
+        let documentsDirectory: NSString = paths[0]
         let path = documentsDirectory.stringByAppendingPathComponent("HighScores.plist")
         let fileManager = NSFileManager.defaultManager()
         
@@ -33,7 +33,7 @@ class HighScoreManager {
         if let rawData = NSData(contentsOfFile: path) {
             // do we get serialized data back from the attempted path?
             // if so, unarchive it into an AnyObject, and then convert to an array of HighScores, if possible
-            var scoreArray: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
+            let scoreArray: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
             self.scores = scoreArray as? [HighScore] ?? [];
         }
     }
