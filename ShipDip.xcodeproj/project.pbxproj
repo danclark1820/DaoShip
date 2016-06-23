@@ -11,7 +11,6 @@
 		B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */; };
 		B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABB1C978BFC0075CC31 /* HighScore.swift */; };
 		B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABD1C978C780075CC31 /* HighScoreManager.swift */; };
-		B750CAC81C9D950E0075CC31 /* Purplelaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CAC71C9D950E0075CC31 /* Purplelaser.swift */; };
 		B756F1B11C88658100039AB9 /* ReplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1B01C88658100039AB9 /* ReplayScene.swift */; };
 		B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B756F1B21C8865C500039AB9 /* ReplayScene.sks */; };
 		B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */; };
@@ -54,7 +53,6 @@
 		B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShipDipTheme.m4a; path = ../../../Downloads/ShipDipTheme.m4a; sourceTree = "<group>"; };
 		B750CABB1C978BFC0075CC31 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		B750CABD1C978C780075CC31 /* HighScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
-		B750CAC71C9D950E0075CC31 /* Purplelaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purplelaser.swift; sourceTree = "<group>"; };
 		B756F1B01C88658100039AB9 /* ReplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
 		B756F1B21C8865C500039AB9 /* ReplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReplayScene.sks; sourceTree = "<group>"; };
 		B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMultilineLabel.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				B7756A041C7A071F00898C58 /* Greenlaser.swift */,
 				B7756A021C7A06EB00898C58 /* Spaceship.swift */,
 				B76960B31D0D96F600B85ADC /* Explosion.swift */,
-				B750CAC71C9D950E0075CC31 /* Purplelaser.swift */,
 				B7FAEC4B1CAD3AD40058B1D5 /* Star.swift */,
 			);
 			name = Sprites;
@@ -353,7 +350,6 @@
 				B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */,
 				B763ABC21C66949700BCBEB7 /* GameViewController.swift in Sources */,
 				B763ABBC1C66949700BCBEB7 /* AppDelegate.swift in Sources */,
-				B750CAC81C9D950E0075CC31 /* Purplelaser.swift in Sources */,
 				B7756A031C7A06EB00898C58 /* Spaceship.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
