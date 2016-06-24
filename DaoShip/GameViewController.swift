@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import GameKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController,  GKGameCenterControllerDelegate {
     
+    var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authenticateLocalPlayer()
         
         if let scene =  MainScene(fileNamed: "MainScene") {
             // Configure the view.
@@ -29,6 +32,43 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             scene.size = self.view.frame.size
             skView.presentScene(scene)
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showLeaderBoard() {
+        let vc = self.view?.window?.rootViewController
+        let gc = GKGameCenterViewController()
+        gc.gameCenterDelegate = self
+        vc?.presentViewController(gc, animated: true, completion: nil)
+    }
+    
+    func submitHighscore(score:Int) {
+        if GKLocalPlayer.localPlayer().authenticated {
+            let scoreReporter = GKScore(leaderboardIdentifier: "ShipDipLeaderboard") //leaderboard id here
+            scoreReporter.value = Int64(score) //score variable here (same as above)
+            let scoreArray: [GKScore] = [scoreReporter]
+
+            GKScore.reportScores(scoreArray, withCompletionHandler: {(error: NSError?) in
+                if error != nil {
+                    print("error")
+                }
+            })
+        }
+    }
+    
+    func authenticateLocalPlayer(){
+        let localPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(viewController, error) -> Void in
+            if (viewController != nil) {
+                self.presentViewController(viewController!, animated: true, completion: nil)
+            } else {
+                print(GKLocalPlayer.localPlayer().authenticated)
+            }
         }
     }
 

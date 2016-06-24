@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import GameKit
 import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
