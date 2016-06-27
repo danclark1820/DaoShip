@@ -10,12 +10,13 @@ import UIKit
 import GameKit
 import SpriteKit
 
-class GameViewController: UIViewController,  GKGameCenterControllerDelegate {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         authenticateLocalPlayer()
         
         if let scene =  MainScene(fileNamed: "MainScene") {
@@ -34,30 +35,13 @@ class GameViewController: UIViewController,  GKGameCenterControllerDelegate {
             skView.presentScene(scene)
         }
     }
+
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func showLeaderBoard() {
-        let vc = self.view?.window?.rootViewController
-        let gc = GKGameCenterViewController()
-        gc.gameCenterDelegate = self
-        vc?.presentViewController(gc, animated: true, completion: nil)
-    }
-    
-    func submitHighscore(score:Int) {
-        if GKLocalPlayer.localPlayer().authenticated {
-            let scoreReporter = GKScore(leaderboardIdentifier: "ShipDipLeaderboard") //leaderboard id here
-            scoreReporter.value = Int64(score) //score variable here (same as above)
-            let scoreArray: [GKScore] = [scoreReporter]
-
-            GKScore.reportScores(scoreArray, withCompletionHandler: {(error: NSError?) in
-                if error != nil {
-                    print("error")
-                }
-            })
-        }
     }
     
     func authenticateLocalPlayer(){
@@ -70,10 +54,6 @@ class GameViewController: UIViewController,  GKGameCenterControllerDelegate {
                 print(GKLocalPlayer.localPlayer().authenticated)
             }
         }
-    }
-
-    override func shouldAutorotate() -> Bool {
-        return true
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

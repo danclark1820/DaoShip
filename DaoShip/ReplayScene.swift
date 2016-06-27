@@ -8,9 +8,10 @@
 
 import SpriteKit
 import Darwin
+import GameKit
 import AVFoundation
 
-class ReplayScene: SKScene {
+class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     let lastScore: Int?
     var audioPlayer: AVAudioPlayer?
@@ -38,6 +39,7 @@ class ReplayScene: SKScene {
         let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let newHighScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreNumber = SKLabelNode(fontNamed: "Palatino-Roman")
+        let submitScore = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreValue = self.hsManager.scores.first!.score
         
         highScoreLabel.text = "High: " + String(highScoreValue)
@@ -86,12 +88,18 @@ class ReplayScene: SKScene {
         highScoreNumber.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         highScoreNumber.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(2/3))
         
+        submitScore.text = "Submit Score"
+        submitScore.name = "submitScore"
+        submitScore.fontSize = 30
+        submitScore.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        submitScore.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
+        
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
         
         if lastScore! == self.hsManager.scores.first!.score {
             self.addChild(newHighScoreLabel)
             self.addChild(highScoreNumber)
-            self.addChild(rateButton)
+            self.addChild(submitScore)
             self.addChild(shareButton)
         }
         
@@ -133,6 +141,11 @@ class ReplayScene: SKScene {
                 fadeVolumeAndPause()
                 ship.runAction(repeatAction)
                 rateApp()
+            } else if touchedNode.name == "submitScore" {
+                fadeVolumeAndPause()
+                ship.runAction(repeatAction)
+                submitHighscore(self.hsManager.scores.first!.score)
+                showLeaderBoard()
             } else if touchedNode.name == "shareButton" {
                 fadeVolumeAndPause()
                 ship.runAction(repeatAction)
@@ -207,5 +220,42 @@ class ReplayScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func authenticateLocalPlayer(){
+        let localPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(viewController, error) -> Void in
+            if (viewController != nil) {
+                self.view!.inputViewController!.presentViewController(viewController!, animated: true, completion: nil)
+            } else {
+                print(GKLocalPlayer.localPlayer().authenticated)
+            }
+        }
+    }
+    
+    func showLeaderBoard() {
+        let vc = self.view?.window?.rootViewController
+        let gc = GKGameCenterViewController()
+        gc.gameCenterDelegate = self
+        vc?.presentViewController(gc, animated: true, completion: nil)
+    }
+    
+    func submitHighscore(score:Int) {
+        if GKLocalPlayer.localPlayer().authenticated {
+            let scoreReporter = GKScore(leaderboardIdentifier: "ShipDipLeaderboard") //leaderboard id here
+            scoreReporter.value = Int64(score) //score variable here (same as above)
+            let scoreArray: [GKScore] = [scoreReporter]
+            
+            GKScore.reportScores(scoreArray, withCompletionHandler: {(error: NSError?) in
+                if error != nil {
+                    print("error")
+                }
+            })
+        }
     }
 }
