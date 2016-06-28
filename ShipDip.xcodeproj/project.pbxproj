@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B8F877830E527A9D3D7FCC /* Pods_ShipDip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632B59EB1707CD98C745D759 /* Pods_ShipDip.framework */; };
+		913FE530F31002EEF115F0ED /* Pods_ShipDipUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C235D9C8F68767BCB68D48 /* Pods_ShipDipUITests.framework */; };
+		91443CA1B46ADB59B9F4317A /* Pods_ShipDipTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D65E55E13C981B4EA48592DD /* Pods_ShipDipTests.framework */; };
+		B71BD6351D214F21009CC990 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B71BD6341D214F21009CC990 /* GoogleService-Info.plist */; };
 		B72C118C1D0ED28900CC8991 /* boom5.wav in Resources */ = {isa = PBXBuildFile; fileRef = B72C118B1D0ED28900CC8991 /* boom5.wav */; };
 		B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */; };
 		B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABB1C978BFC0075CC31 /* HighScore.swift */; };
@@ -49,6 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34E382AA6D5C138AB1071667 /* Pods-ShipDipUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDipUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDipUITests/Pods-ShipDipUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3F11EB2E81C41170A133F2CC /* Pods-ShipDipTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDipTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDipTests/Pods-ShipDipTests.debug.xcconfig"; sourceTree = "<group>"; };
+		54F3888D17EFA7ECAFF65DF8 /* Pods-ShipDip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDip.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDip/Pods-ShipDip.release.xcconfig"; sourceTree = "<group>"; };
+		632B59EB1707CD98C745D759 /* Pods_ShipDip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShipDip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6985D66EA55D014954E7C633 /* Pods-ShipDipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDipTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDipTests/Pods-ShipDipTests.release.xcconfig"; sourceTree = "<group>"; };
+		87F558E820F1C3370D2D6A42 /* Pods-ShipDipUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDipUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDipUITests/Pods-ShipDipUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B71BD6341D214F21009CC990 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B72C118B1D0ED28900CC8991 /* boom5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = boom5.wav; path = ../../../Desktop/boom_pack/boom5.wav; sourceTree = "<group>"; };
 		B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShipDipTheme.m4a; path = ../../../Downloads/ShipDipTheme.m4a; sourceTree = "<group>"; };
 		B750CABB1C978BFC0075CC31 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
@@ -77,6 +88,9 @@
 		B7756A021C7A06EB00898C58 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		B7756A041C7A071F00898C58 /* Greenlaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenlaser.swift; sourceTree = "<group>"; };
 		B7FAEC4B1CAD3AD40058B1D5 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		D1B72B63F2CC85F6C79E4BAB /* Pods-ShipDip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShipDip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShipDip/Pods-ShipDip.debug.xcconfig"; sourceTree = "<group>"; };
+		D2C235D9C8F68767BCB68D48 /* Pods_ShipDipUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShipDipUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65E55E13C981B4EA48592DD /* Pods_ShipDipTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShipDipTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B8F877830E527A9D3D7FCC /* Pods_ShipDip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91443CA1B46ADB59B9F4317A /* Pods_ShipDipTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +114,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				913FE530F31002EEF115F0ED /* Pods_ShipDipUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F586AE0781E5FBB2FB33AE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D1B72B63F2CC85F6C79E4BAB /* Pods-ShipDip.debug.xcconfig */,
+				54F3888D17EFA7ECAFF65DF8 /* Pods-ShipDip.release.xcconfig */,
+				3F11EB2E81C41170A133F2CC /* Pods-ShipDipTests.debug.xcconfig */,
+				6985D66EA55D014954E7C633 /* Pods-ShipDipTests.release.xcconfig */,
+				87F558E820F1C3370D2D6A42 /* Pods-ShipDipUITests.debug.xcconfig */,
+				34E382AA6D5C138AB1071667 /* Pods-ShipDipUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B4F46A32E3F497DBFA21C44E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				632B59EB1707CD98C745D759 /* Pods_ShipDip.framework */,
+				D65E55E13C981B4EA48592DD /* Pods_ShipDipTests.framework */,
+				D2C235D9C8F68767BCB68D48 /* Pods_ShipDipUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B763ABAF1C66949600BCBEB7 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +151,8 @@
 				B763ABD31C66949700BCBEB7 /* DaoShipTests */,
 				B763ABDE1C66949700BCBEB7 /* DaoShipUITests */,
 				B763ABB91C66949700BCBEB7 /* Products */,
+				6F586AE0781E5FBB2FB33AE1 /* Pods */,
+				B4F46A32E3F497DBFA21C44E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +235,7 @@
 				B72C118B1D0ED28900CC8991 /* boom5.wav */,
 				B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */,
 				B763ABCB1C66949700BCBEB7 /* Info.plist */,
+				B71BD6341D214F21009CC990 /* GoogleService-Info.plist */,
 				B763ABC81C66949700BCBEB7 /* LaunchScreen.storyboard */,
 				B763ABC61C66949700BCBEB7 /* Assets.xcassets */,
 				B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */,
@@ -209,9 +252,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B763ABE41C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDip" */;
 			buildPhases = (
+				25C8936C4BCCDFEB52A863BF /* [CP] Check Pods Manifest.lock */,
 				B763ABB41C66949700BCBEB7 /* Sources */,
 				B763ABB51C66949700BCBEB7 /* Frameworks */,
 				B763ABB61C66949700BCBEB7 /* Resources */,
+				FB63F37875C36804AE119F11 /* [CP] Embed Pods Frameworks */,
+				FB6BDF9765D805EB690DB296 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,9 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B763ABE71C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipTests" */;
 			buildPhases = (
+				751CE90FBF2D645D11EB39C5 /* [CP] Check Pods Manifest.lock */,
 				B763ABCC1C66949700BCBEB7 /* Sources */,
 				B763ABCD1C66949700BCBEB7 /* Frameworks */,
 				B763ABCE1C66949700BCBEB7 /* Resources */,
+				A709545FEBDDBF9EDFEEE0AD /* [CP] Embed Pods Frameworks */,
+				B071B88234322CD01DB4D944 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B763ABEA1C66949700BCBEB7 /* Build configuration list for PBXNativeTarget "ShipDipUITests" */;
 			buildPhases = (
+				6AD45F89DD8003932249067C /* [CP] Check Pods Manifest.lock */,
 				B763ABD71C66949700BCBEB7 /* Sources */,
 				B763ABD81C66949700BCBEB7 /* Frameworks */,
 				B763ABD91C66949700BCBEB7 /* Resources */,
+				33FE7088DDD6FEC231252705 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +360,7 @@
 			files = (
 				B763ABBE1C66949700BCBEB7 /* GameScene.sks in Resources */,
 				B72C118C1D0ED28900CC8991 /* boom5.wav in Resources */,
+				B71BD6351D214F21009CC990 /* GoogleService-Info.plist in Resources */,
 				B763ABCA1C66949700BCBEB7 /* LaunchScreen.storyboard in Resources */,
 				B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */,
 				B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */,
@@ -333,6 +385,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25C8936C4BCCDFEB52A863BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33FE7088DDD6FEC231252705 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShipDipUITests/Pods-ShipDipUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AD45F89DD8003932249067C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		751CE90FBF2D645D11EB39C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A709545FEBDDBF9EDFEEE0AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShipDipTests/Pods-ShipDipTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B071B88234322CD01DB4D944 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShipDipTests/Pods-ShipDipTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB63F37875C36804AE119F11 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShipDip/Pods-ShipDip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB6BDF9765D805EB690DB296 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShipDip/Pods-ShipDip-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B763ABB41C66949700BCBEB7 /* Sources */ = {
@@ -490,6 +665,7 @@
 		};
 		B763ABE51C66949700BCBEB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1B72B63F2CC85F6C79E4BAB /* Pods-ShipDip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -505,6 +681,7 @@
 		};
 		B763ABE61C66949700BCBEB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54F3888D17EFA7ECAFF65DF8 /* Pods-ShipDip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -520,6 +697,7 @@
 		};
 		B763ABE81C66949700BCBEB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F11EB2E81C41170A133F2CC /* Pods-ShipDipTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -533,6 +711,7 @@
 		};
 		B763ABE91C66949700BCBEB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6985D66EA55D014954E7C633 /* Pods-ShipDipTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DaoShipTests/Info.plist;
@@ -545,6 +724,7 @@
 		};
 		B763ABEB1C66949700BCBEB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F558E820F1C3370D2D6A42 /* Pods-ShipDipUITests.debug.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = DaoShipUITests/Info.plist;
@@ -558,6 +738,7 @@
 		};
 		B763ABEC1C66949700BCBEB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E382AA6D5C138AB1071667 /* Pods-ShipDipUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DaoShipUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
