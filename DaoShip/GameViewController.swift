@@ -16,7 +16,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         authenticateLocalPlayer()
         
         if let scene =  MainScene(fileNamed: "MainScene") {
@@ -35,6 +34,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             skView.presentScene(scene)
         }
     }
+    
 
     override func shouldAutorotate() -> Bool {
         return true

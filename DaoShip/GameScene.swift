@@ -10,8 +10,9 @@ import SpriteKit
 import CoreMotion
 import GameKit
 import AVFoundation
+import GoogleMobileAds
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     
     private var ship = Spaceship()
     private var motionManager =  CMMotionManager()
@@ -25,6 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     
+    var interstitial: GADInterstitial?
+    
     let hsManager = HighScoreManager()
     let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     let explosionSound = SKAction.playSoundFileNamed("boom5.wav", waitForCompletion: true)
@@ -35,6 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let STAR_CATEGORY: UInt32 = 0x4
     
     override func didMoveToView(view: SKView) {
+        interstitial = adMobLoadInterAd()
         
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
         self.spawnInitialStars()
@@ -77,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         leftArrow.position = CGPoint(x: self.frame.width/4, y: self.frame.height/5)
         leftArrow.hidden = false
         
-        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 3 {
+        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 6 {
             self.addChild(rightArrow)
             ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
             self.addChild(leftArrow)
@@ -157,6 +161,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nextScene = ReplayScene(size: self.scene!.size, score: self.score)
         nextScene.scaleMode = .AspectFill
         self.motionManager.stopDeviceMotionUpdates()
+        
+        adMobShowInterAd()
+        
         self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
@@ -228,4 +235,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             laserSpawnTime = 0.32
         }
     }
+    
+    
+    func adMobLoadInterAd() -> GADInterstitial {
+        print("AdMob inter loading...")
+        
+        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        googleInterAd.delegate = self
+        
+        let request = GADRequest()
+        
+        request.testDevices = [kGADSimulatorID, "2077ef9a63d2b398840261c8221a0c9b"] // DEBUG only
+        
+        googleInterAd.loadRequest(request)
+        
+        return googleInterAd
+    }
+    
+    func adMobShowInterAd() {
+        guard interstitial != nil && interstitial!.isReady else { // calls interDidReceiveAd
+            print("AdMob inter is not ready, reloading")
+            interstitial = adMobLoadInterAd()
+            return
+        }
+        
+        print("AdMob inter showing...")
+        interstitial?.presentFromRootViewController((self.view?.window?.rootViewController)!)
+    }
+
 }
