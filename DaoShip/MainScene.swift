@@ -16,17 +16,30 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     private var ship = Spaceship()
     var audioPlayer: AVAudioPlayer?
     
+//    override init(size: CGSize) {
+//        super.init(size: size)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        
-        
         playButton.text = "Play"
         playButton.name = "playButton"
         playButton.fontSize = 45
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        playButton.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
         
+        let intro: SKMultilineLabel?
+        intro = SKMultilineLabel(text: "An ancient way of living is under siege for higher ideals. The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals. Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you.", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8)), name: "intro", fontName: "Palatino-Roman", leading: 22)
+        intro?.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+//        intro?.border = false
+//        intro?.text = "Hello World"
+//        intro?.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        self.addChild(intro!)
         self.addChild(playButton)
         self.addChild(ship)
         self.spawnInitialStars()
