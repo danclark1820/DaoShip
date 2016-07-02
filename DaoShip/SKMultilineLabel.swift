@@ -18,6 +18,7 @@ class SKMultilineLabel: SKNode {
     var fontSize:CGFloat {didSet {update()}}
     var pos:CGPoint {didSet {update()}}
     var fontColor:UIColor {didSet {update()}}
+//    var alpha:CGFloat {didSet {update()}}
     var leading:Int {didSet {update()}}
     var alignment:SKLabelHorizontalAlignmentMode {didSet {update()}}
     var dontUpdate = false
@@ -26,7 +27,7 @@ class SKMultilineLabel: SKNode {
     var rect:SKShapeNode?
     var labels:[SKLabelNode] = []
     
-    init(text:String, labelWidth:Int, pos:CGPoint, name:String, fontName:String="Palatino-Roman",fontSize:CGFloat=22,fontColor:UIColor=UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0),leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .Center, shouldShowBorder:Bool = false, _ coder: NSCoder? = nil ) {
+    init(text:String, labelWidth:Int, pos:CGPoint, name:String, fontName:String="Palatino-Roman",fontSize:CGFloat=26,fontColor:UIColor=UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0),leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .Center, alpha:CGFloat=1.0, shouldShowBorder:Bool = false, _ coder: NSCoder? = nil) {
         
         self.text = text
         self.labelWidth = labelWidth
@@ -75,7 +76,8 @@ class SKMultilineLabel: SKNode {
             label.name = "line\(lineCount)"
             label.horizontalAlignmentMode = alignment
             label.fontSize = fontSize
-            label.fontColor = UIColor.whiteColor()
+            label.fontColor = fontColor
+            label.alpha = alpha
             
             while lineLength < CGFloat(labelWidth)
             {

@@ -16,13 +16,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     private var ship = Spaceship()
     var audioPlayer: AVAudioPlayer?
     
-//    override init(size: CGSize) {
-//        super.init(size: size)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    let tapLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -32,14 +26,26 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         playButton.fontSize = 45
         playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
         playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
+
         
-        let intro: SKMultilineLabel?
-        intro = SKMultilineLabel(text: "An ancient way of living is under siege for higher ideals. The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals. Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you.", labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/8)), name: "intro", fontName: "Palatino-Roman", leading: 22)
-        intro?.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-//        intro?.border = false
-//        intro?.text = "Hello World"
-//        intro?.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        self.addChild(intro!)
+//
+//        let introLabel3 = introLabel("Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you.", name: "introLabel3")
+        
+//        addIntroLabel(introLabel1)
+//        addIntroLabel(introLabel2)
+//        addIntroLabel(introLabel3)
+//        self.addChild(introLabel1)
+//        introLabel1.runAction(SKAction.fadeOutWithDuration(2.5))
+//        introLabel1.update()
+        
+        tapLabel.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
+        tapLabel.text = "Tap Here"
+        tapLabel.name = "tapLabel"
+        tapLabel.fontSize = 45
+        tapLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        tapLabel.alpha = 1.0
+        self.addChild(tapLabel)
+        
         self.addChild(playButton)
         self.addChild(ship)
         self.spawnInitialStars()
@@ -60,20 +66,38 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
+        let introLabel1 = self.introLabel("An ancient way of living is under siege for higher ideals...", name: "introLabel1")
+        introLabel1.shouldShowBorder = true
+        let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals.", name: "introLabel2")
         
+        
+//        introLabel1.runAction(SKAction.fadeOutWithDuration(2.5))
+//        self.addChild(introLabel1)
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
             
-            if touchedNode.name == "playButton" {
+            if touchedNode.name == "tapLabel" {
+                self.rotateShip()
+                tapLabel.runAction(SKAction.fadeOutWithDuration(0.75), completion: {
+                    self.addChild(introLabel1)
+                    self.tapLabel.removeFromParent()
+                    print("\(introLabel1.name) <<<<<<<<<<<<")
+                })
+            } else if touchedNode.parent?.name== "introLabel1" {
+                self.rotateShip()
+                introLabel1.runAction(SKAction.fadeOutWithDuration(0.75), completion: {
+                    introLabel1.update()
+                    self.addChild(introLabel2)
+                    introLabel1.removeFromParent()
+                })
+            } else if touchedNode.name == "playButton" {
                 fadeVolumeAndPause()
                 let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
                 transition.pausesOutgoingScene = false
                 transition.pausesIncomingScene = true
                 
-                let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
-                let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
-                ship.runAction(repeatAction)
+                self.rotateShip()
                 
                 let nextScene = GameScene(size: scene!.size)
                 nextScene.scaleMode = .AspectFill
@@ -81,6 +105,24 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             }
         }
 
+    }
+    
+    func rotateShip() {
+        let rotateShip = SKAction.rotateByAngle( 2.0*CGFloat(M_PI), duration: 0.05)
+        let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
+        ship.runAction(repeatAction)
+    }
+    
+//    "An ancient way of living is under siege for higher ideals. The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals. Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you."
+    
+    func introLabel(note: String, name: String) -> SKMultilineLabel {
+        var intro: SKMultilineLabel?
+        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 24)
+        intro!.dontUpdate = false
+        intro!.name = name
+        intro!.alpha = 1.0
+        intro!.update()
+        return intro!
     }
     
     func play() {
