@@ -64,24 +64,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         tiltLabel.name = "tiltLabel"
         tiltLabel.fontSize = 48
         tiltLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        tiltLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/5)
+        tiltLabel.position = CGPoint(x: self.frame.width/2, y: CGFloat(self.frame.height - self.frame.height/3))
         
         let rightArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         rightArrow.text = ">"
         rightArrow.name = "rightArrow"
         rightArrow.fontSize = 60
         rightArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        rightArrow.position = CGPoint(x: self.frame.width*(3/4), y: self.frame.height/5)
+        rightArrow.position = CGPoint(x: self.frame.width*(3/4), y: CGFloat(self.frame.height - self.frame.height/3))
         
         let leftArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         leftArrow.text = "<"
         leftArrow.name = "leftArrow"
         leftArrow.fontSize = 60
         leftArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        leftArrow.position = CGPoint(x: self.frame.width/4, y: self.frame.height/5)
+        leftArrow.position = CGPoint(x: self.frame.width/4, y: CGFloat(self.frame.height - self.frame.height/3))
         leftArrow.hidden = false
         
-        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 6 {
+        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 7 {
             self.addChild(rightArrow)
             ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
             self.addChild(leftArrow)

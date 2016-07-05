@@ -19,25 +19,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     let tapLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        playButton.text = "Play"
-        playButton.name = "playButton"
-        playButton.fontSize = 45
-        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
-
-        
-//
-//        let introLabel3 = introLabel("Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you.", name: "introLabel3")
-        
-//        addIntroLabel(introLabel1)
-//        addIntroLabel(introLabel2)
-//        addIntroLabel(introLabel3)
-//        self.addChild(introLabel1)
-//        introLabel1.runAction(SKAction.fadeOutWithDuration(2.5))
-//        introLabel1.update()
-        
         tapLabel.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         tapLabel.text = "Tap Here"
         tapLabel.name = "tapLabel"
@@ -46,7 +27,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         tapLabel.alpha = 1.0
         self.addChild(tapLabel)
         
-        self.addChild(playButton)
+        
         self.addChild(ship)
         self.spawnInitialStars()
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
@@ -67,12 +48,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         let introLabel1 = self.introLabel("An ancient way of living is under siege for higher ideals...", name: "introLabel1")
-        introLabel1.shouldShowBorder = true
         let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals.", name: "introLabel2")
+        let introLabel3 = self.introLabel("Master the way of the ship to get past the attackers. Once this done the ancient's secret will be revealed to you.", name: "introLabel3")
         
-        
-//        introLabel1.runAction(SKAction.fadeOutWithDuration(2.5))
-//        self.addChild(introLabel1)
+        let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
+        playButton.text = "Play"
+        playButton.name = "playButton"
+        playButton.fontSize = 45
+        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
@@ -82,14 +66,24 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
                 tapLabel.runAction(SKAction.fadeOutWithDuration(0.75), completion: {
                     self.addChild(introLabel1)
                     self.tapLabel.removeFromParent()
-                    print("\(introLabel1.name) <<<<<<<<<<<<")
                 })
-            } else if touchedNode.parent?.name== "introLabel1" {
+            } else if touchedNode.parent?.name == "introLabel1" {
                 self.rotateShip()
-                introLabel1.runAction(SKAction.fadeOutWithDuration(0.75), completion: {
-                    introLabel1.update()
+                self.childNodeWithName("introLabel1")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
                     self.addChild(introLabel2)
                     introLabel1.removeFromParent()
+                })
+            } else if touchedNode.parent?.name == "introLabel2" {
+                self.rotateShip()
+                self.childNodeWithName("introLabel2")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
+                    self.addChild(introLabel3)
+                    introLabel2.removeFromParent()
+                })
+            } else if touchedNode.parent?.name == "introLabel3" {
+                self.rotateShip()
+                self.childNodeWithName("introLabel3")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
+                    self.addChild(playButton)
+                    introLabel3.removeFromParent()
                 })
             } else if touchedNode.name == "playButton" {
                 fadeVolumeAndPause()
@@ -121,7 +115,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         intro!.dontUpdate = false
         intro!.name = name
         intro!.alpha = 1.0
-        intro!.update()
         return intro!
     }
     

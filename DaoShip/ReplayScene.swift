@@ -27,6 +27,37 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     let hsManager = HighScoreManager()
     let ship = Spaceship()
+    let notesArray = ["No sign of progress does not mean that progress is not taking place.",
+    
+    "Progress is inevitable through patience and persistence.",
+    
+    "A long journey begins with a single step.",
+    
+    "Master self, master ship, master living, repeat.",
+    
+    "By learning to master the ship, you learn to master yourself.",
+    
+    "You do not have to see the end to know you are on the right path.",
+    
+    "Accomplish a great feat by a series of small feats.",
+    
+    "Treat a simple task as hard and it will be easy.",
+    
+    "Treat a simple task as easy and it will be hard.",
+    
+    "If you cannot understand the enemy, how do you expect to understand yourself?",
+    
+    "Pretending to know is worse then not knowing.",
+    
+    "Knowing you do not know, you begin to know.",
+    
+    "Learning to love the process, the end goal is always achieved.",
+    
+    "Give up thinking for doing.",
+    
+    "Give up doing for acting on intuition.",
+    
+    "Desire for the end makes the process hard to enjoy."]
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -101,6 +132,9 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
             self.addChild(highScoreNumber)
             self.addChild(submitScore)
             self.addChild(shareButton)
+        } else {
+            let note = self.noteLabel(notesArray[Int(arc4random_uniform(UInt32(self.notesArray.count)))], name: "note")
+            self.addChild(note)
         }
         
         let audioURL = NSBundle.mainBundle().URLForResource("ShipDipTheme", withExtension: "m4a")!
@@ -128,7 +162,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
             let rotateShip = SKAction.rotateByAngle(2.0*CGFloat(M_PI), duration: 0.05)
             let repeatAction = SKAction.repeatAction(rotateShip, count: 5)
             
-            if touchedNode.name == "playButton" || touchedNode.name == "ship"{
+            if touchedNode.name == "playButton" || touchedNode.name == "ship" {
                 fadeVolumeAndPause()
                 ship.runAction(repeatAction, completion: {
                     let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
@@ -175,6 +209,15 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
             self.audioPlayer?.pause()
             self.audioPlayer?.volume = 1.0
         }
+    }
+    
+    func noteLabel(note: String, name: String) -> SKMultilineLabel {
+        var intro: SKMultilineLabel?
+        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 24)
+        intro!.dontUpdate = false
+        intro!.name = name
+        intro!.alpha = 1.0
+        return intro!
     }
     
     func spawnInitialStars() {
