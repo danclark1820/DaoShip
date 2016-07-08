@@ -15,6 +15,8 @@
 		B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */; };
 		B750CABC1C978BFC0075CC31 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABB1C978BFC0075CC31 /* HighScore.swift */; };
 		B750CABE1C978C780075CC31 /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750CABD1C978C780075CC31 /* HighScoreManager.swift */; };
+		B75118F21D2C744D00C2A13B /* GameWonScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75118F11D2C744D00C2A13B /* GameWonScene.swift */; };
+		B75118F41D2C749000C2A13B /* GameWonScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B75118F31D2C749000C2A13B /* GameWonScene.sks */; };
 		B756F1B11C88658100039AB9 /* ReplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1B01C88658100039AB9 /* ReplayScene.swift */; };
 		B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B756F1B21C8865C500039AB9 /* ReplayScene.sks */; };
 		B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */; };
@@ -64,6 +66,8 @@
 		B72C11931D10DEC700CC8991 /* ShipDipTheme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShipDipTheme.m4a; path = ../../../Downloads/ShipDipTheme.m4a; sourceTree = "<group>"; };
 		B750CABB1C978BFC0075CC31 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		B750CABD1C978C780075CC31 /* HighScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
+		B75118F11D2C744D00C2A13B /* GameWonScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameWonScene.swift; sourceTree = "<group>"; };
+		B75118F31D2C749000C2A13B /* GameWonScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameWonScene.sks; sourceTree = "<group>"; };
 		B756F1B01C88658100039AB9 /* ReplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
 		B756F1B21C8865C500039AB9 /* ReplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReplayScene.sks; sourceTree = "<group>"; };
 		B756F1BA1C8B5A1500039AB9 /* SKMultilineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMultilineLabel.swift; sourceTree = "<group>"; };
@@ -211,10 +215,12 @@
 			children = (
 				B756F1B21C8865C500039AB9 /* ReplayScene.sks */,
 				B763ABF81C6CB6AC00BCBEB7 /* MainScene.sks */,
+				B763ABBD1C66949700BCBEB7 /* GameScene.sks */,
+				B75118F31D2C749000C2A13B /* GameWonScene.sks */,
 				B763ABF51C6CB4C300BCBEB7 /* MainScene.swift */,
 				B763ABBF1C66949700BCBEB7 /* GameScene.swift */,
-				B763ABBD1C66949700BCBEB7 /* GameScene.sks */,
 				B756F1B01C88658100039AB9 /* ReplayScene.swift */,
+				B75118F11D2C744D00C2A13B /* GameWonScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				B72C11941D10DEC700CC8991 /* ShipDipTheme.m4a in Resources */,
 				B763ABF91C6CB6AC00BCBEB7 /* MainScene.sks in Resources */,
 				B763ABC71C66949700BCBEB7 /* Assets.xcassets in Resources */,
+				B75118F41D2C749000C2A13B /* GameWonScene.sks in Resources */,
 				B763ABC51C66949700BCBEB7 /* Main.storyboard in Resources */,
 				B756F1B31C8865C500039AB9 /* ReplayScene.sks in Resources */,
 			);
@@ -516,6 +523,7 @@
 			files = (
 				B763ABC01C66949700BCBEB7 /* GameScene.swift in Sources */,
 				B756F1B11C88658100039AB9 /* ReplayScene.swift in Sources */,
+				B75118F21D2C744D00C2A13B /* GameWonScene.swift in Sources */,
 				B756F1BB1C8B5A1500039AB9 /* SKMultilineLabel.swift in Sources */,
 				B7FAEC4C1CAD3AD40058B1D5 /* Star.swift in Sources */,
 				B7756A051C7A071F00898C58 /* Greenlaser.swift in Sources */,

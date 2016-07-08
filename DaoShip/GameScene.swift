@@ -29,8 +29,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     var interstitial: GADInterstitial?
     
     let hsManager = HighScoreManager()
+    let lastHighScore = HighScoreManager().scores.last?.score
     let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     let explosionSound = SKAction.playSoundFileNamed("boom5.wav", waitForCompletion: true)
+    
+    
+    let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
     
     let SCENE_EDGE_CATEGORY: UInt32 = 0x1
     let LASER_CATEGORY: UInt32 = 0x2
@@ -57,31 +61,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontSize = 80
-        scoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        scoreLabel.fontColor = yellow
         scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/10)
         
         tiltLabel.text = "Tilt"
         tiltLabel.name = "tiltLabel"
         tiltLabel.fontSize = 48
-        tiltLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        tiltLabel.fontColor = yellow
         tiltLabel.position = CGPoint(x: self.frame.width/2, y: CGFloat(self.frame.height - self.frame.height/3))
         
         let rightArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         rightArrow.text = ">"
         rightArrow.name = "rightArrow"
         rightArrow.fontSize = 60
-        rightArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        rightArrow.fontColor = yellow
         rightArrow.position = CGPoint(x: self.frame.width*(3/4), y: CGFloat(self.frame.height - self.frame.height/3))
         
         let leftArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         leftArrow.text = "<"
         leftArrow.name = "leftArrow"
         leftArrow.fontSize = 60
-        leftArrow.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        leftArrow.fontColor = yellow
         leftArrow.position = CGPoint(x: self.frame.width/4, y: CGFloat(self.frame.height - self.frame.height/3))
         leftArrow.hidden = false
         
-        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 7 {
+        if self.hsManager.scores.first?.score == nil || self.hsManager.scores.first?.score < 6 {
             self.addChild(rightArrow)
             ArrowAction(rightArrow, pos: rightArrow.position, destX: self.frame.width)
             self.addChild(leftArrow)
@@ -154,6 +158,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
        }
     }
     
+    func transitionToGameWonScene() {
+        let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+        self.hsManager.addNewScore(self.score)
+        
+        let scene = GameWonScene(size: self.scene!.size, score: self.score)
+
+        self.motionManager.stopDeviceMotionUpdates()
+        
+        self.scene?.view?.presentScene(scene, transition: transition)
+    }
+    
     func transitionToReplayScene() {
         let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
         self.hsManager.addNewScore(self.score)
@@ -209,8 +224,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
                 spawnLaser(-800, laserXPosition: ship.position.x)
             }
             
-            if score == 9999 {
-                self.transitionToReplayScene()
+            // You are here insure there is not nil!!!!!!!!!!!
+            if score == 333 && (lastHighScore < 333 || lastHighScore == nil) {
+                self.transitionToGameWonScene()
             } else {
                 score += 1
             }

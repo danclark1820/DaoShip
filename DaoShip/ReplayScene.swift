@@ -25,6 +25,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         fatalError("init(coder:) has not been implemented")
     }
     
+    let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
     let hsManager = HighScoreManager()
     let ship = Spaceship()
     let notesArray = ["No sign of progress does not mean that progress is not taking place.",
@@ -57,7 +58,8 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     "Give up doing for acting on intuition.",
     
-    "Desire for the end makes the process hard to enjoy."]
+    "Desire for the end makes the process hard to enjoy.",
+    ]
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -73,34 +75,34 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         let submitScore = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreValue = self.hsManager.scores.first!.score
         
-        highScoreLabel.text = "High: " + String(highScoreValue)
+        highScoreLabel.text = "High: " + String(highScoreValue) + "/333"
         highScoreLabel.name = "scoreLabels"
         highScoreLabel.fontSize = 20
-        highScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        highScoreLabel.fontColor = yellow
         highScoreLabel.position = CGPoint(x: (self.frame.width - highScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
-        lastScoreLabel.text = "Previous: " + String(lastScore!)
+        lastScoreLabel.text = "Previous: " + String(lastScore!) + "/333"
         lastScoreLabel.name = "scoreLabels"
         lastScoreLabel.fontSize = 20
-        lastScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        lastScoreLabel.fontColor = yellow
         lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
         playButton.text = "Try Again"
         playButton.name = "playButton"
         playButton.fontSize = 35
-        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        playButton.fontColor = yellow
         playButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
         
         rateButton.text = "Rate ShipDip"
         rateButton.name = "rateButton"
         rateButton.fontSize = 30
-        rateButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        rateButton.fontColor = yellow
         rateButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
         
         shareButton.text = "Challenge Friends"
         shareButton.name = "shareButton"
         shareButton.fontSize = 35
-        shareButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        shareButton.fontColor = yellow
         shareButton.position =  CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(11/20))
         
         if highScoreValue == 9999 {
@@ -110,19 +112,19 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         }
         newHighScoreLabel.name = "playButton"
         newHighScoreLabel.fontSize = 45
-        newHighScoreLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        newHighScoreLabel.fontColor = yellow
         newHighScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(4/5))
         
-        highScoreNumber.text = "\(highScoreValue)"
+        highScoreNumber.text = "\(highScoreValue)/333"
         highScoreNumber.name = "playButton"
         highScoreNumber.fontSize = 80
-        highScoreNumber.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        highScoreNumber.fontColor = yellow
         highScoreNumber.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(2/3))
         
         submitScore.text = "Submit Score"
         submitScore.name = "submitScore"
         submitScore.fontSize = 30
-        submitScore.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        submitScore.fontColor = yellow
         submitScore.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
@@ -213,7 +215,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     func noteLabel(note: String, name: String) -> SKMultilineLabel {
         var intro: SKMultilineLabel?
-        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 24)
+        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 28)
         intro!.dontUpdate = false
         intro!.name = name
         intro!.alpha = 1.0
@@ -246,7 +248,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
-        let textToShare = "ShipDip is my new jam! Just scored a \(self.hsManager.scores.first!.score)! Try to beat that!"
+        let textToShare = "ShipDip is my new jam! Just scored a \(self.hsManager.scores.first!.score)! Can you master the ship?"
         if let myWebsite = NSURL(string: "https://itunes.apple.com/us/app/shipdip/id1121208467?ls=1&mt=8") {
             let objectsToShare = [textToShare, myWebsite, image]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

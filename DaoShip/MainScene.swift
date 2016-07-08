@@ -8,7 +8,6 @@
 
 
 import SpriteKit
-import CoreMotion
 import AVFoundation
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
@@ -17,13 +16,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     var audioPlayer: AVAudioPlayer?
     
     let tapLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+//    let yellowColor = UIColor(red: 1.0, green: 0.96, blue: 0.57, alpha: 1.0)
+    let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
     
     override func didMoveToView(view: SKView) {
         tapLabel.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         tapLabel.text = "Tap Here"
         tapLabel.name = "tapLabel"
         tapLabel.fontSize = 45
-        tapLabel.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
+        tapLabel.fontColor = yellow
         tapLabel.alpha = 1.0
         self.addChild(tapLabel)
         
@@ -47,47 +48,54 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        let introLabel1 = self.introLabel("An ancient way of living is under siege for higher ideals...", name: "introLabel1")
-        let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals.", name: "introLabel2")
-        let introLabel3 = self.introLabel("Master the way of the ship to get past the attackers. Once this done the ancient's secret will be revealed to you.", name: "introLabel3")
+        let introLabel1 = self.introLabel("The ancient's way of living is under siege for higher ideals...", name: "introLabel1")
+        let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek control.", name: "introLabel2")
+        let introLabel3 = self.introLabel("Master the way of the ship to get past the attackers...", name: "introLabel3")
+        let introLabel4 = self.introLabel("Master the way of the ship and the ancient's secret will be revealed to you.", name: "introLabel4")
         
         let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
         playButton.text = "Play"
         playButton.name = "playButton"
         playButton.fontSize = 45
-        playButton.fontColor = UIColor(red: 1.0, green: 1.0, blue: 0.83, alpha: 1.0)
-        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height/5)
+        playButton.fontColor = yellow
+        playButton.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
             
             if touchedNode.name == "tapLabel" {
                 self.rotateShip()
-                tapLabel.runAction(SKAction.fadeOutWithDuration(0.75), completion: {
+                tapLabel.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
                     self.addChild(introLabel1)
                     self.tapLabel.removeFromParent()
                 })
             } else if touchedNode.parent?.name == "introLabel1" {
                 self.rotateShip()
-                self.childNodeWithName("introLabel1")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
+                self.childNodeWithName("introLabel1")!.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
                     self.addChild(introLabel2)
                     introLabel1.removeFromParent()
                 })
             } else if touchedNode.parent?.name == "introLabel2" {
                 self.rotateShip()
-                self.childNodeWithName("introLabel2")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
+                self.childNodeWithName("introLabel2")!.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
                     self.addChild(introLabel3)
                     introLabel2.removeFromParent()
                 })
             } else if touchedNode.parent?.name == "introLabel3" {
                 self.rotateShip()
-                self.childNodeWithName("introLabel3")!.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
-                    self.addChild(playButton)
+                self.childNodeWithName("introLabel3")!.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
+                    self.addChild(introLabel4)
                     introLabel3.removeFromParent()
+                })
+            }else if touchedNode.parent?.name == "introLabel4" {
+                self.rotateShip()
+                self.childNodeWithName("introLabel4")!.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
+                    self.addChild(playButton)
+                    introLabel4.removeFromParent()
                 })
             } else if touchedNode.name == "playButton" {
                 fadeVolumeAndPause()
-                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+                let transition = SKTransition.fadeWithColor(self.backgroundColor, duration: 0.5)
                 transition.pausesOutgoingScene = false
                 transition.pausesIncomingScene = true
                 
@@ -107,11 +115,9 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         ship.runAction(repeatAction)
     }
     
-//    "An ancient way of living is under siege for higher ideals. The attackers believe they are all knowing and seek to end a way of life that does not accord with their ideals. Master the way of the ship to get past the attackers. Once this done the ancient's secrets will be revealed to you."
-    
     func introLabel(note: String, name: String) -> SKMultilineLabel {
         var intro: SKMultilineLabel?
-        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 24)
+        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 28)
         intro!.dontUpdate = false
         intro!.name = name
         intro!.alpha = 1.0
