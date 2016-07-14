@@ -256,12 +256,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     func adMobLoadInterAd() -> GADInterstitial {
         print("AdMob inter loading...")
         
-        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-1353562290522417/3485161289")
+        
         googleInterAd.delegate = self
         
         let request = GADRequest()
         
-        request.testDevices = [kGADSimulatorID, "2077ef9a63d2b398840261c8221a0c9b"] // DEBUG only
+//        request.testDevices = [kGADSimulatorID, "2077ef9a63d2b398840261c8221a0c9b"] // DEBUG only
         
         googleInterAd.loadRequest(request)
         

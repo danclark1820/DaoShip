@@ -34,11 +34,11 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     "A long journey begins with a single step.",
     
-    "Master self, master ship, master living, repeat.",
+    "Master ship, master self, live in peace.",
     
     "By learning to master the ship, you learn to master yourself.",
     
-    "You do not have to see the end to know you are on the right path.",
+    "You do not have to see the end destination to set your course.",
     
     "Accomplish a great feat by a series of small feats.",
     
@@ -52,13 +52,15 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     "Knowing you do not know, you begin to know.",
     
-    "Learning to love the process, the end goal is always achieved.",
+    "Loving the process, the end goal is always achieved.",
     
     "Give up thinking for doing.",
     
     "Give up doing for acting on intuition.",
     
     "Desire for the end makes the process hard to enjoy.",
+    
+    "Take care of your ship and it will take care of you."
     ]
     
     override func didMoveToView(view: SKView) {
