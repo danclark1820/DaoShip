@@ -40,6 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     let LASER_CATEGORY: UInt32 = 0x2
     let SHIP_CATEGORY: UInt32 = 0x3
     let STAR_CATEGORY: UInt32 = 0x4
+    let ASTEROID_CATEGORY: UInt32 = 0x5
+    let FIRED_LASER_CATEGORY: UInt32 = 0x6
     
     override func didMoveToView(view: SKView) {
         interstitial = adMobLoadInterAd()
@@ -140,6 +142,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
     
+    func spawnFiredLaser() {
+        let laser = Greenlaser()
+        laser.physicsBody?.contactTestBitMask = ASTEROID_CATEGORY
+        laser.physicsBody?.collisionBitMask = 0
+        laser.physicsBody?.categoryBitMask = FIRED_LASER_CATEGORY
+        laser.position = CGPoint(x: self.ship.position.x, y:  self.ship.position.y)
+        laser.xScale = 0.05
+        laser.yScale = 0.05
+        laser.zPosition = -1
+        self.addChild(laser)
+        laser.physicsBody?.affectedByGravity = false
+        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: 800)
+    }
+    
+    func spawnAsteroid(asteroidSpeed: CGFloat, asteroidXPosition: CGFloat) {
+        let asteroid = Asteroid()
+        asteroid.physicsBody?.contactTestBitMask = FIRED_LASER_CATEGORY
+        asteroid.physicsBody?.collisionBitMask = 0
+        asteroid.physicsBody?.categoryBitMask = ASTEROID_CATEGORY
+        asteroid.position = CGPoint(x: asteroidXPosition, y:  self.size.height + asteroid.size.width)
+        self.addChild(asteroid)
+        asteroid.physicsBody?.velocity = CGVector(dx: 0.0, dy: asteroidSpeed)
+    }
+    
     func spawnExplosion() {
         let explosion = Explosion()
         explosion.position = ship.position
@@ -148,14 +174,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        if contact.bodyA.categoryBitMask == SHIP_CATEGORY || contact.bodyB.categoryBitMask == SHIP_CATEGORY {
+        
+        if (contact.bodyA.categoryBitMask == LASER_CATEGORY || contact.bodyA.categoryBitMask == SCENE_EDGE_CATEGORY) && contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.spawnExplosion()
             self.laserSpawnTime = 5.0
             self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
             self.runAction(explosionSound, completion: {
                 self.transitionToReplayScene()
             })
-       }
+        } else if contact.bodyA.categoryBitMask == FIRED_LASER_CATEGORY && contact.bodyB.categoryBitMask == ASTEROID_CATEGORY {
+            self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
+        }
     }
     
     func transitionToGameWonScene() {
@@ -180,6 +209,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         adMobShowInterAd()
         
         self.scene?.view?.presentScene(nextScene, transition: transition)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        spawnFiredLaser()
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -218,13 +252,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > laserSpawnTime) {
             timeSinceLastLaserSpawned = 0
-            if score < 5 {
-                spawnLaser(-600, laserXPosition: CGFloat(arc4random_uniform(UInt32(self.size.width))))
-            } else {
-                spawnLaser(-800, laserXPosition: ship.position.x)
-            }
-            
-            // You are here insure there is not nil!!!!!!!!!!!
+//            if score < 5 {
+//                spawnFiredLaser()
+                spawnAsteroid(-400, asteroidXPosition: ship.position.x)
+//            } else {
+//                spawnLaser(-500, laserXPosition: ship.position.x)
+//            }
+        
             if score == 333 && (lastHighScore < 333 || lastHighScore == nil) {
                 self.transitionToGameWonScene()
             } else {
@@ -256,7 +290,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     func adMobLoadInterAd() -> GADInterstitial {
         print("AdMob inter loading...")
         
-        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-1353562290522417/3485161289")
+//        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-1353562290522417/3485161289")
+        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712")
         
         googleInterAd.delegate = self
         

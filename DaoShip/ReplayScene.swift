@@ -182,6 +182,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
             } else if touchedNode.name == "submitScore" {
                 fadeVolumeAndPause()
                 ship.runAction(repeatAction)
+                authenticateLocalPlayer()
                 submitHighscore(self.hsManager.scores.first!.score)
                 showLeaderBoard()
             } else if touchedNode.name == "shareButton" {

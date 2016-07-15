@@ -14,19 +14,24 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     private var ship = Spaceship()
     var audioPlayer: AVAudioPlayer?
-    
+    let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
     let tapLabel = SKLabelNode(fontNamed: "Palatino-Roman")
-//    let yellowColor = UIColor(red: 1.0, green: 0.96, blue: 0.57, alpha: 1.0)
     let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
+    let hsManager = HighScoreManager()
     
     override func didMoveToView(view: SKView) {
         tapLabel.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
-        tapLabel.text = "Tap Here"
+        tapLabel.text = "Tap Text Here"
         tapLabel.name = "tapLabel"
         tapLabel.fontSize = 45
         tapLabel.fontColor = yellow
         tapLabel.alpha = 1.0
-        self.addChild(tapLabel)
+        
+        playButton.text = "Play"
+        playButton.name = "playButton"
+        playButton.fontSize = 45
+        playButton.fontColor = yellow
+        playButton.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         
         
         self.addChild(ship)
@@ -41,6 +46,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             print("audioPlayer failure")
         }
         
+        if self.hsManager.scores.first?.score != nil || self.hsManager.scores.first?.score > 6 {
+            self.addChild(playButton)
+        } else {
+            self.addChild(tapLabel)
+        }
+        
         self.play()
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
     }
@@ -52,13 +63,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek control.", name: "introLabel2")
         let introLabel3 = self.introLabel("Master the way of the ship to get past the attackers...", name: "introLabel3")
         let introLabel4 = self.introLabel("Master the way of the ship and the ancient's secret will be revealed to you.", name: "introLabel4")
-        
-        let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
-        playButton.text = "Play"
-        playButton.name = "playButton"
-        playButton.fontSize = 45
-        playButton.fontColor = yellow
-        playButton.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)
@@ -90,7 +94,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             }else if touchedNode.parent?.name == "introLabel4" {
                 self.rotateShip()
                 self.childNodeWithName("introLabel4")!.runAction(SKAction.fadeOutWithDuration(0.5), completion: {
-                    self.addChild(playButton)
+                    self.addChild(self.playButton)
                     introLabel4.removeFromParent()
                 })
             } else if touchedNode.name == "playButton" {

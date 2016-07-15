@@ -10,13 +10,12 @@ import UIKit
 import GameKit
 import SpriteKit
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
+class GameViewController: UIViewController {
     
     var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        authenticateLocalPlayer()
         
         if let scene =  MainScene(fileNamed: "MainScene") {
             // Configure the view.
@@ -38,22 +37,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
     override func shouldAutorotate() -> Bool {
         return true
-    }
-    
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func authenticateLocalPlayer(){
-        let localPlayer = GKLocalPlayer.localPlayer()
-        
-        localPlayer.authenticateHandler = {(viewController, error) -> Void in
-            if (viewController != nil) {
-                self.presentViewController(viewController!, animated: true, completion: nil)
-            } else {
-                print(GKLocalPlayer.localPlayer().authenticated)
-            }
-        }
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
