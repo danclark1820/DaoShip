@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     let lastHighScore = HighScoreManager().scores.last?.score
     let tiltLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     let explosionSound = SKAction.playSoundFileNamed("boom5.wav", waitForCompletion: true)
+    var firedLaserYPosition: CGFloat?
     
     
     let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
@@ -40,10 +41,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     let LASER_CATEGORY: UInt32 = 0x2
     let SHIP_CATEGORY: UInt32 = 0x3
     let STAR_CATEGORY: UInt32 = 0x4
-    let ASTEROID_CATEGORY: UInt32 = 0x5
-    let FIRED_LASER_CATEGORY: UInt32 = 0x6
     
     override func didMoveToView(view: SKView) {
+        UIApplication.sharedApplication().idleTimerDisabled = true
         interstitial = adMobLoadInterAd()
         
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
@@ -71,6 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         tiltLabel.fontSize = 48
         tiltLabel.fontColor = yellow
         tiltLabel.position = CGPoint(x: self.frame.width/2, y: CGFloat(self.frame.height - self.frame.height/3))
+        
+        firedLaserYPosition = self.ship.position.y + self.ship.size.width/2
         
         let rightArrow = SKLabelNode(fontNamed: "Palatino-Roman")
         rightArrow.text = ">"
@@ -142,30 +144,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: laserSpeed)
     }
     
-    func spawnFiredLaser() {
-        let laser = Greenlaser()
-        laser.physicsBody?.contactTestBitMask = ASTEROID_CATEGORY
-        laser.physicsBody?.collisionBitMask = 0
-        laser.physicsBody?.categoryBitMask = FIRED_LASER_CATEGORY
-        laser.position = CGPoint(x: self.ship.position.x, y:  self.ship.position.y)
-        laser.xScale = 0.05
-        laser.yScale = 0.05
-        laser.zPosition = -1
-        self.addChild(laser)
-        laser.physicsBody?.affectedByGravity = false
-        laser.physicsBody?.velocity = CGVector(dx: 0.0, dy: 800)
-    }
-    
-    func spawnAsteroid(asteroidSpeed: CGFloat, asteroidXPosition: CGFloat) {
-        let asteroid = Asteroid()
-        asteroid.physicsBody?.contactTestBitMask = FIRED_LASER_CATEGORY
-        asteroid.physicsBody?.collisionBitMask = 0
-        asteroid.physicsBody?.categoryBitMask = ASTEROID_CATEGORY
-        asteroid.position = CGPoint(x: asteroidXPosition, y:  self.size.height + asteroid.size.width)
-        self.addChild(asteroid)
-        asteroid.physicsBody?.velocity = CGVector(dx: 0.0, dy: asteroidSpeed)
-    }
-    
     func spawnExplosion() {
         let explosion = Explosion()
         explosion.position = ship.position
@@ -174,7 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        
         if (contact.bodyA.categoryBitMask == LASER_CATEGORY || contact.bodyA.categoryBitMask == SCENE_EDGE_CATEGORY) && contact.bodyB.categoryBitMask == SHIP_CATEGORY {
             self.spawnExplosion()
             self.laserSpawnTime = 5.0
@@ -182,8 +159,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
             self.runAction(explosionSound, completion: {
                 self.transitionToReplayScene()
             })
-        } else if contact.bodyA.categoryBitMask == FIRED_LASER_CATEGORY && contact.bodyB.categoryBitMask == ASTEROID_CATEGORY {
-            self.removeChildrenInArray([contact.bodyA.node!, contact.bodyB.node!])
         }
     }
     
@@ -210,12 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         
         self.scene?.view?.presentScene(nextScene, transition: transition)
     }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
-        spawnFiredLaser()
-    }
-    
+
     override func update(currentTime: CFTimeInterval) {
         var timeSinceLastUpdate = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
@@ -252,14 +222,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
         timeSinceLastLaserSpawned += timeSinceLastUpdate
         if (timeSinceLastLaserSpawned > laserSpawnTime) {
             timeSinceLastLaserSpawned = 0
-//            if score < 5 {
-//                spawnFiredLaser()
-                spawnAsteroid(-400, asteroidXPosition: ship.position.x)
-//            } else {
-//                spawnLaser(-500, laserXPosition: ship.position.x)
-//            }
+            if score < 5 {
+                spawnLaser(-575, laserXPosition: CGFloat(arc4random_uniform(UInt32(self.size.width))))
+            } else {
+                spawnLaser(-800, laserXPosition: ship.position.x)
+            }
         
-            if score == 333 && (lastHighScore < 333 || lastHighScore == nil) {
+            if score == 100 && (lastHighScore < 100 || lastHighScore == nil) {
                 self.transitionToGameWonScene()
             } else {
                 score += 1
@@ -290,8 +259,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate {
     func adMobLoadInterAd() -> GADInterstitial {
         print("AdMob inter loading...")
         
-//        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-1353562290522417/3485161289")
-        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712")
+        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-1353562290522417/3485161289") // Production
+//        let googleInterAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712") // Test
         
         googleInterAd.delegate = self
         
