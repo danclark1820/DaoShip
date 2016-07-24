@@ -34,7 +34,7 @@ class GameWonScene: SKScene {
         self.spawnInitialStars()
         
         conLabel.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
-        conLabel.text = "Congratulations!"
+        conLabel.text = "Tap Text Here"
         conLabel.name = "conLabel"
         conLabel.fontSize = 45
         conLabel.fontColor = yellow
@@ -105,9 +105,9 @@ class GameWonScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         
-        let note1 = introLabel("Your dilligence has shown mastery of the ship.", name: "note1")
-        let note2 = introLabel("The ancients secret is now yours to have...", name: "note2")
-        let note3 = introLabel("But, you already discovered it along your way past the attackers.", name: "note3")
+        let note1 = introLabel("Congratulations! Your dilligence has shown mastery of the ship and its ways...", name: "note1")
+        let note2 = introLabel("An ancient secret is now yours to have...", name: "note2")
+        let note3 = introLabel("But, you already discovered it along your way...", name: "note3")
         let note4 = introLabel("It is that the way, your way, is always right in front of you...", name: "note4")
         let note5 = introLabel("You just have to follow it.", name: "note5")
         

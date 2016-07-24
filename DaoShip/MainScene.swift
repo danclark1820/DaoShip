@@ -16,6 +16,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     var audioPlayer: AVAudioPlayer?
     let playButton = SKLabelNode(fontNamed:"Palatino-Roman")
     let tapLabel = SKLabelNode(fontNamed: "Palatino-Roman")
+    let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
     let yellow = UIColor(red: 1.00, green: 0.96, blue: 0.57, alpha: 1.0)
     let hsManager = HighScoreManager()
     
@@ -29,11 +30,21 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
         playButton.text = "Play"
         playButton.name = "playButton"
-        playButton.fontSize = 45
+        playButton.fontSize = 60
         playButton.fontColor = yellow
         playButton.position = CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/3))
         
+        if (hsManager.scores.first?.score != nil) {
+            scoreLabel.text = "\(hsManager.scores.first!.score)/100"
+        } else {
+            scoreLabel.text = "0/100"
+        }
+        scoreLabel.name = "playButton"
+        scoreLabel.fontSize = 60
+        scoreLabel.fontColor = yellow
+        scoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(1/2))
         
+        self.addChild(scoreLabel)
         self.addChild(ship)
         self.spawnInitialStars()
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.11, alpha: 1.0)
@@ -59,10 +70,10 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        let introLabel1 = self.introLabel("The ancient's way of living is under siege for higher ideals...", name: "introLabel1")
-        let introLabel2 = self.introLabel("The attackers believe they are all knowing and seek control.", name: "introLabel2")
-        let introLabel3 = self.introLabel("Master the way of the ship to get past the attackers...", name: "introLabel3")
-        let introLabel4 = self.introLabel("Master the way of the ship and the ancient's secret will be revealed to you.", name: "introLabel4")
+        let introLabel1 = self.introLabel("An ancient way of living is under siege for higher ideals...", name: "introLabel1")
+        let introLabel2 = self.introLabel("Tilt or rotate your phone to the left and right to dip the ship when the game starts...", name: "introLabel2")
+        let introLabel3 = self.introLabel("Master the way of the ship to get past the lasers...", name: "introLabel3")
+        let introLabel4 = self.introLabel("Master the way of the ship and an ancient secret will be revealed to you...", name: "introLabel4")
         
         if let location = touches.first?.locationInNode(self) {
             let touchedNode = nodeAtPoint(location)

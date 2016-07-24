@@ -73,21 +73,9 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         let rateButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let shareButton = SKLabelNode(fontNamed: "Palatino-Roman")
         let newHighScoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
-        let highScoreNumber = SKLabelNode(fontNamed: "Palatino-Roman")
+        let scoreLabel = SKLabelNode(fontNamed: "Palatino-Roman")
         let submitScore = SKLabelNode(fontNamed: "Palatino-Roman")
         let highScoreValue = self.hsManager.scores.first!.score
-        
-        highScoreLabel.text = "High: " + String(highScoreValue) + "/333"
-        highScoreLabel.name = "scoreLabels"
-        highScoreLabel.fontSize = 20
-        highScoreLabel.fontColor = yellow
-        highScoreLabel.position = CGPoint(x: (self.frame.width - highScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
-        
-        lastScoreLabel.text = "Previous: " + String(lastScore!) + "/333"
-        lastScoreLabel.name = "scoreLabels"
-        lastScoreLabel.fontSize = 20
-        lastScoreLabel.fontColor = yellow
-        lastScoreLabel.position = CGPoint(x: (0.0 + lastScoreLabel.frame.width/2), y: (self.frame.height - highScoreLabel.frame.height))
         
         playButton.text = "Try Again"
         playButton.name = "playButton"
@@ -117,11 +105,11 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         newHighScoreLabel.fontColor = yellow
         newHighScoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(4/5))
         
-        highScoreNumber.text = "\(highScoreValue)/333"
-        highScoreNumber.name = "playButton"
-        highScoreNumber.fontSize = 80
-        highScoreNumber.fontColor = yellow
-        highScoreNumber.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(2/3))
+        scoreLabel.text = "\(lastScore!)/100"
+        scoreLabel.name = "playButton"
+        scoreLabel.fontSize = 80
+        scoreLabel.fontColor = yellow
+        scoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(2/3))
         
         submitScore.text = "Submit Score"
         submitScore.name = "submitScore"
@@ -131,13 +119,22 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
         
-        if lastScore! == self.hsManager.scores.first!.score {
+        if lastScore! > self.hsManager.scores.first!.score {
             self.addChild(newHighScoreLabel)
-            self.addChild(highScoreNumber)
+            self.addChild(scoreLabel)
             self.addChild(submitScore)
             self.addChild(shareButton)
         } else {
             let note = self.noteLabel(notesArray[Int(arc4random_uniform(UInt32(self.notesArray.count)))], name: "note")
+            scoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(16/20))
+            scoreLabel.fontSize = 45
+            shareButton.text = "Share Wisdom"
+            shareButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: self.frame.height*(9/20))
+            shareButton.fontSize = 30
+            
+            
+            self.addChild(scoreLabel)
+            self.addChild(shareButton)
             self.addChild(note)
         }
         
@@ -218,7 +215,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
     
     func noteLabel(note: String, name: String) -> SKMultilineLabel {
         var intro: SKMultilineLabel?
-        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height/4)), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", leading: 28)
+        intro = SKMultilineLabel(text: note, labelWidth: Int(self.frame.width - self.frame.width/8), pos: CGPoint(x: Int(self.frame.width/2) , y: Int(self.frame.height - self.frame.height*(5/20))), name: "WhyDoesntThisGetSetHere", fontName: "Palatino-Roman", fontSize: 32, leading: 32)
         intro!.dontUpdate = false
         intro!.name = name
         intro!.alpha = 1.0
@@ -251,7 +248,7 @@ class ReplayScene: SKScene, GKGameCenterControllerDelegate{
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
-        let textToShare = "ShipDip is my new jam! Just scored a \(self.hsManager.scores.first!.score)! Can you master the ship?"
+        let textToShare = "Just scored a \(lastScore!) on ShipDip :)"
         if let myWebsite = NSURL(string: "https://itunes.apple.com/us/app/shipdip/id1121208467?ls=1&mt=8") {
             let objectsToShare = [textToShare, myWebsite, image]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
